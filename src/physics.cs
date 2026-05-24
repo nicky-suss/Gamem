@@ -32,7 +32,8 @@ public static class Physics
     {
         if (velocity == 0)
             return 0.0;
-        double reduction = frictionCoeff * deltaTime;
+        double frictionCoeffAbs = Math.Abs(frictionCoeff);
+        double reduction = frictionCoeffAbs * deltaTime;
         if (Math.Abs(velocity) <= reduction)
             return 0.0;
         return velocity - Math.Sign(velocity) * reduction;
@@ -48,7 +49,8 @@ public static class Physics
     {
         if (velocity == 0)
             return 0.0f;
-        float reduction = frictionCoeff * deltaTime;
+        float frictionCoeffAbs = Math.Abs(frictionCoeff);
+        float reduction = frictionCoeffAbs * deltaTime;
         if (MathF.Abs(velocity) <= reduction)
             return 0.0f;
         return velocity - MathF.Sign(velocity) * reduction;
