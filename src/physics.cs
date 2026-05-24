@@ -4,12 +4,14 @@ public static class Physics
 {
     public static double ApplyGravity(double velocity, double gravity, double deltaTime) => velocity + gravity * deltaTime;
     public static float ApplyGravity(float velocity, float gravity, float deltaTime) => velocity + gravity * deltaTime;
-    public static double ApplyFriction(double velocity, double friction, double deltaTime)
+    public static double ApplyFriction(double velocity, double frictionCoeff, double deltaTime)
     {
-        double v = friction * Math.Abs(velocity) * deltaTime;
-        if (v >= Math.Abs(velocity))
-            return 0.0f;
-        return velocity - Math.Sign(velocity) * v;
+        if (velocity == 0)
+            return 0.0;
+        double reduction = frictionCoeff * deltaTime;
+        if (Math.Abs(velocity) <= reduction)
+            return 0.0;
+        return velocity - Math.Sign(velocity) * reduction;
     }
     public static double MoveTowards(double current, double target, double maxDelta)
     {
