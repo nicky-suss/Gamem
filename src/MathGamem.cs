@@ -14,4 +14,16 @@ public static class MathGamem
         float T = c * c * (3.0f - 2.0f * c);
         return start + (end - start) * T;
     }
+    public static double RandomRange(double min, double max)
+    {
+        if (min > max)
+            throw new ArgumentException($"{nameof(min)} must be <= {nameof(max)}");
+        return min + (Random.Shared.NextDouble() * (max - min));
+    }
+    public static float RandomRange(float min, float max)
+    {
+        if (min > max)
+            throw new ArgumentException($"{nameof(min)} must be <= {nameof(max)}");
+        return min + (Random.Shared.NextSingle() * (max - min));
+    }
 }
