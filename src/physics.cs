@@ -15,7 +15,18 @@ public static class Physics
     }
     public static double MoveTowards(double current, double target, double maxDelta)
     {
+        if (maxDelta <= 0.0) return current;
+
         double dist = target - current;
+        if (Math.Abs(dist) <= maxDelta)
+            return target;
+        return current + Math.Sign(dist) * maxDelta;
+    }
+    public static float MoveTowards(float current, float target, float maxDelta)
+    {
+        if (maxDelta <= 0.0) return current;
+
+        float dist = target - current;
         if (Math.Abs(dist) <= maxDelta)
             return target;
         return current + Math.Sign(dist) * maxDelta;
