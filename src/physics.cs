@@ -3,6 +3,7 @@
 public static class Physics
 {
     public static double ApplyGravity(double velocity, double gravity, double deltaTime) => velocity + gravity * deltaTime;
+    public static float ApplyGravity(float velocity, float gravity, float deltaTime) => velocity + gravity * deltaTime;
     public static double ApplyFriction(double velocity, double friction, double deltaTime)
     {
         double v = friction * Math.Abs(velocity) * deltaTime;
