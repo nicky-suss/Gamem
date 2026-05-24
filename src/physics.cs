@@ -13,6 +13,15 @@ public static class Physics
             return 0.0;
         return velocity - Math.Sign(velocity) * reduction;
     }
+    public static float ApplyFriction(float velocity, float frictionCoeff, float deltaTime)
+    {
+        if (velocity == 0)
+            return 0.0f;
+        float reduction = frictionCoeff * deltaTime;
+        if (MathF.Abs(velocity) <= reduction)
+            return 0.0f;
+        return velocity - MathF.Sign(velocity) * reduction;
+    }
     public static double MoveTowards(double current, double target, double maxDelta)
     {
         if (maxDelta <= 0.0) return current;
@@ -24,11 +33,11 @@ public static class Physics
     }
     public static float MoveTowards(float current, float target, float maxDelta)
     {
-        if (maxDelta <= 0.0) return current;
+        if (maxDelta <= 0.0f) return current;
 
         float dist = target - current;
-        if (Math.Abs(dist) <= maxDelta)
+        if (MathF.Abs(dist) <= maxDelta)
             return target;
-        return current + Math.Sign(dist) * maxDelta;
+        return current + MathF.Sign(dist) * maxDelta;
     }
 }
