@@ -10,4 +10,11 @@ public static class Physics
             return 0.0f;
         return velocity - Math.Sign(velocity) * v;
     }
+    public static double MoveTowards(double current, double target, double maxDelta)
+    {
+        double dist = target - current;
+        if (Math.Abs(dist) <= maxDelta)
+            return target;
+        return current + Math.Sign(dist) * maxDelta;
+    }
 }
