@@ -30,10 +30,10 @@ public static class Physics
     /// <returns>The updated velocity after friction is applied, clamping to 0.0 if it changes direction.</returns>
     public static double ApplyFriction(double velocity, double frictionCoeff, double deltaTime)
     {
-        if (velocity == 0)
+        if (velocity == 0.0)
             return 0.0;
         double frictionCoeffAbs = Math.Abs(frictionCoeff);
-        double reduction = frictionCoeffAbs * deltaTime;
+        double reduction = frictionCoeffAbs * Math.Abs(deltaTime);
         if (Math.Abs(velocity) <= reduction)
             return 0.0;
         return velocity - Math.Sign(velocity) * reduction;
@@ -47,10 +47,10 @@ public static class Physics
     /// <returns>The updated velocity after friction is applied, clamping to 0.0f if it changes direction.</returns>
     public static float ApplyFriction(float velocity, float frictionCoeff, float deltaTime)
     {
-        if (velocity == 0)
+        if (velocity == 0.0f)
             return 0.0f;
-        float frictionCoeffAbs = Math.Abs(frictionCoeff);
-        float reduction = frictionCoeffAbs * deltaTime;
+        float frictionCoeffAbs = MathF.Abs(frictionCoeff);
+        float reduction = frictionCoeffAbs * MathF.Abs(deltaTime);
         if (MathF.Abs(velocity) <= reduction)
             return 0.0f;
         return velocity - MathF.Sign(velocity) * reduction;
