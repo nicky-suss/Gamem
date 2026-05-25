@@ -1,7 +1,8 @@
 # Gamem
+![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem)
 **🎮 This library allows you to use physics and math methods for developing your games 👾**
 > [!NOTE]
-> If you want to use Geometry methods you can use my another library -> [GeometrySharp](https://github.com/nicky-suss/GeometrySharp)
+> If you want to use Geometry methods you can use my another library -> [GeometrySharp](https://www.nuget.org/packages/GeometrySharp)
 ## Installation
 **Type this command:**
 ```
