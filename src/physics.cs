@@ -96,4 +96,34 @@ public static class Physics
             return target;
         return current + MathF.Sign(dist) * maxDelta;
     }
+    /// <summary>
+    /// Calculates the velocity after a bounce collision, reversing direction and applying a coefficient of restitution.
+    /// </summary>
+    /// <param name="vOld">The pre-collision velocity.</param>
+    /// <param name="bounciness">The bounciness coefficient (restitution), clamped between 0.0 and 1.0.</param>
+    /// <param name="minBounceThreshold">The minimum velocity required to sustain a bounce. Below this magnitude, the velocity is clamped to zero to prevent endless micro-bouncing.</param>
+    /// <returns>The updated velocity after the bounce, or 0.0 if the resulting speed falls below the threshold.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double Bounce(double vOld, double bounciness, double minBounceThreshold = 0.1)
+    {
+        double vNew = -vOld * Math.Clamp(bounciness, 0.0, 1.0);
+        if (Math.Abs(vNew) < minBounceThreshold)
+            vNew = 0.0;
+        return vNew;
+    }
+    /// <summary>
+    /// Calculates the velocity after a bounce collision, reversing direction and applying a coefficient of restitution.
+    /// </summary>
+    /// <param name="vOld">The pre-collision velocity.</param>
+    /// <param name="bounciness">The bounciness coefficient (restitution), clamped between 0.0f and 1.0f.</param>
+    /// <param name="minBounceThreshold">The minimum velocity required to sustain a bounce. Below this magnitude, the velocity is clamped to zero to prevent endless micro-bouncing.</param>
+    /// <returns>The updated velocity after the bounce, or 0.0f if the resulting speed falls below the threshold.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float Bounce(float vOld, float bounciness, float minBounceThreshold = 0.1f)
+    {
+        float vNew = -vOld * Math.Clamp(bounciness, 0.0f, 1.0f);
+        if (MathF.Abs(vNew) < minBounceThreshold)
+            vNew = 0.0f;
+        return vNew;
+    }
 }
