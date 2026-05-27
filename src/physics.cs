@@ -150,4 +150,42 @@ public static class Physics
         float limit = MathF.Abs(max);
         return Math.Clamp(v, -limit, limit);
     }
+    /// <summary>
+    /// Applies a continuous force over a specified time duration to update the velocity, based on Newton's second law.
+    /// </summary>
+    /// <param name="v">The initial velocity before the force is applied.</param>
+    /// <param name="F">The force magnitude.</param>
+    /// <param name="t">The duration of time over which the force acts.</param>
+    /// <param name="m">The mass of the object. If mass is 0, the velocity remains unchanged to avoid division by zero.</param>
+    /// <returns>The updated velocity after applying the force.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double AddForce(double v, double F, double t, double m) => m == 0.0 ? v : v + (F * t / m);
+    /// <summary>
+    /// Applies a continuous force over a specified time duration to update the velocity, based on Newton's second law.
+    /// </summary>
+    /// <param name="v">The initial velocity before the force is applied.</param>
+    /// <param name="F">The force magnitude.</param>
+    /// <param name="t">The duration of time over which the force acts.</param>
+    /// <param name="m">The mass of the object. If mass is 0.0f, the velocity remains unchanged to avoid division by zero.</param>
+    /// <returns>The updated velocity after applying the force.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float AddForce(float v, float F, float t, float m) => m == 0.0f ? v : v + (F * t / m);
+    /// <summary>
+    /// Applies an instantaneous impulse to update the velocity.
+    /// </summary>
+    /// <param name="vOld">The pre-impulse velocity.</param>
+    /// <param name="J">The impulse magnitude (change in momentum).</param>
+    /// <param name="m">The mass of the object. If mass is 0, the velocity remains unchanged to avoid division by zero.</param>
+    /// <returns>The updated velocity after the impulse is applied.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double AddImpulse(double vOld, double J, double m) => m == 0.0 ? vOld : vOld + (J / m);
+    /// <summary>
+    /// Applies an instantaneous impulse to update the velocity.
+    /// </summary>
+    /// <param name="vOld">The pre-impulse velocity.</param>
+    /// <param name="J">The impulse magnitude (change in momentum).</param>
+    /// <param name="m">The mass of the object. If mass is 0.0f, the velocity remains unchanged to avoid division by zero.</param>
+    /// <returns>The updated velocity after the impulse is applied.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float AddImpulse(float vOld, float J, float m) => m == 0.0f ? vOld : vOld + (J / m);
 }
