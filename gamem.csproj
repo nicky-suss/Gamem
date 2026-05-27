@@ -14,7 +14,7 @@
   <GenerateDocumentationFile>true</GenerateDocumentationFile>
   <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   <RepositoryUrl>https://github.com/nicky-suss/Gamem</RepositoryUrl>
-    <PackageTags></PackageTags>
+    <PackageTags>gamedev;game-development;physics;math;monogame;godot;unity;utilities;lightweight</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
