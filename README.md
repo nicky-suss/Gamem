@@ -1,40 +1,38 @@
 # Gamem
-![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem)
+![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem) ![GitHub License](https://img.shields.io/github/license/nicky-suss/Gamem)
 
-**🎮 This library allows you to use physics and math methods for developing your games 👾**
+
+**🎮 Gamem is a C# library of Physics and Math helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org) and [MonoGame](https://monogame.net)! 👾**
 > [!NOTE]
 > If you want to use Geometry methods you can use my another library -> [GeometrySharp](https://www.nuget.org/packages/GeometrySharp)
-## Installation
+## 🛍️ Installation
 **Type this command:**
 ```
 dotnet add package Gamem
 ```
-## How to use
+## ⚙️ How to use
 **To use Gamem methods type this:**
 ```csharp
 using Gamem;
 ```
-## Examples
-### 🧮 Math
+## 🚀 Write code much faster
+
+**Without Gamem:**
 ```csharp
-// Generates a random number between 2.5 and 7.5
+float min = 2.5f;
+float max = 7.5f;
+float speed = Random.Shared.NextDouble() * (max - min) + min;
+```
+**With Gamem (1 line only):**
+```csharp
 float speed = MathGamem.RandomRange(2.5f, 7.5f);
-
-// Smoothly interpolates from 0.0 to 100.0 based on progress (0.0 to 1.0)
-double currentAlpha = MathGamem.SmoothStep(0.0, 100.0, progress);
 ```
-### 🏃 Physics
-**Friction and gravity**
-```csharp
-double velocityX = 10.0;
-double velocityY = 0.0;
-double deltaTime = 0.016; // 60 FPS
-
-// Apply gravity if the character is in the air
-double gravity = -9.81;
-velocityY = Physics.ApplyGravity(velocityY, gravity, deltaTime);
-
-// Apply friction to slow down the character on the ground
-double friction = 5.0;
-velocityX = Physics.ApplyFriction(velocityX, friction, deltaTime);
-```
+## ✨ Why Gamem?
+🍃 **Zero Dependencies** - C# only. Doesn't use other heavy libraries
+🎮 **Engine doesn't matter** - You can use it everywhere. [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net), Console or custom Engines
+⚡ **Good performance** - Optimized methods
+## ❤️ Contributing
+**⭐ Liked the project? Leave a star for this repo, it motivates me to develop this project!**
+**🗨️Have any ideas or found a bug? Open an issue or send Pull Request!**
+## ⚖️ License
+**Gamem is licensed under the [MIT](https://github.com/nicky-suss/Gamem/blob/main/LICENSE) license**
