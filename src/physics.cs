@@ -126,4 +126,28 @@ public static class Physics
             vNew = 0.0f;
         return vNew;
     }
+    /// <summary>
+    /// Clamps a velocity value to be within a symmetric range defined by a maximum speed limit.
+    /// </summary>
+    /// <param name="v">The current velocity to clamp.</param>
+    /// <param name="max">The maximum allowed speed (magnitude), which will be used to define both upper and lower bounds.</param>
+    /// <returns>The clamped velocity, constrained between -abs(max) and abs(max).</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double ClampVelocity(double v, double max)
+    {
+        double limit = Math.Abs(max);
+        return Math.Clamp(v, -limit, limit);
+    }
+    /// <summary>
+    /// Clamps a velocity value to be within a symmetric range defined by a maximum speed limit.
+    /// </summary>
+    /// <param name="v">The current velocity to clamp.</param>
+    /// <param name="max">The maximum allowed speed (magnitude), which will be used to define both upper and lower bounds.</param>
+    /// <returns>The clamped velocity, constrained between -abs(max) and abs(max).</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float ClampVelocity(float v, float max)
+    {
+        float limit = MathF.Abs(max);
+        return Math.Clamp(v, -limit, limit);
+    }
 }
