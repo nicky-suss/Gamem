@@ -1,3 +1,6 @@
+using System;
+using System.Runtime.CompilerServices;
+
 namespace Gamem;
 
 /// <summary>
@@ -12,6 +15,7 @@ public static class MathGamem
     /// <param name="end">The end value.</param>
     /// <param name="t">The interpolation value, clamped between 0.0 and 1.0.</param>
     /// <returns>The smoothly interpolated value between start and end.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double SmoothStep(double start, double end, double t)
     {
         double c = Math.Clamp(t, 0.0, 1.0);
@@ -25,6 +29,7 @@ public static class MathGamem
     /// <param name="end">The end value.</param>
     /// <param name="t">The interpolation value, clamped between 0.0f and 1.0f.</param>
     /// <returns>The smoothly interpolated value between start and end.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float SmoothStep(float start, float end, float t)
     {
         float c = Math.Clamp(t, 0.0f, 1.0f);
@@ -64,6 +69,7 @@ public static class MathGamem
     /// <param name="end">The end value.</param>
     /// <param name="t">The interpolation value, clamped between 0.0 and 1.0.</param>
     /// <returns>The interpolated value between start and end.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double Lerp(double start, double end, double t) => start + (end - start) * Math.Clamp(t, 0.0, 1.0);
     /// <summary>
     /// Linearly interpolates between start and end values, clamping the interpolation percentage between 0.0f and 1.0f.
@@ -72,6 +78,7 @@ public static class MathGamem
     /// <param name="end">The end value.</param>
     /// <param name="t">The interpolation value, clamped between 0.0f and 1.0f.</param>
     /// <returns>The interpolated value between start and end.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float Lerp(float start, float end, float t) => start + (end - start) * Math.Clamp(t, 0.0f, 1.0f);
     /// <summary>
     /// Linearly interpolates between start and end values without clamping the interpolation percentage.
@@ -80,6 +87,7 @@ public static class MathGamem
     /// <param name="end">The end value.</param>
     /// <param name="t">The interpolation value, allowing extrapolation outside the start and end range.</param>
     /// <returns>The interpolated or extrapolated value.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double LerpUnclamped(double start, double end, double t) => start + (end - start) * t;
     /// <summary>
     /// Linearly interpolates between start and end values without clamping the interpolation percentage.
@@ -88,6 +96,7 @@ public static class MathGamem
     /// <param name="end">The end value.</param>
     /// <param name="t">The interpolation value, allowing extrapolation outside the start and end range.</param>
     /// <returns>The interpolated or extrapolated value.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float LerpUnclamped(float start, float end, float t) => start + (end - start) * t;
     /// <summary>
     /// Calculates the linear parameter t that produces the given value within a specific range, clamped between 0.0 and 1.0.
@@ -96,6 +105,7 @@ public static class MathGamem
     /// <param name="start">The start value of the range.</param>
     /// <param name="end">The end value of the range.</param>
     /// <returns>The normalized linear parameter t between 0.0 and 1.0, or 0.0 if the range is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double InverseLerp(double value, double start, double end)
     {
         if (end - start == 0.0)
@@ -109,6 +119,7 @@ public static class MathGamem
     /// <param name="start">The start value of the range.</param>
     /// <param name="end">The end value of the range.</param>
     /// <returns>The normalized linear parameter t between 0.0f and 1.0f, or 0.0f if the range is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float InverseLerp(float value, float start, float end)
     {
         if (end - start == 0.0f)

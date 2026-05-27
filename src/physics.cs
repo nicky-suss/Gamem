@@ -1,4 +1,7 @@
-﻿namespace Gamem;
+﻿using System;
+using System.Runtime.CompilerServices;
+
+namespace Gamem;
 
 /// <summary>
 /// Provides static mathematical methods for basic physics calculations like gravity, friction, and movement interpolation.
@@ -12,6 +15,7 @@ public static class Physics
     /// <param name="gravity">The acceleration due to gravity.</param>
     /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated velocity after applying gravity.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double ApplyGravity(double velocity, double gravity, double deltaTime) => velocity + gravity * deltaTime;
     /// <summary>
     /// Applies gravity to the current vertical velocity over a specified time step.
@@ -20,6 +24,7 @@ public static class Physics
     /// <param name="gravity">The acceleration due to gravity.</param>
     /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated velocity after applying gravity.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float ApplyGravity(float velocity, float gravity, float deltaTime) => velocity + gravity * deltaTime;
     /// <summary>
     /// Applies friction to reduce velocity towards zero over a specified time step.
@@ -28,6 +33,7 @@ public static class Physics
     /// <param name="frictionCoeff">The friction coefficient representing deceleration per second.</param>
     /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated velocity after friction is applied, clamping to 0.0 if it changes direction.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double ApplyFriction(double velocity, double frictionCoeff, double deltaTime)
     {
         if (velocity == 0.0)
@@ -45,6 +51,7 @@ public static class Physics
     /// <param name="frictionCoeff">The friction coefficient representing deceleration per second.</param>
     /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated velocity after friction is applied, clamping to 0.0f if it changes direction.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float ApplyFriction(float velocity, float frictionCoeff, float deltaTime)
     {
         if (velocity == 0.0f)
@@ -62,6 +69,7 @@ public static class Physics
     /// <param name="target">The value to move towards.</param>
     /// <param name="maxDelta">The maximum amount by which the value can change.</param>
     /// <returns>The new value closer to the target, or the target itself if it is within range.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double MoveTowards(double current, double target, double maxDelta)
     {
         if (maxDelta <= 0.0) return current;
@@ -78,6 +86,7 @@ public static class Physics
     /// <param name="target">The value to move towards.</param>
     /// <param name="maxDelta">The maximum amount by which the value can change.</param>
     /// <returns>The new value closer to the target, or the target itself if it is within range.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float MoveTowards(float current, float target, float maxDelta)
     {
         if (maxDelta <= 0.0f) return current;
