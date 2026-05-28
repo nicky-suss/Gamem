@@ -204,4 +204,54 @@ public static class Geometry
             return false;
         }
     }
+    /// <summary>
+    /// Provides static methods for vector mathematics in 2D and 3D spaces.
+    /// </summary>
+    public static class VectorMath
+    {
+        /// <summary>
+        /// Calculates the dot product of two 2D vectors.
+        /// </summary>
+        /// <param name="x1">The X-component of the first vector.</param>
+        /// <param name="y1">The Y-component of the first vector.</param>
+        /// <param name="x2">The X-component of the second vector.</param>
+        /// <param name="y2">The Y-component of the second vector.</param>
+        /// <returns>The scalar dot product of the two 2D vectors.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double GetDotProduct(double x1, double y1, double x2, double y2) => (x1 * x2) + (y1 * y2);
+        /// <summary>
+        /// Calculates the dot product of two 2D vectors.
+        /// </summary>
+        /// <param name="x1">The X-component of the first vector.</param>
+        /// <param name="y1">The Y-component of the first vector.</param>
+        /// <param name="x2">The X-component of the second vector.</param>
+        /// <param name="y2">The Y-component of the second vector.</param>
+        /// <returns>The scalar dot product of the two 2D vectors.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetDotProduct(float x1, float y1, float x2, float y2) => (x1 * x2) + (y1 * y2);
+        /// <summary>
+        /// Calculates the dot product of two 3D vectors.
+        /// </summary>
+        /// <param name="x1">The X-component of the first vector.</param>
+        /// <param name="y1">The Y-component of the first vector.</param>
+        /// <param name="z1">The Z-component of the first vector.</param>
+        /// <param name="x2">The X-component of the second vector.</param>
+        /// <param name="y2">The Y-component of the second vector.</param>
+        /// <param name="z2">The Z-component of the second vector.</param>
+        /// <returns>The scalar dot product of the two 3D vectors.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double GetDotProduct3D(double x1, double y1, double z1, double x2, double y2, double z2) => (x1 * x2) + (y1 * y2) + (z1 * z2);
+        /// <summary>
+        /// Calculates the dot product of two 3D vectors.
+        /// </summary>
+        /// <param name="x1">The X-component of the first vector.</param>
+        /// <param name="y1">The Y-component of the first vector.</param>
+        /// <param name="z1">The Z-component of the first vector.</param>
+        /// <param name="x2">The X-component of the second vector.</param>
+        /// <param name="y2">The Y-component of the second vector.</param>
+        /// <param name="z2">The Z-component of the second vector.</param>
+        /// <returns>The scalar dot product of the two 3D vectors.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetDotProduct3D(float x1, float y1, float z1, float x2, float y2, float z2) => (x1 * x2) + (y1 * y2) + (z1 * z2);
+    }
 }
