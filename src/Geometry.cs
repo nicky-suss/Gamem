@@ -3,6 +3,9 @@ using System.Runtime.CompilerServices;
 
 namespace Gamem;
 
+/// <summary>
+/// Provides static methods for Geometry calculations
+/// </summary>
 public static class Geometry
 {
     /// <summary>
@@ -72,5 +75,45 @@ public static class Geometry
         float dy = y2 - y1;
         float dz = z2 - z1;
         return MathF.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
+    }
+    /// <summary>
+    /// Provides static methods for basic 2D intersection and collision detection.
+    /// </summary>
+    public static class Collision
+    {
+        /// <summary>
+        /// Checks for an intersection between two circles.
+        /// </summary>
+        /// <param name="x1">The X-coordinate of the first circle's center.</param>
+        /// <param name="y1">The Y-coordinate of the first circle's center.</param>
+        /// <param name="radius1">The radius of the first circle.</param>
+        /// <param name="x2">The X-coordinate of the second circle's center.</param>
+        /// <param name="y2">The Y-coordinate of the second circle's center.</param>
+        /// <param name="radius2">The radius of the second circle.</param>
+        /// <returns>True if the circles intersect or touch; otherwise, false.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool CheckCircleVsCircle(double x1, double y1, double radius1, double x2, double y2, double radius2)
+        {
+            if (GetDistance(x1, y1, x2, y2) <= (radius1 + radius2))
+                return true;
+            return false;
+        }
+        /// <summary>
+        /// Checks for an intersection between two circles.
+        /// </summary>
+        /// <param name="x1">The X-coordinate of the first circle's center.</param>
+        /// <param name="y1">The Y-coordinate of the first circle's center.</param>
+        /// <param name="radius1">The radius of the first circle.</param>
+        /// <param name="x2">The X-coordinate of the second circle's center.</param>
+        /// <param name="y2">The Y-coordinate of the second circle's center.</param>
+        /// <param name="radius2">The radius of the second circle.</param>
+        /// <returns>True if the circles intersect or touch; otherwise, false.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool CheckCircleVsCircle(float x1, float y1, float radius1, float x2, float y2, float radius2)
+        {
+            if (GetDistance(x1, y1, x2, y2) <= (radius1 + radius2))
+                return true;
+            return false;
+        }
     }
 }
