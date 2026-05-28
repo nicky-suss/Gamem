@@ -115,5 +115,43 @@ public static class Geometry
                 return true;
             return false;
         }
+        /// <summary>
+        /// Checks for an intersection between two Axis-Aligned Bounding Boxes (AABB).
+        /// </summary>
+        /// <param name="x1">The minimum X-coordinate (left edge) of the first box.</param>
+        /// <param name="y1">The minimum Y-coordinate (top/bottom edge) of the first box.</param>
+        /// <param name="width1">The total width of the first box.</param>
+        /// <param name="height1">The total height of the first box.</param>
+        /// <param name="x2">The minimum X-coordinate (left edge) of the second box.</param>
+        /// <param name="y2">The minimum Y-coordinate (top/bottom edge) of the second box.</param>
+        /// <param name="width2">The total width of the second box.</param>
+        /// <param name="height2">The total height of the second box.</param>
+        /// <returns>True if the bounding boxes overlap or touch; otherwise, false.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool CheckAABBVsAABB(double x1, double y1, double width1, double height1, double x2, double y2, double width2, double height2)
+        {
+            if ((x1 + width1) >= x2 && x1 <= (x2 + width2) && (y1 + height1) >= y2 && y1 <= (y2 + height2))
+                return true;
+            return false;
+        }
+        /// <summary>
+        /// Checks for an intersection between two Axis-Aligned Bounding Boxes (AABB).
+        /// </summary>
+        /// <param name="x1">The minimum X-coordinate (left edge) of the first box.</param>
+        /// <param name="y1">The minimum Y-coordinate (top/bottom edge) of the first box.</param>
+        /// <param name="width1">The total width of the first box.</param>
+        /// <param name="height1">The total height of the first box.</param>
+        /// <param name="x2">The minimum X-coordinate (left edge) of the second box.</param>
+        /// <param name="y2">The minimum Y-coordinate (top/bottom edge) of the second box.</param>
+        /// <param name="width2">The total width of the second box.</param>
+        /// <param name="height2">The total height of the second box.</param>
+        /// <returns>True if the bounding boxes overlap or touch; otherwise, false.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool CheckAABBVsAABB(float x1, float y1, float width1, float height1, float x2, float y2, float width2, float height2)
+        {
+            if ((x1 + width1) >= x2 && x1 <= (x2 + width2) && (y1 + height1) >= y2 && y1 <= (y2 + height2))
+                return true;
+            return false;
+        }
     }
 }
