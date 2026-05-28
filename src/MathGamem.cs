@@ -211,4 +211,34 @@ public static class MathGamem
     /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool RollChance(float chance) => Random.Shared.NextSingle() * 100.0f < chance;
+    /// <summary>
+    /// Moves a value toward a target value at a specified speed over a given time step.
+    /// </summary>
+    /// <param name="target">The target value to move towards.</param>
+    /// <param name="current">The current value.</param>
+    /// <param name="speed">The rate of movement per second.</param>
+    /// <param name="dt">The time elapsed since the last frame in seconds.</param>
+    /// <returns>The updated value closer to the target, or the target itself if it is within reaching distance.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double MoveTowards(double target, double current, double speed, double dt)
+    {
+        if (Math.Abs(target - current) <= speed * dt)
+            return target;
+        return current + Math.Sign(target - current) * speed * dt;
+    }
+    /// <summary>
+    /// Moves a value toward a target value at a specified speed over a given time step.
+    /// </summary>
+    /// <param name="target">The target value to move towards.</param>
+    /// <param name="current">The current value.</param>
+    /// <param name="speed">The rate of movement per second.</param>
+    /// <param name="dt">The time elapsed since the last frame in seconds.</param>
+    /// <returns>The updated value closer to the target, or the target itself if it is within reaching distance.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float MoveTowards(float target, float current, float speed, float dt)
+    {
+        if (MathF.Abs(target - current) <= speed * dt)
+            return target;
+        return current + MathF.Sign(target - current) * speed * dt;
+    }
 }
