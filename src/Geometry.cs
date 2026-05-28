@@ -253,5 +253,39 @@ public static class Geometry
         /// <returns>The scalar dot product of the two 3D vectors.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float GetDotProduct3D(float x1, float y1, float z1, float x2, float y2, float z2) => (x1 * x2) + (y1 * y2) + (z1 * z2);
+        /// <summary>
+        /// Calculates the magnitude (length) of a 2D vector.
+        /// </summary>
+        /// <param name="x">The X-component of the vector.</param>
+        /// <param name="y">The Y-component of the vector.</param>
+        /// <returns>The magnitude of the 2D vector.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double GetMagnitude(double x, double y) => Math.Sqrt((x * x) + (y * y));
+        /// <summary>
+        /// Calculates the magnitude (length) of a 2D vector.
+        /// </summary>
+        /// <param name="x">The X-component of the vector.</param>
+        /// <param name="y">The Y-component of the vector.</param>
+        /// <returns>The magnitude of the 2D vector.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetMagnitude(float x, float y) => MathF.Sqrt((x * x) + (y * y));
+        /// <summary>
+        /// Calculates the magnitude (length) of a 3D vector.
+        /// </summary>
+        /// <param name="x">The X-component of the vector.</param>
+        /// <param name="y">The Y-component of the vector.</param>
+        /// <param name="z">The Z-component of the vector.</param>
+        /// <returns>The magnitude of the 3D vector.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double GetMagnitude3D(double x, double y, double z) => Math.Sqrt((x * x) + (y * y) + (z * z));
+        /// <summary>
+        /// Calculates the magnitude (length) of a 3D vector.
+        /// </summary>
+        /// <param name="x">The X-component of the vector.</param>
+        /// <param name="y">The Y-component of the vector.</param>
+        /// <param name="z">The Z-component of the vector.</param>
+        /// <returns>The magnitude of the 3D vector.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetMagnitude3D(float x, float y, float z) => MathF.Sqrt((x * x) + (y * y) + (z * z));
     }
 }
