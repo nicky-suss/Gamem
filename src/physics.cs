@@ -204,4 +204,20 @@ public static class Physics
     /// <returns>The modified velocity if moving upward (greater than 0), otherwise the original velocity.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float JumpCut(float v, float multiplier) => v > 0.0f ? v * multiplier : v;
+    /// <summary>
+    /// Caps falling velocity to prevent an object from exceeding a maximum downward terminal velocity limit.
+    /// </summary>
+    /// <param name="v">The current vertical velocity (negative values represent falling).</param>
+    /// <param name="vlimit">The maximum allowed falling speed magnitude (should be positive).</param>
+    /// <returns>The clamped velocity, restricted so that it does not drop below -vlimit.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double TerminalVelocity(double v, double vlimit) => v < -vlimit ? -vlimit : v;
+    /// <summary>
+    /// Caps falling velocity to prevent an object from exceeding a maximum downward terminal velocity limit.
+    /// </summary>
+    /// <param name="v">The current vertical velocity (negative values represent falling).</param>
+    /// <param name="vlimit">The maximum allowed falling speed magnitude (should be positive).</param>
+    /// <returns>The clamped velocity, restricted so that it does not drop below -vlimit.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float TerminalVelocity(float v, float vlimit) => v < -vlimit ? -vlimit : v;
 }
