@@ -3,8 +3,7 @@
 
 
 **🎮 Gamem is a C# library of Physics and Math helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org) and [MonoGame](https://monogame.net)! 👾**
-> [!NOTE]
-> If you want to use Geometry methods you can use my another library -> [GeometrySharp](https://www.nuget.org/packages/GeometrySharp)
+
 ## 🌟 Features
 - **MathGamem**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp` and more.
 - **Physics**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more.
@@ -35,7 +34,7 @@ float speed = MathGamem.RandomRange(2.5f, 7.5f);
 - 🎮 **Engine doesn't matter** - You can use it everywhere. [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net), Console or custom Engines
 - ⚡ **Good performance** - Optimized methods
 ## ❤️ Contributing
-- **⭐ Liked the project? Leave a star for this repo, it motivates me to develop this project!**
-- **🗨️Have any ideas or found a bug? Open an issue or send Pull Request!**
+- **⭐ Liked the project? Leave a star for [this repo](https://github.com/nicky-suss/Gamem), it motivates me to develop this project!**
+- **🗨️ Have any ideas or found a bug? Open an issue or send Pull Request!**
 ## ⚖️ License
 **Gamem is licensed under the [MIT](https://github.com/nicky-suss/Gamem/blob/main/LICENSE) license**
