@@ -153,5 +153,55 @@ public static class Geometry
                 return true;
             return false;
         }
+        /// <summary>
+        /// Checks for an intersection between a circle and an Axis-Aligned Bounding Box (AABB).
+        /// </summary>
+        /// <param name="circleX">The X-coordinate of the circle's center.</param>
+        /// <param name="circleY">The Y-coordinate of the circle's center.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="aabbX">The minimum X-coordinate (left edge) of the box.</param>
+        /// <param name="aabbY">The minimum Y-coordinate (top/bottom edge) of the box.</param>
+        /// <param name="width">The total width of the box.</param>
+        /// <param name="height">The total height of the box.</param>
+        /// <returns>True if the circle intersects or touches the bounding box; otherwise, false.</returns>
+        public static bool CheckCircleVsAABB(double circleX, double circleY, double radius, double aabbX, double aabbY, double width, double height)
+        {
+            double closestX = Math.Clamp(circleX, aabbX, aabbX + width);
+            double closestY = Math.Clamp(circleY, aabbY, aabbY + height);
+
+            double deltaX = circleX - closestX;
+            double deltaY = circleY - closestY;
+
+            double distanceSquare = (deltaX * deltaX) + (deltaY * deltaY);
+
+            if (distanceSquare <= (radius * radius))
+                return true;
+            return false;
+        }
+        /// <summary>
+        /// Checks for an intersection between a circle and an Axis-Aligned Bounding Box (AABB).
+        /// </summary>
+        /// <param name="circleX">The X-coordinate of the circle's center.</param>
+        /// <param name="circleY">The Y-coordinate of the circle's center.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="aabbX">The minimum X-coordinate (left edge) of the box.</param>
+        /// <param name="aabbY">The minimum Y-coordinate (top/bottom edge) of the box.</param>
+        /// <param name="width">The total width of the box.</param>
+        /// <param name="height">The total height of the box.</param>
+        /// <returns>True if the circle intersects or touches the bounding box; otherwise, false.</returns>
+        public static bool CheckCircleVsAABB(float circleX, float circleY, float radius, float aabbX, float aabbY, float width, float height)
+        {
+            float closestX = Math.Clamp(circleX, aabbX, aabbX + width);
+            float closestY = Math.Clamp(circleY, aabbY, aabbY + height);
+
+            float deltaX = circleX - closestX;
+            float deltaY = circleY - closestY;
+
+            float distanceSquare = (deltaX * deltaX) + (deltaY * deltaY);
+
+            if (distanceSquare <= (radius * radius))
+                return true;
+            return false;
+        }
     }
 }
