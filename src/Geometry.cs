@@ -9,6 +9,34 @@ namespace Gamem;
 public static class Geometry
 {
     /// <summary>
+    /// Converts an angle from degrees to radians.
+    /// </summary>
+    /// <param name="degrees">The angle in degrees.</param>
+    /// <returns>The angle in radians.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double ToRadians(double degrees) => degrees * (Math.PI / 180.0);
+    /// <summary>
+    /// Converts an angle from radians to degrees.
+    /// </summary>
+    /// <param name="radians">The angle in radians.</param>
+    /// <returns>The angle in degrees.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double ToDegrees(double radians) => radians * (180.0 / Math.PI);
+    /// <summary>
+    /// Converts an angle from degrees to radians.
+    /// </summary>
+    /// <param name="degrees">The angle in degrees.</param>
+    /// <returns>The angle in radians.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float ToRadians(float degrees) => degrees * (MathF.PI / 180.0f);
+    /// <summary>
+    /// Converts an angle from radians to degrees.
+    /// </summary>
+    /// <param name="radians">The angle in radians.</param>
+    /// <returns>The angle in degrees.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float ToDegrees(float radians) => radians * (180.0f / MathF.PI);
+    /// <summary>
     /// Calculates the Euclidean distance between two points in a 2D plane.
     /// </summary>
     /// <param name="x1">The X-coordinate of the first point.</param>
