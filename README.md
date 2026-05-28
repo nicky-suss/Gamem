@@ -31,11 +31,11 @@ float speed = Random.Shared.NextDouble() * (max - min) + min;
 float speed = MathGamem.RandomRange(2.5f, 7.5f);
 ```
 ## ✨ Why Gamem?
-🍃 **Zero Dependencies** - C# only. Doesn't use other heavy libraries
-🎮 **Engine doesn't matter** - You can use it everywhere. [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net), Console or custom Engines
-⚡ **Good performance** - Optimized methods
+- 🍃 **Zero Dependencies** - C# only. Doesn't use other heavy libraries
+- 🎮 **Engine doesn't matter** - You can use it everywhere. [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net), Console or custom Engines
+- ⚡ **Good performance** - Optimized methods
 ## ❤️ Contributing
-**⭐ Liked the project? Leave a star for this repo, it motivates me to develop this project!**
-**🗨️Have any ideas or found a bug? Open an issue or send Pull Request!**
+- **⭐ Liked the project? Leave a star for this repo, it motivates me to develop this project!**
+- **🗨️Have any ideas or found a bug? Open an issue or send Pull Request!**
 ## ⚖️ License
 **Gamem is licensed under the [MIT](https://github.com/nicky-suss/Gamem/blob/main/LICENSE) license**
