@@ -323,7 +323,36 @@ public static class Geometry
                 (z1 * x2) - (x1 * z2),
                 (x1 * y2) - (y1 * x2)
             );
-
+        }
+        /// <summary>
+        /// Calculates the angle between two vectors in radians using their dot product and magnitudes.
+        /// </summary>
+        /// <param name="dotProduct">The dot product of the two vectors.</param>
+        /// <param name="lengthA">The magnitude (length) of the first vector.</param>
+        /// <param name="lengthB">The magnitude (length) of the second vector.</param>
+        /// <returns>The angle between the vectors in radians.</returns>
+        public static double GetAngleBetween(double dotProduct, double lengthA, double lengthB)
+        {
+            if (lengthA == 0 || lengthB == 0)
+                return 0.0;
+            double A = dotProduct / (lengthA * lengthB);
+            A = Math.Clamp(A, -1.0, 1.0);
+            return Math.Acos(A);
+        }
+        /// <summary>
+        /// Calculates the angle between two vectors in radians using their dot product and magnitudes.
+        /// </summary>
+        /// <param name="dotProduct">The dot product of the two vectors.</param>
+        /// <param name="lengthA">The magnitude (length) of the first vector.</param>
+        /// <param name="lengthB">The magnitude (length) of the second vector.</param>
+        /// <returns>The angle between the vectors in radians.</returns>
+        public static float GetAngleBetween(float dotProduct, float lengthA, float lengthB)
+        {
+            if (lengthA == 0 || lengthB == 0)
+                return 0.0f;
+            float A = dotProduct / (lengthA * lengthB);
+            A = Math.Clamp(A, -1.0f, 1.0f);
+            return MathF.Acos(A);
         }
     }
 }
