@@ -126,4 +126,24 @@ public static class MathGamem
             return 0.0f;
         return Math.Clamp((value - start) / (end - start), 0.0f, 1.0f);
     }
+    /// <summary>
+    /// Smoothly accelerates current velocity toward a target velocity using an acceleration rate over a given time step.
+    /// </summary>
+    /// <param name="Vcurrent">The current velocity.</param>
+    /// <param name="Vtarget">The desired target velocity.</param>
+    /// <param name="a">The acceleration rate multiplier.</param>
+    /// <param name="t">The time elapsed since the last frame in seconds.</param>
+    /// <returns>The updated velocity approaching the target value.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double Accelerate(double Vcurrent, double Vtarget, double a, double t) => Vcurrent + (Vtarget - Vcurrent) * (a * t);
+    /// <summary>
+    /// Smoothly accelerates current velocity toward a target velocity using an acceleration rate over a given time step.
+    /// </summary>
+    /// <param name="Vcurrent">The current velocity.</param>
+    /// <param name="Vtarget">The desired target velocity.</param>
+    /// <param name="a">The acceleration rate multiplier.</param>
+    /// <param name="t">The time elapsed since the last frame in seconds.</param>
+    /// <returns>The updated velocity approaching the target value.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float Accelerate(float Vcurrent, float Vtarget, float a, float t) => Vcurrent + (Vtarget - Vcurrent) * (a * t);
 }
