@@ -188,4 +188,20 @@ public static class Physics
     /// <returns>The updated velocity after the impulse is applied.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float AddImpulse(float vOld, float J, float m) => m == 0.0f ? vOld : vOld + (J / m);
+    /// <summary>
+    /// Reduces upward velocity when a jump button is released early, commonly used for variable jump heights in platformers.
+    /// </summary>
+    /// <param name="v">The current vertical velocity.</param>
+    /// <param name="multiplier">The factor by which to multiply the velocity (usually between 0.0 and 1.0).</param>
+    /// <returns>The modified velocity if moving upward (greater than 0), otherwise the original velocity.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double JumpCut(double v, double multiplier) => v > 0.0 ? v * multiplier : v;
+    /// <summary>
+    /// Reduces upward velocity when a jump button is released early, commonly used for variable jump heights in platformers.
+    /// </summary>
+    /// <param name="v">The current vertical velocity.</param>
+    /// <param name="multiplier">The factor by which to multiply the velocity (usually between 0.0f and 1.0f).</param>
+    /// <returns>The modified velocity if moving upward (greater than 0), otherwise the original velocity.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float JumpCut(float v, float multiplier) => v > 0.0f ? v * multiplier : v;
 }
