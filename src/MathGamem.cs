@@ -190,4 +190,25 @@ public static class MathGamem
     /// <returns>The remapped value in the output range.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float Remap(float toMin, float v, float fromMin, float toMax, float fromMax) => Map(toMin, v, fromMin, toMax, fromMax);
+    /// <summary>
+    /// Evaluates a percentage-based chance to determine a success outcome using an integer value.
+    /// </summary>
+    /// <param name="chance">The success probability as an integer percentage (e.g., 50 for a 50% chance).</param>
+    /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool RollChance(int chance) => Random.Shared.Next(0, 101) < chance;
+    /// <summary>
+    /// Evaluates a percentage-based chance to determine a success outcome using a double-precision floating-point value.
+    /// </summary>
+    /// <param name="chance">The success probability as a percentage (e.g., 75.5 for a 75.5% chance).</param>
+    /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool RollChance(double chance) => Random.Shared.NextDouble() * 100.0 < chance;
+    /// <summary>
+    /// Evaluates a percentage-based chance to determine a success outcome using a single-precision floating-point value.
+    /// </summary>
+    /// <param name="chance">The success probability as a percentage (e.g., 12.3f for a 12.3% chance).</param>
+    /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool RollChance(float chance) => Random.Shared.NextSingle() * 100.0f < chance;
 }
