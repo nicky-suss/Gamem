@@ -287,5 +287,43 @@ public static class Geometry
         /// <returns>The magnitude of the 3D vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float GetMagnitude3D(float x, float y, float z) => MathF.Sqrt((x * x) + (y * y) + (z * z));
+        /// <summary>
+        /// Calculates the cross product of two 3D vectors.
+        /// </summary>
+        /// <param name="x1">The X-component of the first vector.</param>
+        /// <param name="y1">The Y-component of the first vector.</param>
+        /// <param name="z1">The Z-component of the first vector.</param>
+        /// <param name="x2">The X-component of the second vector.</param>
+        /// <param name="y2">The Y-component of the second vector.</param>
+        /// <param name="z2">The Z-component of the second vector.</param>
+        /// <returns>A tuple representing the resulting 3D vector perpendicular to both input vectors</returns>
+        public static (double x, double y, double z) GetCrossProduct(double x1, double y1, double z1, double x2, double y2, double z2)
+        {
+            return (
+                (y1 * z2) - (z1 * y2),
+                (z1 * x2) - (x1 * z2),
+                (x1 * y2) - (y1 * x2)
+            );
+
+        }
+        /// <summary>
+        /// Calculates the cross product of two 3D vectors.
+        /// </summary>
+        /// <param name="x1">The X-component of the first vector.</param>
+        /// <param name="y1">The Y-component of the first vector.</param>
+        /// <param name="z1">The Z-component of the first vector.</param>
+        /// <param name="x2">The X-component of the second vector.</param>
+        /// <param name="y2">The Y-component of the second vector.</param>
+        /// <param name="z2">The Z-component of the second vector.</param>
+        /// <returns>A tuple representing the resulting 3D vector perpendicular to both input vectors</returns>
+        public static (float x, float y, float z) GetCrossProduct(float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            return (
+                (y1 * z2) - (z1 * y2),
+                (z1 * x2) - (x1 * z2),
+                (x1 * y2) - (y1 * x2)
+            );
+
+        }
     }
 }
