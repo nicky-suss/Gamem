@@ -146,4 +146,48 @@ public static class MathGamem
     /// <returns>The updated velocity approaching the target value.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float Accelerate(float Vcurrent, float Vtarget, float a, float t) => Vcurrent + (Vtarget - Vcurrent) * (a * t);
+    /// <summary>
+    /// Maps a value from an input range to an output range without clamping.
+    /// </summary>
+    /// <param name="toMin">The lower bound of the output range.</param>
+    /// <param name="v">The value to be mapped.</param>
+    /// <param name="fromMin">The lower bound of the input range.</param>
+    /// <param name="toMax">The upper bound of the output range.</param>
+    /// <param name="fromMax">The upper bound of the input range.</param>
+    /// <returns>The mapped value in the output range, or 0.0 if the input range size is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double Map(double toMin, double v, double fromMin, double toMax, double fromMax) => fromMax - fromMin == 0 ? 0.0 : toMin + (v - fromMin) * ((toMax - toMin) / (fromMax - fromMin));
+    /// <summary>
+    /// Maps a value from an input range to an output range without clamping.
+    /// </summary>
+    /// <param name="toMin">The lower bound of the output range.</param>
+    /// <param name="v">The value to be mapped.</param>
+    /// <param name="fromMin">The lower bound of the input range.</param>
+    /// <param name="toMax">The upper bound of the output range.</param>
+    /// <param name="fromMax">The upper bound of the input range.</param>
+    /// <returns>The mapped value in the output range, or 0.0f if the input range size is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float Map(float toMin, float v, float fromMin, float toMax, float fromMax) => fromMax - fromMin == 0 ? 0.0f : toMin + (v - fromMin) * ((toMax - toMin) / (fromMax - fromMin));
+    /// <summary>
+    /// Remaps a value from an input range to an output range, behaving identically to <see cref="Map(double, double, double, double, double)"/>.
+    /// </summary>
+    /// <param name="toMin">The lower bound of the output range.</param>
+    /// <param name="v">The value to be remapped.</param>
+    /// <param name="fromMin">The lower bound of the input range.</param>
+    /// <param name="toMax">The upper bound of the output range.</param>
+    /// <param name="fromMax">The upper bound of the input range.</param>
+    /// <returns>The remapped value in the output range.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double Remap(double toMin, double v, double fromMin, double toMax, double fromMax) => Map(toMin, v, fromMin, toMax, fromMax);
+    /// <summary>
+    /// Remaps a value from an input range to an output range, behaving identically to <see cref="Map(float, float, float, float, float)"/>.
+    /// </summary>
+    /// <param name="toMin">The lower bound of the output range.</param>
+    /// <param name="v">The value to be remapped.</param>
+    /// <param name="fromMin">The lower bound of the input range.</param>
+    /// <param name="toMax">The upper bound of the output range.</param>
+    /// <param name="fromMax">The upper bound of the input range.</param>
+    /// <returns>The remapped value in the output range.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float Remap(float toMin, float v, float fromMin, float toMax, float fromMax) => Map(toMin, v, fromMin, toMax, fromMax);
 }
