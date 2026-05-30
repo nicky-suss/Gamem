@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Numerics;
 
 namespace Gamem;
 
@@ -11,213 +12,129 @@ public static class Physics
     /// <summary>
     /// Applies gravity to the current vertical velocity over a specified time step.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="velocity">The current velocity.</param>
     /// <param name="gravity">The acceleration due to gravity.</param>
     /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated velocity after applying gravity.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double ApplyGravity(double velocity, double gravity, double deltaTime) => velocity + gravity * deltaTime;
-    /// <summary>
-    /// Applies gravity to the current vertical velocity over a specified time step.
-    /// </summary>
-    /// <param name="velocity">The current velocity.</param>
-    /// <param name="gravity">The acceleration due to gravity.</param>
-    /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
-    /// <returns>The updated velocity after applying gravity.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float ApplyGravity(float velocity, float gravity, float deltaTime) => velocity + gravity * deltaTime;
+    public static T ApplyGravity<T>(T velocity, T gravity, T deltaTime) where T : IFloatingPointIeee754<T> => velocity + gravity * deltaTime;
     /// <summary>
     /// Applies friction to reduce velocity towards zero over a specified time step.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="velocity">The current velocity.</param>
     /// <param name="frictionCoeff">The friction coefficient representing deceleration per second.</param>
     /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated velocity after friction is applied, clamping to 0.0 if it changes direction.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double ApplyFriction(double velocity, double frictionCoeff, double deltaTime)
+    public static T ApplyFriction<T>(T velocity, T frictionCoeff, T deltaTime) where T : IFloatingPointIeee754<T>
     {
-        if (velocity == 0.0)
-            return 0.0;
-        double frictionCoeffAbs = Math.Abs(frictionCoeff);
-        double reduction = frictionCoeffAbs * Math.Abs(deltaTime);
-        if (Math.Abs(velocity) <= reduction)
-            return 0.0;
-        return velocity - Math.Sign(velocity) * reduction;
-    }
-    /// <summary>
-    /// Applies friction to reduce velocity towards zero over a specified time step.
-    /// </summary>
-    /// <param name="velocity">The current velocity.</param>
-    /// <param name="frictionCoeff">The friction coefficient representing deceleration per second.</param>
-    /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
-    /// <returns>The updated velocity after friction is applied, clamping to 0.0f if it changes direction.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float ApplyFriction(float velocity, float frictionCoeff, float deltaTime)
-    {
-        if (velocity == 0.0f)
-            return 0.0f;
-        float frictionCoeffAbs = MathF.Abs(frictionCoeff);
-        float reduction = frictionCoeffAbs * MathF.Abs(deltaTime);
-        if (MathF.Abs(velocity) <= reduction)
-            return 0.0f;
-        return velocity - MathF.Sign(velocity) * reduction;
+        if (T.Abs(velocity) <= T.Epsilon)
+            return T.Zero;
+        T frictionCoeffAbs = T.Abs(frictionCoeff);
+        T reduction = frictionCoeffAbs * T.Abs(deltaTime);
+        if (T.Abs(velocity) <= reduction)
+            return T.Zero;
+        return velocity - T.CopySign(T.One, velocity) * reduction;
     }
     /// <summary>
     /// Moves a value toward a target value by a maximum specified delta.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="current">The current value.</param>
     /// <param name="target">The value to move towards.</param>
     /// <param name="maxDelta">The maximum amount by which the value can change.</param>
     /// <returns>The new value closer to the target, or the target itself if it is within range.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double MoveTowards(double current, double target, double maxDelta)
+    public static T MoveTowards<T>(T current, T target, T maxDelta) where T : IFloatingPointIeee754<T>
     {
-        if (maxDelta <= 0.0) return current;
+        if (maxDelta <= T.Zero) return current;
 
-        double dist = target - current;
-        if (Math.Abs(dist) <= maxDelta)
+        T dist = target - current;
+        if (T.Abs(dist) <= maxDelta)
             return target;
-        return current + Math.Sign(dist) * maxDelta;
-    }
-    /// <summary>
-    /// Moves a value toward a target value by a maximum specified delta.
-    /// </summary>
-    /// <param name="current">The current value.</param>
-    /// <param name="target">The value to move towards.</param>
-    /// <param name="maxDelta">The maximum amount by which the value can change.</param>
-    /// <returns>The new value closer to the target, or the target itself if it is within range.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float MoveTowards(float current, float target, float maxDelta)
-    {
-        if (maxDelta <= 0.0f) return current;
-
-        float dist = target - current;
-        if (MathF.Abs(dist) <= maxDelta)
-            return target;
-        return current + MathF.Sign(dist) * maxDelta;
+        return current + T.CopySign(T.One, dist) * maxDelta;
     }
     /// <summary>
     /// Calculates the velocity after a bounce collision, reversing direction and applying a coefficient of restitution.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="vOld">The pre-collision velocity.</param>
     /// <param name="bounciness">The bounciness coefficient (restitution), clamped between 0.0 and 1.0.</param>
     /// <param name="minBounceThreshold">The minimum velocity required to sustain a bounce. Below this magnitude, the velocity is clamped to zero to prevent endless micro-bouncing.</param>
     /// <returns>The updated velocity after the bounce, or 0.0 if the resulting speed falls below the threshold.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double Bounce(double vOld, double bounciness, double minBounceThreshold = 0.1)
+    public static T Bounce<T>(T vOld, T bounciness, T minBounceThreshold) where T : IFloatingPointIeee754<T>
     {
-        double vNew = -vOld * Math.Clamp(bounciness, 0.0, 1.0);
-        if (Math.Abs(vNew) < minBounceThreshold)
-            vNew = 0.0;
+        T vNew = -vOld * T.Clamp(bounciness, T.Zero, T.One);
+        if (T.Abs(vNew) < minBounceThreshold)
+            vNew = T.Zero;
         return vNew;
     }
     /// <summary>
     /// Calculates the velocity after a bounce collision, reversing direction and applying a coefficient of restitution.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="vOld">The pre-collision velocity.</param>
-    /// <param name="bounciness">The bounciness coefficient (restitution), clamped between 0.0f and 1.0f.</param>
-    /// <param name="minBounceThreshold">The minimum velocity required to sustain a bounce. Below this magnitude, the velocity is clamped to zero to prevent endless micro-bouncing.</param>
-    /// <returns>The updated velocity after the bounce, or 0.0f if the resulting speed falls below the threshold.</returns>
+    /// <param name="bounciness">The bounciness coefficient (restitution), clamped between 0.0 and 1.0.</param>
+    /// <returns>The updated velocity after the bounce, or 0.0 if the resulting speed falls below the threshold.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float Bounce(float vOld, float bounciness, float minBounceThreshold = 0.1f)
+    public static T Bounce<T>(T vOld, T bounciness) where T : IFloatingPointIeee754<T>
     {
-        float vNew = -vOld * Math.Clamp(bounciness, 0.0f, 1.0f);
-        if (MathF.Abs(vNew) < minBounceThreshold)
-            vNew = 0.0f;
-        return vNew;
+        T minBounceThreshold = T.CreateChecked(0.1);
+        return Bounce(vOld, bounciness, minBounceThreshold);
     }
     /// <summary>
     /// Clamps a velocity value to be within a symmetric range defined by a maximum speed limit.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="v">The current velocity to clamp.</param>
     /// <param name="max">The maximum allowed speed (magnitude), which will be used to define both upper and lower bounds.</param>
     /// <returns>The clamped velocity, constrained between -abs(max) and abs(max).</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double ClampVelocity(double v, double max)
+    public static T ClampVelocity<T>(T v, T max) where T : IFloatingPointIeee754<T>
     {
-        double limit = Math.Abs(max);
-        return Math.Clamp(v, -limit, limit);
-    }
-    /// <summary>
-    /// Clamps a velocity value to be within a symmetric range defined by a maximum speed limit.
-    /// </summary>
-    /// <param name="v">The current velocity to clamp.</param>
-    /// <param name="max">The maximum allowed speed (magnitude), which will be used to define both upper and lower bounds.</param>
-    /// <returns>The clamped velocity, constrained between -abs(max) and abs(max).</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float ClampVelocity(float v, float max)
-    {
-        float limit = MathF.Abs(max);
-        return Math.Clamp(v, -limit, limit);
+        T limit = T.Abs(max);
+        return T.Clamp(v, -limit, limit);
     }
     /// <summary>
     /// Applies a continuous force over a specified time duration to update the velocity, based on Newton's second law.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="v">The initial velocity before the force is applied.</param>
     /// <param name="F">The force magnitude.</param>
     /// <param name="t">The duration of time over which the force acts.</param>
     /// <param name="m">The mass of the object. If mass is 0, the velocity remains unchanged to avoid division by zero.</param>
     /// <returns>The updated velocity after applying the force.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double AddForce(double v, double F, double t, double m) => m == 0.0 ? v : v + (F * t / m);
-    /// <summary>
-    /// Applies a continuous force over a specified time duration to update the velocity, based on Newton's second law.
-    /// </summary>
-    /// <param name="v">The initial velocity before the force is applied.</param>
-    /// <param name="F">The force magnitude.</param>
-    /// <param name="t">The duration of time over which the force acts.</param>
-    /// <param name="m">The mass of the object. If mass is 0.0f, the velocity remains unchanged to avoid division by zero.</param>
-    /// <returns>The updated velocity after applying the force.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float AddForce(float v, float F, float t, float m) => m == 0.0f ? v : v + (F * t / m);
+    public static T AddForce<T>(T v, T F, T t, T m) where T : IFloatingPointIeee754<T> => m <= T.Epsilon ? v : v + (F * t / m);
     /// <summary>
     /// Applies an instantaneous impulse to update the velocity.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="vOld">The pre-impulse velocity.</param>
     /// <param name="J">The impulse magnitude (change in momentum).</param>
     /// <param name="m">The mass of the object. If mass is 0, the velocity remains unchanged to avoid division by zero.</param>
     /// <returns>The updated velocity after the impulse is applied.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double AddImpulse(double vOld, double J, double m) => m == 0.0 ? vOld : vOld + (J / m);
-    /// <summary>
-    /// Applies an instantaneous impulse to update the velocity.
-    /// </summary>
-    /// <param name="vOld">The pre-impulse velocity.</param>
-    /// <param name="J">The impulse magnitude (change in momentum).</param>
-    /// <param name="m">The mass of the object. If mass is 0.0f, the velocity remains unchanged to avoid division by zero.</param>
-    /// <returns>The updated velocity after the impulse is applied.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float AddImpulse(float vOld, float J, float m) => m == 0.0f ? vOld : vOld + (J / m);
+    public static T AddImpulse<T>(T vOld, T J, T m) where T : IFloatingPointIeee754<T> => m <= T.Epsilon ? vOld : vOld + (J / m);
     /// <summary>
     /// Reduces upward velocity when a jump button is released early, commonly used for variable jump heights in platformers.
     /// </summary>
-    /// <param name="v">The current vertical velocity.</param>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="v">The current vertical velocity (positive = upward).</param>
     /// <param name="multiplier">The factor by which to multiply the velocity (usually between 0.0 and 1.0).</param>
     /// <returns>The modified velocity if moving upward (greater than 0), otherwise the original velocity.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double JumpCut(double v, double multiplier) => v > 0.0 ? v * multiplier : v;
-    /// <summary>
-    /// Reduces upward velocity when a jump button is released early, commonly used for variable jump heights in platformers.
-    /// </summary>
-    /// <param name="v">The current vertical velocity.</param>
-    /// <param name="multiplier">The factor by which to multiply the velocity (usually between 0.0f and 1.0f).</param>
-    /// <returns>The modified velocity if moving upward (greater than 0), otherwise the original velocity.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float JumpCut(float v, float multiplier) => v > 0.0f ? v * multiplier : v;
+    public static T JumpCut<T>(T v, T multiplier) where T : IFloatingPointIeee754<T> => v > T.Zero ? v * multiplier : v;
     /// <summary>
     /// Caps falling velocity to prevent an object from exceeding a maximum downward terminal velocity limit.
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="v">The current vertical velocity (negative values represent falling).</param>
     /// <param name="vlimit">The maximum allowed falling speed magnitude (should be positive).</param>
     /// <returns>The clamped velocity, restricted so that it does not drop below -vlimit.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double TerminalVelocity(double v, double vlimit) => v < -vlimit ? -vlimit : v;
-    /// <summary>
-    /// Caps falling velocity to prevent an object from exceeding a maximum downward terminal velocity limit.
-    /// </summary>
-    /// <param name="v">The current vertical velocity (negative values represent falling).</param>
-    /// <param name="vlimit">The maximum allowed falling speed magnitude (should be positive).</param>
-    /// <returns>The clamped velocity, restricted so that it does not drop below -vlimit.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float TerminalVelocity(float v, float vlimit) => v < -vlimit ? -vlimit : v;
+    public static T TerminalVelocity<T>(T v, T vlimit) where T : IFloatingPointIeee754<T> => v < -vlimit ? -vlimit : v;
 }
