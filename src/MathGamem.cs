@@ -188,4 +188,45 @@ public static class MathGamem
             return true;
         return diff <= T.Max(T.Abs(a), T.Abs(b)) * eps;
     }
+    /// <summary>
+    /// Smoothly damps a value toward a target destination over time using a critically damped spring-like function.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="current">The current position or value.</param>
+    /// <param name="target">The target position or value to reach.</param>
+    /// <param name="currentVelocity">A reference to the tracking velocity, which is updated internally by the function.</param>
+    /// <param name="smoothTime">The approximate time it will take to reach the target. Shorter values reach the target faster.</param>
+    /// <param name="maxSpeed">The maximum speed allowed during the movement transition.</param>
+    /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
+    /// <returns>The newly smoothed value approaching the target.</returns>
+    public static T SmoothDamp<T>(T current, T target, ref T currentVelocity, T smoothTime, T maxSpeed, T deltaTime) where T : IFloatingPointIeee754<T>
+    {
+        smoothTime = T.Max(T.CreateChecked(0.0001), smoothTime);
+
+        T omega = T.CreateChecked(2) / smoothTime;
+        T x = omega * deltaTime;
+        T denominator = T.One + x + T.CreateChecked(0.48) * (x * x) + T.CreateChecked(0.235) * (x * x * x);
+        T exp = T.One / denominator;
+
+        T change = current - target;
+        T maxChange = maxSpeed * smoothTime;
+        change = T.Clamp(change, -maxChange, maxChange);
+        T targetReal = current - change;
+
+        T temp = (currentVelocity + omega * change) * deltaTime;
+        currentVelocity = (currentVelocity - omega * temp) * exp;
+        T result = targetReal + (change + temp) * exp;
+
+        if (target - current > T.Zero && result > target)
+        {
+            currentVelocity = T.Zero;
+            return target;
+        }
+        if (target - current < T.Zero && result < target)
+        {
+            currentVelocity = T.Zero;
+            return target;
+        }
+        return result;
+    }
 }
