@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Numerics;
 
 namespace Gamem;
 
@@ -8,6 +9,38 @@ namespace Gamem;
 /// </summary>
 public static class Geometry
 {
+    /// <summary>
+    /// Reflects a 2D vector off a surface defined by a normal vector.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="x">The X component of the incident vector.</param>
+    /// <param name="y">The Y component of the incident vector.</param>
+    /// <param name="normalX">The X component of the surface normal (should be normalized).</param>
+    /// <param name="normalY">The Y component of the surface normal (should be normalized).</param>
+    /// <returns>A tuple containing the X and Y components of the reflected vector.</returns>
+    public static (T x, T y) Reflect<T>(T x, T y, T normalX, T normalY) where T : IFloatingPointIeee754<T>
+    {
+        T dot = Geometry.VectorMath.GetDotProduct(x, y, normalX, normalY);
+        T two = T.CreateChecked(2);
+        return (x - two * dot * normalX, y - two * dot * normalY);
+    }
+    /// <summary>
+    /// Reflects a 3D vector off a surface defined by a normal vector.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="x">The X component of the incident vector.</param>
+    /// <param name="y">The Y component of the incident vector.</param>
+    /// <param name="z">The Z component of the incident vector.</param>
+    /// <param name="normalX">The X component of the surface normal (should be normalized).</param>
+    /// <param name="normalY">The Y component of the surface normal (should be normalized).</param>
+    /// <param name="normalZ">The Z component of the surface normal (should be normalized).</param>
+    /// <returns>A tuple containing the X, Y, and Z components of the reflected vector.</returns>
+    public static (T x, T y, T z) Reflect3D<T>(T x, T y, T z, T normalX, T normalY, T normalZ) where T : IFloatingPointIeee754<T>
+    {
+        T dot = Geometry.VectorMath.GetDotProduct3D(x, y, z, normalX, normalY, normalZ);
+        T two = T.CreateChecked(2);
+        return (x - two * dot * normalX, y - two * dot * normalY, z - two * dot * normalZ);
+    }
     /// <summary>
     /// Converts an angle from degrees to radians.
     /// </summary>
@@ -246,17 +279,7 @@ public static class Geometry
         /// <param name="y2">The Y-component of the second vector.</param>
         /// <returns>The scalar dot product of the two 2D vectors.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double GetDotProduct(double x1, double y1, double x2, double y2) => (x1 * x2) + (y1 * y2);
-        /// <summary>
-        /// Calculates the dot product of two 2D vectors.
-        /// </summary>
-        /// <param name="x1">The X-component of the first vector.</param>
-        /// <param name="y1">The Y-component of the first vector.</param>
-        /// <param name="x2">The X-component of the second vector.</param>
-        /// <param name="y2">The Y-component of the second vector.</param>
-        /// <returns>The scalar dot product of the two 2D vectors.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float GetDotProduct(float x1, float y1, float x2, float y2) => (x1 * x2) + (y1 * y2);
+        public static T GetDotProduct<T>(T x1, T y1, T x2, T y2) where T : IFloatingPointIeee754<T> => (x1 * x2) + (y1 * y2);
         /// <summary>
         /// Calculates the dot product of two 3D vectors.
         /// </summary>
@@ -268,19 +291,7 @@ public static class Geometry
         /// <param name="z2">The Z-component of the second vector.</param>
         /// <returns>The scalar dot product of the two 3D vectors.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double GetDotProduct3D(double x1, double y1, double z1, double x2, double y2, double z2) => (x1 * x2) + (y1 * y2) + (z1 * z2);
-        /// <summary>
-        /// Calculates the dot product of two 3D vectors.
-        /// </summary>
-        /// <param name="x1">The X-component of the first vector.</param>
-        /// <param name="y1">The Y-component of the first vector.</param>
-        /// <param name="z1">The Z-component of the first vector.</param>
-        /// <param name="x2">The X-component of the second vector.</param>
-        /// <param name="y2">The Y-component of the second vector.</param>
-        /// <param name="z2">The Z-component of the second vector.</param>
-        /// <returns>The scalar dot product of the two 3D vectors.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float GetDotProduct3D(float x1, float y1, float z1, float x2, float y2, float z2) => (x1 * x2) + (y1 * y2) + (z1 * z2);
+        public static T GetDotProduct3D<T>(T x1, T y1, T z1, T x2, T y2, T z2) where T : IFloatingPointIeee754<T> => (x1 * x2) + (y1 * y2) + (z1 * z2);
         /// <summary>
         /// Calculates the magnitude (length) of a 2D vector.
         /// </summary>
