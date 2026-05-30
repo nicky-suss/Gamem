@@ -173,4 +173,19 @@ public static class MathGamem
     /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0f.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float SafeDivide(float a, float b, float fallback = 0.0f) => Math.Abs(b) < float.Epsilon ? fallback : a / b;
+    /// <summary>
+    /// Compares two floating-point values and determines if they are approximately equal within a small tolerance.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="a">The first value to compare.</param>
+    /// <param name="b">The second value to compare.</param>
+    /// <returns><see langword="true"/> if the values are approximately equal; otherwise, <see langword="false"/>.</returns>
+    public static bool Approximately<T>(T a, T b) where T : IFloatingPointIeee754<T>
+    {
+        T eps = T.CreateChecked(1e-6);
+        T diff = T.Abs(a - b);
+        if (diff <= eps)
+            return true;
+        return diff <= T.Max(T.Abs(a), T.Abs(b)) * eps;
+    }
 }
