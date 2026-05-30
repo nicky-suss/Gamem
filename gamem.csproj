@@ -8,7 +8,7 @@
     <Version>1.3.0</Version>
   <Title>Gamem</Title>
   <Authors>nicky_sus</Authors>
-  <Description>This library allows you to use physics and math methods for developing games</Description>
+  <Description>Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas.</Description>
   <PackageReleaseNotes>
     1.3.0 is out!
     Check the full changelog on GitHub!
