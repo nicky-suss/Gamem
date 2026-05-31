@@ -9,7 +9,7 @@ namespace Gamem
     /// </summary>
     public static class Geometry
     {
-        #if NET8_0_OR_GREATER
+#if NET8_0_OR_GREATER
         
         //! ====================================
         //! THIS PART OF THE CODE SUPPORTS .NET 8, 9, 10 AND MORE
@@ -132,7 +132,7 @@ namespace Gamem
             /// <param name="x2">The X-coordinate of the second circle's center.</param>
             /// <param name="y2">The Y-coordinate of the second circle's center.</param>
             /// <param name="radius2">The radius of the second circle.</param>
-            /// <returns>True if the circles intersect or touch; otherwise, false.</returns
+            /// <returns>True if the circles intersect or touch; otherwise, false.</returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static bool CheckCircleVsCircle<T>(T x1, T y1, T radius1, T x2, T y2, T radius2) where T : IFloatingPointIeee754<T>
             {
@@ -254,9 +254,10 @@ namespace Gamem
             /// <param name="lengthA">The magnitude (length) of the first vector.</param>
             /// <param name="lengthB">The magnitude (length) of the second vector.</param>
             /// <returns>The angle between the vectors in radians.</returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static T GetAngleBetween<T>(T dotProduct, T lengthA, T lengthB) where T : IFloatingPointIeee754<T>
             {
-                if (lengthA == T.Zero || lengthB == T.Zero)
+                if (lengthA <= T.CreateChecked(1e-10) || lengthB <= T.CreateChecked(1e-10))
                     return T.Zero;
                 T A = dotProduct / (lengthA * lengthB);
                 A = T.Clamp(A, -T.One, T.One);
@@ -264,7 +265,7 @@ namespace Gamem
             }
 
         }
-        #else
+#else
 
         //! ========================
         //! THIS PART OF THE CODE SUPPORTS OLDER VERSIONS OF .NET
@@ -484,8 +485,8 @@ namespace Gamem
             /// <inheritdoc cref="CheckCircleVsAABB(double, double, double, double, double, double, double)"/>
             public static bool CheckCircleVsAABB(float circleX, float circleY, float radius, float aabbX, float aabbY, float width, float height)
             {
-                float closestX = (float)Math.Max(aabbX, (float)Math.Min(circleX, aabbX + width));
-                float closestY = (float)Math.Max(aabbY, (float)Math.Min(circleY, aabbY + height));
+                float closestX = Math.Max(aabbX, Math.Min(circleX, aabbX + width));
+                float closestY = Math.Max(aabbY, Math.Min(circleY, aabbY + height));
 
                 float deltaX = circleX - closestX;
                 float deltaY = circleY - closestY;
@@ -561,6 +562,7 @@ namespace Gamem
             /// <param name="y2">The Y-component of the second vector.</param>
             /// <param name="z2">The Z-component of the second vector.</param>
             /// <returns>A tuple representing the resulting 3D vector perpendicular to both input vectors</returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static (double x, double y, double z) GetCrossProduct(double x1, double y1, double z1, double x2, double y2, double z2)
             {
                 return (
@@ -570,6 +572,7 @@ namespace Gamem
                 );
             }
             /// <inheritdoc cref="GetCrossProduct(double, double, double, double, double, double)"/>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static (float x, float y, float z) GetCrossProduct(float x1, float y1, float z1, float x2, float y2, float z2)
             {
                 return (
@@ -585,24 +588,26 @@ namespace Gamem
             /// <param name="lengthA">The magnitude (length) of the first vector.</param>
             /// <param name="lengthB">The magnitude (length) of the second vector.</param>
             /// <returns>The angle between the vectors in radians.</returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static double GetAngleBetween(double dotProduct, double lengthA, double lengthB)
             {
-                if (lengthA == 0 || lengthB == 0)
+                if (lengthA <= 1e-10 || lengthB <= 1e-10)
                     return 0.0;
                 double A = dotProduct / (lengthA * lengthB);
                 A = Math.Max(-1.0, Math.Min(A, 1.0));
                 return Math.Acos(A);
             }
             /// <inheritdoc cref="GetAngleBetween(double, double, double)"/>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static float GetAngleBetween(float dotProduct, float lengthA, float lengthB)
             {
-                if (lengthA == 0 || lengthB == 0)
+                if (lengthA <= 1e-10 || lengthB <= 1e-10)
                     return 0.0f;
                 float A = dotProduct / (lengthA * lengthB);
-                A = (float)Math.Max(-1.0f, (float)Math.Min(A, 1.0f));
+                A = Math.Max(-1.0f, Math.Min(A, 1.0f));
                 return (float)Math.Acos(A);
             }
         }
-        #endif
+#endif
     }
 }
