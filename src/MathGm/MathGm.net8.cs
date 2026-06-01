@@ -235,4 +235,35 @@ public static partial class MathGm
         }
         return result;
     }
+    /// <summary>
+    /// Smoothly damps an angle toward a target angle over time in degrees, handling wrapping around 360 degrees.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="current">A reference to the current angle in degrees, which is updated internally by the function.</param>
+    /// <param name="target">The target angle to reach in degrees.</param>
+    /// <param name="currentVelocity">A reference to the tracking angular velocity, which is updated internally by the function.</param>
+    /// <param name="smoothTime">The approximate time it will take to reach the target. Shorter values reach the target faster.</param>
+    /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
+    /// <returns>The newly smoothed angle in degrees, clamped between 0 and 360.</returns>
+    public static T SmoothDampAngle<T>(ref T current, T target, ref T currentVelocity, T smoothTime, T deltaTime) where T : IFloatingPointIeee754<T>
+    {
+        smoothTime = T.Max(T.CreateChecked(0.0001), smoothTime);
+
+        T w = T.CreateChecked(2) / smoothTime;
+        T x = w * deltaTime;
+
+        T F = T.One / (T.One + x + T.CreateChecked(0.48) * (x * x) + T.CreateChecked(0.235) * (x * x * x));
+
+        T deltaAngle = target - current;
+        T period = T.CreateChecked(360);
+        deltaAngle = ((deltaAngle % period) + T.CreateChecked(540)) % period - T.CreateChecked(180);
+
+        T temp = (currentVelocity + w * deltaAngle) * deltaTime;
+
+        currentVelocity = (currentVelocity - w * temp) * F;
+
+        T newAngle = (target - deltaAngle) + (deltaAngle + temp) * F;
+        current = ((newAngle % period) + period) % period;
+        return current;
+    }
 }

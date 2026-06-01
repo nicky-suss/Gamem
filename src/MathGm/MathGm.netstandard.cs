@@ -314,5 +314,57 @@ namespace Gamem
             }
             return result;
         }
+        /// <summary>
+        /// Smoothly damps an angle toward a target angle over time in degrees, handling wrapping around 360 degrees.
+        /// </summary>
+        /// <param name="current">A reference to the current angle in degrees, which is updated internally by the function.</param>
+        /// <param name="target">The target angle to reach in degrees.</param>
+        /// <param name="currentVelocity">A reference to the tracking angular velocity, which is updated internally by the function.</param>
+        /// <param name="smoothTime">The approximate time it will take to reach the target. Shorter values reach the target faster.</param>
+        /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
+        /// <returns>The newly smoothed angle in degrees, clamped between 0 and 360.</returns>
+        public static double SmoothDampAngle(ref double current, double target, ref double currentVelocity, double smoothTime, double deltaTime)
+        {
+            smoothTime = Math.Max(0.0001, smoothTime);
+
+            double w = 2.0 / smoothTime;
+            double x = w * deltaTime;
+
+            double F = 1.0 / (1 + x + 0.48 * (x * x) + 0.235 * (x * x * x));
+
+            double deltaAngle = target - current;
+            double period = 360;
+            deltaAngle = ((deltaAngle % period) + 540.0) % period - 180.0;
+
+            double temp = (currentVelocity + w * deltaAngle) * deltaTime;
+
+            currentVelocity = (currentVelocity - w * temp) * F;
+
+            double newAngle = (target - deltaAngle) + (deltaAngle + temp) * F;
+            current = ((newAngle % period) + period) % period;
+            return current;
+        }
+        /// <inheritdoc cref="SmoothDampAngle(ref double, double, ref double, double, double)"/>
+        public static float SmoothDampAngle(ref float current, float target, ref float currentVelocity, float smoothTime, float deltaTime)
+        {
+            smoothTime = Math.Max(0.0001f, smoothTime);
+
+            float w = 2.0f / smoothTime;
+            float x = w * deltaTime;
+
+            float F = 1.0f / (1 + x + 0.48f * (x * x) + 0.235f * (x * x * x));
+
+            float deltaAngle = target - current;
+            float period = 360;
+            deltaAngle = ((deltaAngle % period) + 540.0f) % period - 180.0f;
+
+            float temp = (currentVelocity + w * deltaAngle) * deltaTime;
+
+            currentVelocity = (currentVelocity - w * temp) * F;
+
+            float newAngle = (target - deltaAngle) + (deltaAngle + temp) * F;
+            current = ((newAngle % period) + period) % period;
+            return current;
+        }
     }
 }
