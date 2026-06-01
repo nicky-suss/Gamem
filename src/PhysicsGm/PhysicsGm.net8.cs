@@ -7,8 +7,13 @@ namespace Gamem;
 /// <summary>
 /// Provides static mathematical methods for basic physics calculations like gravity, friction, and movement interpolation.
 /// </summary>
-public static class Physics
+public static partial class PhysicsGm
 {
+
+    //! ====================================
+    //! THIS PART OF THE CODE SUPPORTS .NET 8, 9, 10 AND MORE
+    //! ====================================
+
     /// <summary>
     /// Applies gravity to the current vertical velocity over a specified time step.
     /// </summary>
@@ -30,7 +35,7 @@ public static class Physics
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T ApplyFriction<T>(T velocity, T frictionCoeff, T deltaTime) where T : IFloatingPointIeee754<T>
     {
-        if (T.Abs(velocity) <= T.Epsilon)
+        if (T.Abs(velocity) <= T.CreateChecked(1e-6))
             return T.Zero;
         T frictionCoeffAbs = T.Abs(frictionCoeff);
         T reduction = frictionCoeffAbs * T.Abs(deltaTime);
@@ -50,7 +55,6 @@ public static class Physics
     public static T MoveTowards<T>(T current, T target, T maxDelta) where T : IFloatingPointIeee754<T>
     {
         if (maxDelta <= T.Zero) return current;
-
         T dist = target - current;
         if (T.Abs(dist) <= maxDelta)
             return target;
@@ -108,7 +112,7 @@ public static class Physics
     /// <param name="m">The mass of the object. If mass is 0, the velocity remains unchanged to avoid division by zero.</param>
     /// <returns>The updated velocity after applying the force.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T AddForce<T>(T v, T F, T t, T m) where T : IFloatingPointIeee754<T> => m <= T.Epsilon ? v : v + (F * t / m);
+    public static T AddForce<T>(T v, T F, T t, T m) where T : IFloatingPointIeee754<T> => m <= T.CreateChecked(1e-6) ? v : v + (F * t / m);
     /// <summary>
     /// Applies an instantaneous impulse to update the velocity.
     /// </summary>
@@ -118,7 +122,7 @@ public static class Physics
     /// <param name="m">The mass of the object. If mass is 0, the velocity remains unchanged to avoid division by zero.</param>
     /// <returns>The updated velocity after the impulse is applied.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T AddImpulse<T>(T vOld, T J, T m) where T : IFloatingPointIeee754<T> => m <= T.Epsilon ? vOld : vOld + (J / m);
+    public static T AddImpulse<T>(T vOld, T J, T m) where T : IFloatingPointIeee754<T> => m <= T.CreateChecked(1e-6) ? vOld : vOld + (J / m);
     /// <summary>
     /// Reduces upward velocity when a jump button is released early, commonly used for variable jump heights in platformers.
     /// </summary>
@@ -136,5 +140,5 @@ public static class Physics
     /// <param name="vlimit">The maximum allowed falling speed magnitude (should be positive).</param>
     /// <returns>The clamped velocity, restricted so that it does not drop below -vlimit.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T TerminalVelocity<T>(T v, T vlimit) where T : IFloatingPointIeee754<T> => v < -vlimit ? -vlimit : v;
+    public static T TerminalVelocity<T>(T v, T vlimit) where T : IFloatingPointIeee754<T> => v < -T.Abs(vlimit) ? -T.Abs(vlimit) : v;
 }

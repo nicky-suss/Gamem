@@ -1,14 +1,20 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Numerics;
+using System.Threading;
 
 namespace Gamem;
 
 /// <summary>
 /// Provides general-purpose static mathematical functions including interpolation and random number generation.
 /// </summary>
-public static class MathGamem
+public static partial class MathGm
 {
+
+    //! ====================================
+    //! THIS PART OF THE CODE SUPPORTS .NET 8, 9, 10 AND MORE
+    //! ====================================
+
     /// <summary>
     /// Performs a smooth cubic interpolation between two values based on a given percentage.
     /// </summary>
@@ -30,7 +36,7 @@ public static class MathGamem
     /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="min">The minimum bound of the range.</param>
     /// <param name="max">The maximum bound of the range.</param>
-    /// <returns>A random value greater than or equal to min, and less than or equal to max.</returns>
+    /// <returns>A random value greater than or equal to min, and less than max.</returns>
     /// <exception cref="ArgumentException">Thrown when min is greater than max.</exception>
     public static T RandomRange<T>(T min, T max) where T : IFloatingPointIeee754<T>
     {
@@ -70,7 +76,7 @@ public static class MathGamem
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T InverseLerp<T>(T value, T start, T end) where T : IFloatingPointIeee754<T>
     {
-        if (T.Abs(end - start) <= T.Epsilon)
+        if (T.Abs(end - start) <= T.CreateChecked(1e-5))
             return T.Zero;
         return T.Clamp((value - start) / (end - start), T.Zero, T.One);
     }
@@ -96,7 +102,7 @@ public static class MathGamem
     /// <param name="fromMax">The upper bound of the input range.</param>
     /// <returns>The mapped value in the output range, or 0.0 if the input range size is zero.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T Map<T>(T toMin, T v, T fromMin, T toMax, T fromMax) where T : IFloatingPointIeee754<T> => fromMax - fromMin == T.Zero ? T.Zero : toMin + (v - fromMin) * ((toMax - toMin) / (fromMax - fromMin));
+    public static T Map<T>(T toMin, T v, T fromMin, T toMax, T fromMax) where T : IFloatingPointIeee754<T> => T.Abs(fromMax - fromMin) <= T.CreateChecked(1e-5) ? T.Zero : toMin + (v - fromMin) * ((toMax - toMin) / (fromMax - fromMin));
     /// <summary>
     /// Remaps a value from an input range to an output range, behaving identically to Map method.
     /// </summary>
@@ -134,13 +140,13 @@ public static class MathGamem
     /// Moves a value toward a target value at a specified speed over a given time step.
     /// </summary>
     /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
-    /// <param name="target">The target value to move towards.</param>
     /// <param name="current">The current value.</param>
+    /// <param name="target">The target value to move towards.</param>
     /// <param name="speed">The rate of movement per second.</param>
     /// <param name="dt">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated value closer to the target, or the target itself if it is within reaching distance.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T MoveTowards<T>(T target, T current, T speed, T dt) where T : IFloatingPointIeee754<T>
+    public static T MoveTowards<T>(T current, T target, T speed, T dt) where T : IFloatingPointIeee754<T>
     {
         if (T.Abs(target - current) <= speed * dt)
             return target;
@@ -154,7 +160,7 @@ public static class MathGamem
     /// <param name="fallback">The value to return if <paramref name="b"/> is zero.</param>
     /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double SafeDivide(double a, double b, double fallback = 0.0) => Math.Abs(b) < double.Epsilon ? fallback : a / b;
+    public static double SafeDivide(double a, double b, double fallback = 0.0) => Math.Abs(b) < 1e-5 ? fallback : a / b;
     /// <summary>
     /// Divides one integer by another, returning a fallback value if the denominator is zero to prevent a division-by-zero exception.
     /// </summary>
@@ -172,7 +178,7 @@ public static class MathGamem
     /// <param name="fallback">The value to return if <paramref name="b"/> is zero.</param>
     /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0f.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float SafeDivide(float a, float b, float fallback = 0.0f) => Math.Abs(b) < float.Epsilon ? fallback : a / b;
+    public static float SafeDivide(float a, float b, float fallback = 0.0f) => Math.Abs(b) < 1e-5 ? fallback : a / b;
     /// <summary>
     /// Compares two floating-point values and determines if they are approximately equal within a small tolerance.
     /// </summary>
@@ -182,7 +188,7 @@ public static class MathGamem
     /// <returns><see langword="true"/> if the values are approximately equal; otherwise, <see langword="false"/>.</returns>
     public static bool Approximately<T>(T a, T b) where T : IFloatingPointIeee754<T>
     {
-        T eps = T.CreateChecked(1e-6);
+        T eps = T.CreateChecked(1e-5);
         T diff = T.Abs(a - b);
         if (diff <= eps)
             return true;
