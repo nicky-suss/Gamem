@@ -2,7 +2,7 @@
 ![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem) ![GitHub License](https://img.shields.io/github/license/nicky-suss/Gamem)
 
 
-**🎮 Gamem is a C# library of Physics and Math helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org) and [MonoGame](https://monogame.net)! 👾**
+**🎮 Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org) and [MonoGame](https://monogame.net)! 👾**
 
 ## 🌟 Features
 - **MathGamem**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more.
