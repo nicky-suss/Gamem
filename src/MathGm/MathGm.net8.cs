@@ -153,14 +153,13 @@ public static partial class MathGm
         return current + T.CopySign(T.One, target - current) * speed * dt;
     }
     /// <summary>
-    /// Divides one double-precision floating-point number by another, returning a fallback value if the denominator is zero.
+    /// Divides one generic floating-point number by another, returning a fallback value if the denominator is zero.
     /// </summary>
     /// <param name="a">The dividend (numerator).</param>
     /// <param name="b">The divisor (denominator).</param>
-    /// <param name="fallback">The value to return if <paramref name="b"/> is zero.</param>
     /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double SafeDivide(double a, double b, double fallback = 0.0) => Math.Abs(b) < 1e-5 ? fallback : a / b;
+    public static T SafeDivide<T>(T a, T b) where T : IFloatingPointIeee754<T> => T.Abs(b) < T.CreateChecked(1e-5) ? T.Zero : a / b;
     /// <summary>
     /// Divides one integer by another, returning a fallback value if the denominator is zero to prevent a division-by-zero exception.
     /// </summary>
@@ -171,14 +170,14 @@ public static partial class MathGm
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int SafeDivide(int a, int b, int fallback = 0) => b == 0 ? fallback : a / b;
     /// <summary>
-    /// Divides one single-precision floating-point number by another, returning a fallback value if the denominator is zero.
+    /// Divides one generic floating-point number by another, returning a fallback value if the denominator is zero.
     /// </summary>
     /// <param name="a">The dividend (numerator).</param>
     /// <param name="b">The divisor (denominator).</param>
     /// <param name="fallback">The value to return if <paramref name="b"/> is zero.</param>
-    /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0f.</returns>
+    /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float SafeDivide(float a, float b, float fallback = 0.0f) => Math.Abs(b) < 1e-5 ? fallback : a / b;
+    public static T SafeDivide<T>(T a, T b, T fallback) where T : IFloatingPointIeee754<T> => T.Abs(b) < T.CreateChecked(1e-5) ? fallback : a / b;
     /// <summary>
     /// Compares two floating-point values and determines if they are approximately equal within a small tolerance.
     /// </summary>
