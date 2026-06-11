@@ -262,5 +262,6 @@ public static partial class GeometryGm
             A = T.Clamp(A, -T.One, T.One);
             return T.Acos(A);
         }
+        //TODO CLOSEST POINTS ON TWO LINES
     }
 }

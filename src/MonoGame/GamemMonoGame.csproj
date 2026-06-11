@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <RootNamespace>Gamem.MonoGame</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <Version>1.0.0</Version>
+    <Title>Gamem</Title>
+    <Authors>nicky_sus</Authors>
+    <Description>Gamem extension for MonoGame (supports vectors)</Description>
+    <PackageReleaseNotes>
+      1.0.0 is out!
+      Check the full changelog on GitHub!
+      https://github.com/nicky-suss/Gamem/releases
+    </PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/nicky-suss/Gamem</RepositoryUrl>
+    <PackageTags>gamedev;game-development;physics;math;collision;geometry;godot;utilities;lightweight</PackageTags>
+    <PackageReadmeFile>README_MONOGAME.md</PackageReadmeFile>
+    <PackageIcon>logo.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base\Gamem.csproj" />
+    <None Include="README_MONOGAME.md" Pack="true" PackagePath="\" />
+    <None Include="images\logo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.Native" Version="3.8.5-preview.6" />
+  </ItemGroup>
+</Project>
