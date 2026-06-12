@@ -31,6 +31,18 @@ public static partial class GeometryGm
         return (x - two * dot * normalX, y - two * dot * normalY);
     }
     /// <summary>
+    /// Reflects a 2D vector off a surface defined by a normal vector.
+    /// </summary>
+    /// <param name="vector">The incident vector.</param>
+    /// <param name="normal">The surface normal (should be normalized).</param>
+    /// <returns>The X and Y components of the reflected vector.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector2 Reflect(Vector2 vector, Vector2 normal)
+    {
+        var result = Reflect(vector.X, vector.Y, normal.X, normal.Y);
+        return new Vector2(result.x, result.y);
+    }
+    /// <summary>
     /// Reflects a 3D vector off a surface defined by a normal vector.
     /// </summary>
     /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
@@ -47,6 +59,18 @@ public static partial class GeometryGm
         T dot = VectorMath.GetDotProduct3D(x, y, z, normalX, normalY, normalZ);
         T two = T.CreateChecked(2);
         return (x - two * dot * normalX, y - two * dot * normalY, z - two * dot * normalZ);
+    }
+    /// <summary>
+    /// Reflects a 3D vector off a surface defined by a normal vector.
+    /// </summary>
+    /// <param name="vector">The incident vector.</param>
+    /// <param name="normal">The surface normal (should be normalized).</param>
+    /// <returns>The X, Y, and Z components of the reflected vector.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector3 Reflect3D(Vector3 vector, Vector3 normal)
+    {
+        float dot = VectorMath.GetDotProduct3D(vector.X, vector.Y, vector.Z, normal.X, normal.Y, normal.Z);
+        return new Vector3(vector.X - 2 * dot * normal.X, vector.Y - 2 * dot * normal.Y, vector.Z - 2 * dot * normal.Z);
     }
     /// <summary>
     /// Converts an angle from degrees to radians.
@@ -82,6 +106,17 @@ public static partial class GeometryGm
         return T.Sqrt(xy);
     }
     /// <summary>
+    /// Calculates the Euclidean distance between two points in a 2D plane.
+    /// </summary>
+    /// <param name="point1">The first 2D point.</param>
+    /// <param name="point2">The second 2D point.</param>
+    /// <returns>The distance between the two points in 2D space.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float GetDistance(Vector2 point1, Vector2 point2)
+    {
+        return GetDistance(point1.X, point1.Y, point2.X, point2.Y);
+    }
+    /// <summary>
     /// Calculates the squared distance between two 2D points.
     /// </summary>
     /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
@@ -95,6 +130,19 @@ public static partial class GeometryGm
     {
         T dx = x2 - x1;
         T dy = y2 - y1;
+        return (dx * dx) + (dy * dy);
+    }
+    /// <summary>
+    /// Calculates the squared distance between two 2D points.
+    /// </summary>
+    /// <param name="point1">The first point.</param>
+    /// <param name="point2">The second point.</param>
+    /// <returns>The squared distance between the two points, avoiding an expensive square root operation.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float GetDistanceSquared(Vector2 point1, Vector2 point2)
+    {
+        float dx = point2.X - point1.X;
+        float dy = point2.Y - point1.Y;
         return (dx * dx) + (dy * dy);
     }
     /// <summary>
@@ -115,6 +163,20 @@ public static partial class GeometryGm
         T dy = y2 - y1;
         T dz = z2 - z1;
         return T.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
+    }
+    /// <summary>
+    /// Calculates the Euclidean distance between two points in 3D space.
+    /// </summary>
+    /// <param name="point1">The first point.</param>
+    /// <param name="point2">Thesecond point.</param>
+    /// <returns>The distance between the two points in 3D space.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float GetDistance3D(Vector3 point1, Vector3 point2)
+    {
+        float dx = point2.X - point1.X;
+        float dy = point2.Y - point1.Y;
+        float dz = point2.Z - point1.Z;
+        return MathF.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
     }
     /// <summary>
     /// Provides static methods for basic 2D intersection and collision detection.
@@ -138,6 +200,19 @@ public static partial class GeometryGm
             return GetDistanceSquared(x1, y1, x2, y2) <= (radius1 + radius2) * (radius1 + radius2);
         }
         /// <summary>
+        /// Checks for an intersection between two circles.
+        /// </summary>
+        /// <param name="center1">The first circle's center.</param>
+        /// <param name="radius1">The radius of the first circle.</param>
+        /// <param name="center2">The second circle's center.</param>
+        /// <param name="radius2">The radius of the second circle.</param>
+        /// <returns>True if the circles intersect or touch; otherwise, false.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool CheckCircleVsCircle(Vector2 center1, float radius1, Vector2 center2, float radius2)
+        {
+            return GetDistanceSquared(center1.X, center1.Y, center2.X, center2.Y) <= (radius1 + radius2) * (radius1 + radius2);
+        }
+        /// <summary>
         /// Checks for an intersection between two Axis-Aligned Bounding Boxes (AABB).
         /// </summary>
         /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
@@ -154,6 +229,21 @@ public static partial class GeometryGm
         public static bool CheckAABBVsAABB<T>(T x1, T y1, T width1, T height1, T x2, T y2, T width2, T height2) where T : IFloatingPointIeee754<T>
         {
             return (x1 + width1) >= x2 && x1 <= (x2 + width2) && (y1 + height1) >= y2 && y1 <= (y2 + height2);
+        }
+        /// <summary>
+        /// Checks for an intersection between two Axis-Aligned Bounding Boxes (AABB).
+        /// </summary>
+        /// <param name="box1">The first box.</param>
+        /// <param name="width1">The total width of the first box.</param>
+        /// <param name="height1">The total height of the first box.</param>
+        /// <param name="box2">The second box.</param>
+        /// <param name="width2">The total width of the second box.</param>
+        /// <param name="height2">The total height of the second box.</param>
+        /// <returns>True if the bounding boxes overlap or touch; otherwise, false.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool CheckAABBVsAABB(Vector2 box1, float width1, float height1, Vector2 box2, float width2, float height2)
+        {
+            return (box1.X + width1) >= box2.X && box1.X <= (box2.X + width2) && (box1.Y + height1) >= box2.Y && box1.Y <= (box2.Y + height2);
         }
         /// <summary>
         /// Checks for an intersection between a circle and an Axis-Aligned Bounding Box (AABB).
@@ -179,6 +269,27 @@ public static partial class GeometryGm
 
             return distanceSquare <= (radius * radius);
         }
+        /// <summary>
+        /// Checks for an intersection between a circle and an Axis-Aligned Bounding Box (AABB).
+        /// </summary>
+        /// <param name="circle">The circle's center.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="aabb">The minimum coordinate of the box.</param>
+        /// <param name="width">The total width of the box.</param>
+        /// <param name="height">The total height of the box.</param>
+        /// <returns>True if the circle intersects or touches the bounding box; otherwise, false.</returns>
+        public static bool CheckCircleVsAABB(Vector2 circle, float radius, Vector2 aabb, float width, float height)
+        {
+            float closestX = Math.Clamp(circle.X, aabb.X, aabb.X + width);
+            float closestY = Math.Clamp(circle.Y, aabb.Y, aabb.Y + height);
+
+            float deltaX = circle.X - closestX;
+            float deltaY = circle.Y - closestY;
+
+            float distanceSquare = (deltaX * deltaX) + (deltaY * deltaY);
+
+            return distanceSquare <= (radius * radius);
+        }
     }
     /// <summary>
     /// Provides static methods for vector mathematics in 2D and 3D spaces.
@@ -196,6 +307,14 @@ public static partial class GeometryGm
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetDotProduct<T>(T x1, T y1, T x2, T y2) where T : IFloatingPointIeee754<T> => (x1 * x2) + (y1 * y2);
         /// <summary>
+        /// Calculates the dot product of two 2D vectors.
+        /// </summary>
+        /// <param name="vector1">The first vector.</param>
+        /// <param name="vector2">The second vector.</param>
+        /// <returns>The scalar dot product of the two 2D vectors.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetDotProduct(Vector2 vector1, Vector2 vector2) => (vector1.X * vector2.X) + (vector1.Y * vector2.Y);
+        /// <summary>
         /// Calculates the dot product of two 3D vectors.
         /// </summary>
         /// <param name="x1">The X-component of the first vector.</param>
@@ -208,6 +327,14 @@ public static partial class GeometryGm
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetDotProduct3D<T>(T x1, T y1, T z1, T x2, T y2, T z2) where T : IFloatingPointIeee754<T> => (x1 * x2) + (y1 * y2) + (z1 * z2);
         /// <summary>
+        /// Calculates the dot product of two 3D vectors.
+        /// </summary>
+        /// <param name="vector1">The first vector.</param>
+        /// <param name="vector2">The second vector.</param>
+        /// <returns>The scalar dot product of the two 3D vectors.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetDotProduct3D(Vector3 vector1, Vector3 vector2) => (vector1.X * vector2.X) + (vector1.Y * vector2.Y) + (vector1.Z * vector2.Z);
+        /// <summary>
         /// Calculates the magnitude (length) of a 2D vector.
         /// </summary>
         /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
@@ -216,6 +343,13 @@ public static partial class GeometryGm
         /// <returns>The magnitude of the 2D vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetMagnitude<T>(T x, T y) where T : IFloatingPointIeee754<T> => T.Sqrt((x * x) + (y * y));
+        /// <summary>
+        /// Calculates the magnitude (length) of a 2D vector.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <returns>The magnitude of the 2D vector.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetMagnitude(Vector2 vector) => MathF.Sqrt((vector.X * vector.X) + (vector.Y * vector.Y));
         /// <summary>
         /// Calculates the magnitude (length) of a 3D vector.
         /// </summary>
@@ -226,6 +360,13 @@ public static partial class GeometryGm
         /// <returns>The magnitude of the 3D vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetMagnitude3D<T>(T x, T y, T z) where T : IFloatingPointIeee754<T> => T.Sqrt((x * x) + (y * y) + (z * z));
+        /// <summary>
+        /// Calculates the magnitude (length) of a 3D vector.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <returns>The magnitude of the 3D vector.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetMagnitude3D(Vector3 vector) => MathF.Sqrt((vector.X * vector.X) + (vector.Y * vector.Y) + (vector.Z * vector.Z));
         /// <summary>
         /// Calculates the cross product of two 3D vectors.
         /// </summary>
@@ -246,6 +387,20 @@ public static partial class GeometryGm
             );
         }
         /// <summary>
+        /// Calculates the cross product of two 3D vectors.
+        /// </summary>
+        /// <param name="vector1">The first vector.</param>
+        /// <param name="vector2">The second vector.</param>
+        /// <returns>A vector representing the resulting 3D vector perpendicular to both input vectors</returns>
+        public static Vector3 GetCrossProduct(Vector3 vector1, Vector3 vector2)
+        {
+            return new Vector3(
+                (vector1.Y * vector2.Z) - (vector1.Z * vector2.Y),
+                (vector1.Z * vector2.X) - (vector1.X * vector2.Z),
+                (vector1.X * vector2.Y) - (vector1.Y * vector2.X)
+            );
+        }
+        /// <summary>
         /// Calculates the angle between two vectors in radians using their dot product and magnitudes.
         /// </summary>
         /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
@@ -256,7 +411,7 @@ public static partial class GeometryGm
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetAngleBetween<T>(T dotProduct, T lengthA, T lengthB) where T : IFloatingPointIeee754<T>
         {
-            if (lengthA <= T.CreateChecked(1e-5) || lengthB <= T.CreateChecked(1e-5))
+            if (T.IsZero(lengthA) || T.IsNaN(lengthB))
                 return T.Zero;
             T A = dotProduct / (lengthA * lengthB);
             A = T.Clamp(A, -T.One, T.One);
