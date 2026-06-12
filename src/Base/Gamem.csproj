@@ -19,13 +19,13 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/nicky-suss/Gamem</RepositoryUrl>
     <PackageTags>gamedev;game-development;physics;math;collision;geometry;monogame;godot;unity;utilities;lightweight</PackageTags>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>README_BASE.md</PackageReadmeFile>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="**/*.net8.cs" Condition="'$(TargetFramework)' == 'netstandard2.0'" /> 
     <Compile Remove="**/*.netstandard.cs" Condition="'$(TargetFramework)' == 'net8.0'" />
-    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="README_BASE.md" Pack="true" PackagePath="\" />
     <None Include="images\logo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
