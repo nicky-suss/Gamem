@@ -19,13 +19,13 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/nicky-suss/Gamem</RepositoryUrl>
     <PackageTags>gamedev;game-development;physics;math;collision;geometry;godot;utilities;lightweight</PackageTags>
-    <PackageReadmeFile>README_GODOT.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Base\Gamem.csproj" />
+    <ProjectReference Include="../Base/Gamem.csproj" />
     <PackageReference Include="GodotSharp" Version="4.6.3" />
-    <None Include="README_GODOT.md" Pack="true" PackagePath="\" />
-    <None Include="images\logo.png" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include="images/logo.png" Pack="true" PackagePath="/" />
   </ItemGroup>
 </Project>

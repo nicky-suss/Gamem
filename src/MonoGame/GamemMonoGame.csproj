@@ -18,14 +18,14 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/nicky-suss/Gamem</RepositoryUrl>
-    <PackageTags>gamedev;game-development;physics;math;collision;geometry;godot;utilities;lightweight</PackageTags>
-    <PackageReadmeFile>README_MONOGAME.md</PackageReadmeFile>
+    <PackageTags>gamedev;game-development;physics;math;collision;geometry;monogame;utilities;lightweight</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Base\Gamem.csproj" />
-    <None Include="README_MONOGAME.md" Pack="true" PackagePath="\" />
-    <None Include="images\logo.png" Pack="true" PackagePath="\" />
+    <ProjectReference Include="../Base/Gamem.csproj" />
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include="images/logo.png" Pack="true" PackagePath="/" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.Native" Version="3.8.5-preview.6" />
