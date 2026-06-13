@@ -11,6 +11,49 @@
 - **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more.
 - **PhysicsGm**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more.
 - **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `CheckCircleVsCircle`, `CheckAABBVsAABB` and more
+## 📂 Project Structure
+<details>
+<summary>📂 Click to view full Project Structure</summary>
+
+```text
+📂 GAMEM
+└── 📂 src                                       - Library source code
+    ├── 📂 Base                                  - Library core
+    │   ├── 📂 GeometryGm                        - Geometric methods for the library
+    │   │   ├── 📄 GeometryGm.net8.cs
+    │   │   └── 📄 GeometryGm.netstandard.cs
+    │   ├── 📂 images                            - Library core logo
+    │   │   └── 🖼️ logo.png
+    │   ├── 📂 MathGm                            - Mathematical methods for the library
+    │   │   ├── 📄 MathGm.net8.cs
+    │   │   └── 📄 MathGm.netstandard.cs
+    │   ├── 📂 PhysicsGm                         - Physics methods for the library
+    │   │   ├── 📄 PhysicsGm.net8.cs
+    │   │   └── 📄 PhysicsGm.netstandard.cs
+    │   ├── ⚙️ Gamem.csproj
+    │   └── 🛠️ README.md
+    ├── 📂 Godot                                 - Extension for Godot
+    │   ├── 📂 images                            - Extension logo
+    │   │   └── 🖼️ logo.png
+    │   ├── ⚙️ Gamem.Godot.csproj
+    │   ├── 📄 GeometryGmGodot.cs                - Geometric methods for Godot
+    │   ├── 📄 PhysicsGmGodot.cs                 - Physics methods for Godot
+    │   └── 🛠️ README.md
+    └── 📂 MonoGame                              - Extension for MonoGame
+        ├── 📂 images                            - Extension logo
+        │   └── 🖼️ logo.png
+        ├── ⚙️ Gamem.MonoGame.csproj
+        ├── 📄 GeometryGmMonoGame.cs              - Geometric methods for MonoGame
+        ├── 📄 PhysicsGmMonoGame.cs               - Physics methods for MonoGame
+        └── 🛠️ README.md
+├── 🛠️ .gitignore
+├── ⚙️ Gamem.slnx
+├── 🛠️ LICENSE
+└── 🛠️ README.md
+```
+
+</details>
+
 ## 🛍️ Installation
 **Type this command:**
 ```
@@ -20,6 +63,8 @@ dotnet add package Gamem
 **To use Gamem methods type this:**
 ```csharp
 using Gamem;
+using Gamem.Godot; // If you use Godot extension
+using Gamem.MonoGame; // If you use MonoGame extension
 ```
 ## 🚀 Write code much faster
 
@@ -31,7 +76,7 @@ float speed = Random.Shared.NextDouble() * (max - min) + min;
 ```
 **With Gamem (1 line of code only):**
 ```csharp
-float speed = MathGamem.RandomRange(2.5f, 7.5f);
+float speed = MathGm.RandomRange(2.5f, 7.5f);
 ```
 ## ✨ Why Gamem?
 - 🍃 **Zero Dependencies** - C# only. Doesn't use other heavy libraries
