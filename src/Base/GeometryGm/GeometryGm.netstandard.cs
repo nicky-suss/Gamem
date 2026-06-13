@@ -517,6 +517,29 @@ namespace Gamem
                     return B;
                 return A + t * AB;
             }
+            /// <summary>
+            /// Calculates the 2D intersection point of two infinitely long lines.
+            /// </summary>
+            /// <param name="vector1">The first point on the first line.</param>
+            /// <param name="vector2">The second point on the first line.</param>
+            /// <param name="vector3">The first point on the second line.</param>
+            /// <param name="vector4">The second point on the second line.</param>
+            /// <returns>A <see cref="Vector2"/> representing the intersection point, or a vector of <see cref="float.NaN"/> values if the lines are parallel or coincident.</returns>
+            public static Vector2 LineIntersection(Vector2 vector1, Vector2 vector2, Vector2 vector3, Vector2 vector4)
+            {
+                float div = (vector1.X - vector2.X) * (vector3.Y - vector4.Y) - (vector1.Y - vector2.Y) * (vector3.X - vector4.X);
+                if (Math.Abs(div) <= 1e-5)
+                {
+                    return new Vector2(float.NaN, float.NaN);
+                }
+                float d1 = vector1.X * vector2.Y - vector1.Y * vector2.X;
+                float d2 = vector3.X * vector4.Y - vector3.Y * vector4.X;
+
+                float Px = d1 * (vector3.X - vector4.X) - (vector1.X - vector2.X) * d2;
+                float Py = d1 * (vector3.Y - vector4.Y) - (vector1.Y - vector2.Y) * d2;
+
+                return new Vector2(Px / div, Py / div);
+            }
         }
     }
 }
