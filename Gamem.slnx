@@ -4,9 +4,9 @@
     <Project Path="src/Base/Gamem.csproj" />
   </Folder>
   <Folder Name="/src/Godot/">
-    <Project Path="src/Godot/GamemGodot.csproj" />
+    <Project Path="src/Godot/Gamem.Godot.csproj" />
   </Folder>
   <Folder Name="/src/MonoGame/">
-    <Project Path="src/MonoGame/GamemMonoGame.csproj" />
+    <Project Path="src/MonoGame/Gamem.MonoGame.csproj" />
   </Folder>
 </Solution>
