@@ -141,4 +141,20 @@ public static partial class PhysicsGm
     /// <returns>The clamped velocity, restricted so that it does not drop below -vlimit.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T TerminalVelocity<T>(T v, T vlimit) where T : IFloatingPointIeee754<T> => v < -T.Abs(vlimit) ? -T.Abs(vlimit) : v;
+    /// <summary>
+    /// Applies linear drag to a 3D velocity vector over a given time step, stopping the object completely if its speed drops below a small threshold.
+    /// </summary>
+    /// <param name="velocity">The current velocity vector.</param>
+    /// <param name="drag">The drag coefficient (typically negative to slow the object down, or positive depending on the expected math convention).</param>
+    /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
+    /// <returns>The updated velocity vector after drag has been applied, or <see cref="Vector3.Zero"/> if the squared velocity is below 0.0001f.</returns>
+    public static Vector3 Drag(Vector3 velocity, float drag, float deltaTime)
+    {
+        velocity *= MathF.Exp(drag * deltaTime);
+
+        if (velocity.LengthSquared() < 0.0001f)
+            return Vector3.Zero;
+
+        return velocity;
+    }
 }
