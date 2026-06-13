@@ -411,7 +411,7 @@ public static partial class GeometryGm
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetAngleBetween<T>(T dotProduct, T lengthA, T lengthB) where T : IFloatingPointIeee754<T>
         {
-            if (T.IsZero(lengthA) || T.IsNaN(lengthB))
+            if (T.IsZero(lengthA) || T.IsNaN(lengthA) || T.IsZero(lengthB) || T.IsNaN(lengthB))
                 return T.Zero;
             T A = dotProduct / (lengthA * lengthB);
             A = T.Clamp(A, -T.One, T.One);
