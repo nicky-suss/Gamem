@@ -1,7 +1,9 @@
 # Gamem
 ![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem) ![Static Badge](https://img.shields.io/badge/license-MIT-green)
 
-
+### If you need vectors for Godot or MonoGame, use these extensions:
+- **[Gamem.Godot](https://www.nuget.org/packages/Gamem.Godot) for Godot**
+- **[Gamem.MonoGame](https://www.nuget.org/packages/Gamem.MonoGame) for MonoGame**
 
 **🎮 Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org) and [MonoGame](https://monogame.net)! 👾**
 
