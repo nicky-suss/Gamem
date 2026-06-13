@@ -5,12 +5,12 @@
     <RootNamespace>Gamem</RootNamespace>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
     <Title>Gamem</Title>
     <Authors>nicky_sus</Authors>
     <Description>Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas.</Description>
     <PackageReleaseNotes>
-      2.1.0 is out!
+      2.1.1 is out!
       Check the full changelog on GitHub!
       https://github.com/nicky-suss/Gamem/releases
     </PackageReleaseNotes>
