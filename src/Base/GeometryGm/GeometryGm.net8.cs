@@ -417,6 +417,25 @@ public static partial class GeometryGm
             A = T.Clamp(A, -T.One, T.One);
             return T.Acos(A);
         }
-        //TODO CLOSEST POINTS ON TWO LINES
+        /// <summary>
+        /// Finds the closest point on a 3D line segment AB to a given point P, clamping the result to the segment bounds.
+        /// </summary>
+        /// <param name="A">The start point of the line segment.</param>
+        /// <param name="B">The end point of the line segment.</param>
+        /// <param name="P">The target point in 3D space.</param>
+        /// <returns>The position on the segment AB that is nearest to point P.</returns>
+        public static Vector3 ClosestPointOnLine(Vector3 A, Vector3 B, Vector3 P)
+        {
+            Vector3 AB = B - A;
+            Vector3 AP = P - A;
+            if (GetDotProduct3D(AB, AB) <= 1e-5)
+                return A;
+            float t = GetDotProduct3D(AP, AB) / GetDotProduct3D(AB, AB);
+            if (t <= 0)
+                return A;
+            if (t >= 1)
+                return B;
+            return A + t * AB;
+        }
     }
 }
