@@ -16,7 +16,7 @@
 <summary>📂 Click to view full Project Structure</summary>
 
 ```text
-📂 GAMEM
+📂 Gamem
 └── 📂 src                                       - Library source code
     ├── 📂 Base                                  - Library core
     │   ├── 📂 GeometryGm                        - Geometric methods for the library

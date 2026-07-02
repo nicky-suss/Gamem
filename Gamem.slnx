@@ -1,12 +1,12 @@
 <Solution>
   <Folder Name="/src/" />
   <Folder Name="/src/Base/">
-    <Project Path="src/Base/Gamem.csproj" />
+    <Project Path="src/C#/Base/Gamem.csproj" />
   </Folder>
   <Folder Name="/src/Godot/">
-    <Project Path="src/Godot/Gamem.Godot.csproj" />
+    <Project Path="src/C#/Godot/Gamem.Godot.csproj" />
   </Folder>
   <Folder Name="/src/MonoGame/">
-    <Project Path="src/MonoGame/Gamem.MonoGame.csproj" />
+    <Project Path="src/C#/MonoGame/Gamem.MonoGame.csproj" />
   </Folder>
 </Solution>
