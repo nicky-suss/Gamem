@@ -1,2 +1,10 @@
 CompileFlags:
-  Add: [-std=c++17, "-isystemC:/emsdk/upstream/emscripten/cache/sysroot/include"]
+  Add:
+    - "-std=c++17"
+    - "--target=wasm32-unknown-emscripten"
+    - "-nostdinc++"
+    - "-isystemC:/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1"
+    - "-isystemC:/emsdk/upstream/emscripten/cache/sysroot/include"
+    - "-isystemC:/emsdk/upstream/emscripten/system/include/compat"
+    - "-isystemC:/emsdk/upstream/emscripten/system/include"
+    - "-isystemC:/emsdk/upstream/lib/clang/23/include"
