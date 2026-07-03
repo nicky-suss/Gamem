@@ -6,7 +6,7 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <Version>1.0.1</Version>
-    <Title>Gamem</Title>
+    <Title>Gamem.MonoGame</Title>
     <Authors>nicky_sus</Authors>
     <Description>Gamem extension for MonoGame (supports vectors)</Description>
     <PackageReleaseNotes>
