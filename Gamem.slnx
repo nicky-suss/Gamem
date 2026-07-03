@@ -3,6 +3,10 @@
   <Folder Name="/src/Base/">
     <Project Path="src/C#/Base/Gamem.csproj" />
   </Folder>
+  <Folder Name="/src/C#/" />
+  <Folder Name="/src/C#/Stride/">
+    <Project Path="src/C#/Stride/Gamem.Stride.csproj" />
+  </Folder>
   <Folder Name="/src/Godot/">
     <Project Path="src/C#/Godot/Gamem.Godot.csproj" />
   </Folder>

@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0</TargetFrameworks>
+    <RootNamespace>Gamem.Stride</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <Version>1.0.1</Version>
+    <Title>Gamem.Stride</Title>
+    <Authors>nicky_sus</Authors>
+    <Description>Gamem extension for Stride (supports vectors)</Description>
+    <PackageReleaseNotes>
+      1.0.1 is out!
+      Check the full changelog on GitHub!
+      https://github.com/nicky-suss/Gamem/releases
+    </PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/nicky-suss/Gamem</RepositoryUrl>
+    <PackageTags>gamedev;game-development;physics;math;collision;geometry;Stride;utilities;lightweight</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>logo.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Gamem" Version="*" />
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include="images/logo.png" Pack="true" PackagePath="/" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Stride.Core.Mathematics" Version="4.3.0.2507" />
+  </ItemGroup>
+</Project>
