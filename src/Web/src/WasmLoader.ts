@@ -16,6 +16,24 @@ export interface GamemWasmModule {
     _gamem_smooth_damp(current: number, target: number, currentVelocity: number, smoothTime: number, maxSpeed: number, deltaTim: number): number;
     _gamem_smooth_damp_angle(current: number, target: number, currentVelocity: number, smoothTime: number, deltaTime: number): number;
 
+    // === GeometryGm ===
+    _gamem_getdotproduct(x1: number, y1: number, x2: number, y2: number): number;
+    _gamem_getdotproduct3d(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): number;
+    _gamem_reflect(x: number, y: number, normalX: number, normalY: number, outXPtr: number, outYPtr: number): void
+    _gamem_reflect3d(x: number, y: number, z: number, normalX: number, normalY: number, normalZ: number, outXPtr: number, outYPtr: number, outZPtr: number): void;
+    _gamem_toradians(degrees: number): number;
+    _gamem_todegrees(radians: number): number;
+    _gamem_getdistance(x1: number, y1: number, x2: number, y2: number): number;
+    _gamem_getdistancesquared(x1: number, y1: number, x2: number, y2: number): number;
+    _gamem_getdistance3d(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): number;
+    _gamem_checkcirclevscircle(x1: number, y1: number, radius1: number, x2: number, y2: number, radius2: number): boolean;
+    _gamem_checkaabbvsaabb(x1: number, y1: number, width1: number, height1: number, x2: number, y2: number, width2: number, height2: number): boolean;
+    _gamem_checkcirclevsaabb(circleX: number, circleY: number, radius: number, aabbX: number, aabbY: number, width: number, height: number): boolean;
+    _gamem_getmagnitude(x: number, y: number): number;
+    _gamem_getmagnitude3d(x: number, y: number, z: number): number;
+    _gamem_getcrossproduct(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, outXPtr: number, outYPtr: number, outZPtr: number): void;
+    _gamem_getanglebetween(dotProduct: number, lengthA: number, lengthB: number): number;
+
     _malloc(size: number): number;
     _free(ptr: number): number;
     setValue(ptr: number, value: any, type: string, reassign?: boolean): void;
