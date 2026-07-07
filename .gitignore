@@ -1,2 +1,4 @@
 obj/
 bin/
+gamem_wasm.js
+gamem_wasm.wasm
