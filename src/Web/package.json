@@ -1,0 +1,30 @@
+{
+  "name": "gamem-web",
+  "version": "1.0.0",
+  "description": "WebAssembly port of Gamem math, geometry, and physics library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build:wasm": "emcc src/Web/cpp/src/MathGm.cpp src/Web/cpp/src/GeometryGm.cpp src/Web/cpp/src/PhysicsGm.cpp -I src/Web/cpp/include -O3 -s WASM=1 -s EXPORTED_FUNCTIONS=\"['_malloc', '_free']\" -s EXPORTED_RUNTIME_METHODS=\"['setValue', 'getValue']\" -s EXPORT_ES6=1 -s MODULARIZE=1 -o src/Web/src/gamem_wasm.js",
+    "build:ts": "tsc",
+    "build": "npm run build:wasm && npm run build:ts"
+  },
+  "keywords": [
+    "math",
+    "geometry",
+    "physics",
+    "wasm",
+    "webassembly",
+    "gamedev",
+    "game-development",
+    "collision",
+    "utilities",
+    "lightweight"
+  ],
+  "author": "nicky_sus",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
