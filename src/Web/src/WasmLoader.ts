@@ -13,7 +13,7 @@ export interface GamemWasmModule {
     _gamem_safe_divide(a: number, b: number): number;
     _gamem_safe_divide_fb(a: number, b: number, fallback: number): number;
     _gamem_approximately(a: number, b: number): number;
-    _gamem_smooth_damp(current: number, target: number, currentVelocity: number, smoothTime: number, maxSpeed: number, deltaTim: number): number;
+    _gamem_smooth_damp(current: number, target: number, currentVelocity: number, smoothTime: number, maxSpeed: number, deltaTime: number): number;
     _gamem_smooth_damp_angle(current: number, target: number, currentVelocity: number, smoothTime: number, deltaTime: number): number;
 
     // === GeometryGm ===
@@ -33,6 +33,18 @@ export interface GamemWasmModule {
     _gamem_getmagnitude3d(x: number, y: number, z: number): number;
     _gamem_getcrossproduct(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, outXPtr: number, outYPtr: number, outZPtr: number): void;
     _gamem_getanglebetween(dotProduct: number, lengthA: number, lengthB: number): number;
+
+    // === PhysicsGm ===
+    _gamem_applygravity(velocity: number, gravity: number, deltaTime: number): number
+    _gamem_applyfriction(velocity: number, frictionCoeff: number, deltaTime: number): number;
+    _gamem_movetowards(current: number, target: number, maxDelta: number): number;
+    _gamem_bounce(vOld: number, bounciness: number): number;
+    _gamem_bounce_threshold(vOld: number, bounciness: number, minBounceThreshold: number): number;
+    _gamem_clampvelocity(v: number, max: number): number;
+    _gamem_addforce(v: number, F: number, t: number, m: number): number;
+    _gamem_addimpulse(vOld: number, J: number, m: number): number;
+    _gamem_jumpcut(v: number, multiplier: number): number;
+    _gamem_terminalvelocity(v: number, vlimit: number): number;
 
     _malloc(size: number): number;
     _free(ptr: number): number;
