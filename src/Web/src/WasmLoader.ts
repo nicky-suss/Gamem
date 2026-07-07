@@ -15,6 +15,11 @@ export interface GamemWasmModule {
     _gamem_approximately(a: number, b: number): number;
     _gamem_smooth_damp(current: number, target: number, currentVelocity: number, smoothTime: number, maxSpeed: number, deltaTim: number): number;
     _gamem_smooth_damp_angle(current: number, target: number, currentVelocity: number, smoothTime: number, deltaTime: number): number;
+
+    _malloc(size: number): number;
+    _free(ptr: number): number;
+    setValue(ptr: number, value: any, type: string, reassign?: boolean): void;
+    getValue(ptr: number, type: string): number;
 }
 let wasmModule: GamemWasmModule | null = null;
 
