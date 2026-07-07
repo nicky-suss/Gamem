@@ -55,7 +55,7 @@ let wasmModule: GamemWasmModule | null = null;
 
 export async function initializeGamem(moduleFactory: any): Promise<void> {
     if (!wasmModule) {
-        wasmModule = await moduleFactory;
+        wasmModule = await moduleFactory();
     }
 }
 export function getWasm(): GamemWasmModule {
