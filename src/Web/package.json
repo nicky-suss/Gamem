@@ -2,6 +2,14 @@
   "name": "gamem-web",
   "version": "1.0.0",
   "description": "WebAssembly port of Gamem math, geometry, and physics library",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicky-suss/Gamem"
+  },
+  "bugs": {
+    "url": "https://github.com/nicky-suss/Gamem"
+  },
+  "homepage": "https://github.com/nicky-suss/Gamem",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
