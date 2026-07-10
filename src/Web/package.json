@@ -13,6 +13,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build:wasm": "emcc src/Web/cpp/src/MathGm.cpp src/Web/cpp/src/GeometryGm.cpp src/Web/cpp/src/PhysicsGm.cpp -I src/Web/cpp/include -O3 -s WASM=1 -s EXPORTED_FUNCTIONS=\"['_malloc', '_free']\" -s EXPORTED_RUNTIME_METHODS=\"['setValue', 'getValue']\" -s EXPORT_ES6=1 -s MODULARIZE=1 -o src/Web/src/gamem_wasm.js",
     "build:ts": "tsc",
