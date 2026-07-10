@@ -4,7 +4,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "src/Web/dist",
     "rootDir": "./src/Web/src",
     "strict": true,
     "esModuleInterop": true,
@@ -16,6 +16,6 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "src/Web/dist"
   ]
 }
