@@ -17,39 +17,67 @@
 
 ```text
 📂 Gamem
-└── 📂 src                                       - Library source code
-    ├── 📂 Base                                  - Library core
-    │   ├── 📂 GeometryGm                        - Geometric methods for the library
-    │   │   ├── 📄 GeometryGm.net8.cs
-    │   │   └── 📄 GeometryGm.netstandard.cs
-    │   ├── 📂 images                            - Library core logo
-    │   │   └── 🖼️ logo.png
-    │   ├── 📂 MathGm                            - Mathematical methods for the library
-    │   │   ├── 📄 MathGm.net8.cs
-    │   │   └── 📄 MathGm.netstandard.cs
-    │   ├── 📂 PhysicsGm                         - Physics methods for the library
-    │   │   ├── 📄 PhysicsGm.net8.cs
-    │   │   └── 📄 PhysicsGm.netstandard.cs
-    │   ├── ⚙️ Gamem.csproj
-    │   └── 🛠️ README.md
-    ├── 📂 Godot                                 - Extension for Godot
-    │   ├── 📂 images                            - Extension logo
-    │   │   └── 🖼️ logo.png
-    │   ├── ⚙️ Gamem.Godot.csproj
-    │   ├── 📄 GeometryGmGodot.cs                - Geometric methods for Godot
-    │   ├── 📄 PhysicsGmGodot.cs                 - Physics methods for Godot
-    │   └── 🛠️ README.md
-    └── 📂 MonoGame                              - Extension for MonoGame
-        ├── 📂 images                            - Extension logo
-        │   └── 🖼️ logo.png
-        ├── ⚙️ Gamem.MonoGame.csproj
-        ├── 📄 GeometryGmMonoGame.cs              - Geometric methods for MonoGame
-        ├── 📄 PhysicsGmMonoGame.cs               - Physics methods for MonoGame
-        └── 🛠️ README.md
+├── 📂 src
+│   ├── 📂 C#                                     - Library source code for the .NET ecosystem
+│   │   ├── 📂 Base                               - Core library functionality (pure C#)
+│   │   │   ├── 📂 GeometryGm                     - Geometric methods
+│   │   │   │   ├── 📄 GeometryGm.net8.cs
+│   │   │   │   └── 📄 GeometryGm.netstandard.cs
+│   │   │   ├── 📂 images                         - Core library logo
+│   │   │   │   └── 🖼️ logo.png
+│   │   │   ├── 📂 MathGm                         - Mathematical methods
+│   │   │   │   ├── 📄 MathGm.net8.cs
+│   │   │   │   └── 📄 MathGm.netstandard.cs
+│   │   │   ├── 📂 PhysicsGm                      - Physics methods
+│   │   │   │   ├── 📄 PhysicsGm.net8.cs
+│   │   │   │   └── 📄 PhysicsGm.netstandard.cs
+│   │   │   ├── ⚙️ Gamem.csproj
+│   │   │   └── 🛠️ README.md
+│   │   ├── 📂 Godot                              - Extension for the Godot game engine
+│   │   │   ├── 📂 images                         - Godot extension logo
+│   │   │   │   └── 🖼️ logo.png
+│   │   │   ├── ⚙️ Gamem.Godot.csproj
+│   │   │   ├── 📄 GeometryGmGodot.cs
+│   │   │   ├── 📄 PhysicsGmGodot.cs
+│   │   │   └── 🛠️ README.md
+│   │   ├── 📂 MonoGame                           - Extension for the MonoGame framework
+│   │   │   ├── 📂 images                         - MonoGame extension logo
+│   │   │   │   └── 🖼️ logo.png
+│   │   │   ├── ⚙️ Gamem.MonoGame.csproj
+│   │   │   ├── 📄 GeometryGmMonoGame.cs
+│   │   │   ├── 📄 PhysicsGmMonoGame.cs
+│   │   │   └── 🛠️ README.md
+│   │   └── 📂 Stride                             - Extension for the Stride game engine
+│   │       ├── 📂 images                         - Stride extension logo
+│   │       │   └── 🖼️ logo.png
+│   │       ├── ⚙️ Gamem.Stride.csproj
+│   │       ├── 📄 GeometryGmStride.cs
+│   │       ├── 📄 PhysicsGmStride.cs
+│   │       └── 🛠️ README.md
+│   └── 📂 Web                                     - Web, C++, and WebAssembly support module
+│       ├── 📂 cpp                                 - Native C++ source code
+│       │   ├── 📂 include                         - C++ header files (.hpp)
+│       │   │   ├── 📄 GeometryGm.hpp
+│       │   │   ├── 📄 MathGm.hpp
+│       │   │   └── 📄 PhysicsGm.hpp
+│       │   └── 📂 src                             - C++ implementation files (.cpp)
+│       │       ├── 📄 GeometryGm.cpp
+│       │       ├── 📄 MathGm.cpp
+│       │       └── 📄 PhysicsGm.cpp
+│       ├── 📂 src                                 - Compiled WASM outputs and TypeScript wrappers
+│       │   ├── 📄 GeometryGm.ts
+│       │   ├── 📄 MathGm.ts
+│       │   ├── 📄 PhysicsGm.ts
+│       │   └── 📄 WasmLoader.ts                   - WASM module loader and initializer
+│       ├── 📄 3RD-PARTY-LICENSES                  - Licenses for third-party web dependencies
+│       ├── 📄 package.json                        - npm package configuration and dependencies
+│       └── 📄 README.md                           - Documentation for the Web version
+├── 🛠️ .clangd      
 ├── 🛠️ .gitignore
 ├── ⚙️ Gamem.slnx
 ├── 🛠️ LICENSE
-└── 🛠️ README.md
+├── 🛠️ README.md
+└── ⚙️ tsconfig.json
 ```
 
 </details>
