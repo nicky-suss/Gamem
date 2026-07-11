@@ -20,20 +20,24 @@ npm install gamem-wasm
 import { MathGm, GeometryGm, PhysicsGm } from 'gamem-wasm';
 ```
 
-## 🚀 Write code much faster
+## 🚀 Get Started
+**You must initialize the library before using any methods**
+```ts
+import { MathGm, GeometryGm, PhysicsGm, initializeGamem } from "gamem-wasm";
+import gamemWasmFactory from "gamem-wasm/dist/gamem_wasm.js";
 
-**Without Gamem:**
-```ts
-let min: number = 2.5;
-let max: number = 7.5;
-let speed: number = Math.random() * (max - min) + min;
-```
-**With Gamem (1 line of code only):**
-```ts
-let speed: number = MathGm.RandomRange(2.5, 7.5);
+async function main() {
+    await initializeGamem(gamemWasmFactory); // Very important!
+
+    // Now you can use any method!
+    // example:
+    const num: number = MathGm.lerp(1, 2, 0.5);
+    console.log(num); // 1.5
+}
+main(); // Call main to run the code
 ```
 ## ✨ Why Gamem?
-- 🍃 **Zero Dependencies** - Pure TypeScript wrapper around compiled C++ code.
+- 🍃 **Zero Dependencies** - Pure TypeScript wrapper around compiled C++ code
 - 🎮 **Engine doesn't matter** - You can use it in any web engine or vanilla project!
 - ⚡ **Good performance** - Optimized methods by using WebAssembly
 ## ❤️ Contributing
