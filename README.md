@@ -1,11 +1,12 @@
 # Gamem
-![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem) ![Static Badge](https://img.shields.io/badge/license-MIT-green)
+![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem) ||| ![npm version](https://img.shields.io/npm/v/gamem-wasm) ![npm downloads](https://img.shields.io/npm/dt/gamem-wasm) ![Static Badge](https://img.shields.io/badge/license-MIT-green)
 
-### If you need vectors for Godot or MonoGame, use these extensions:
+### If you need vectors for Godot, MonoGame or Stride, use these extensions:
 - **[Gamem.Godot](https://www.nuget.org/packages/Gamem.Godot) for Godot**
 - **[Gamem.MonoGame](https://www.nuget.org/packages/Gamem.MonoGame) for MonoGame**
+- **[Gamem.Stride](https://www.nuget.org/packages/Gamem.Stride) for Stride**
 
-**🎮 Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org) and [MonoGame](https://monogame.net)! 👾**
+**🎮 Gamem is a C# and TypeScript library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net) and different JS engines! 👾**
 
 ## 🌟 Features
 - **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more.
@@ -83,16 +84,25 @@
 </details>
 
 ## 🛍️ Installation
-**Type this command:**
+**(C#) Type this command:**
 ```
 dotnet add package Gamem
 ```
+**(TypeScript) Type this command**
+```
+npm install gamem-wasm
+```
 ## ⚙️ How to use
-**To use Gamem methods type this:**
+**(C#) To use Gamem methods type this:**
 ```csharp
 using Gamem;
 using Gamem.Godot; // If you use Godot extension
 using Gamem.MonoGame; // If you use MonoGame extension
+using Gamem.Stride; // If you use Stride extension
+```
+**(TypeScript) To use Gamem methods type this:**
+```ts
+import { MathGm, GeometryGm, PhysicsGm } from 'gamem-wasm';
 ```
 ## 🚀 Write code much faster
 
@@ -107,8 +117,8 @@ float speed = Random.Shared.NextDouble() * (max - min) + min;
 float speed = MathGm.RandomRange(2.5f, 7.5f);
 ```
 ## ✨ Why Gamem?
-- 🍃 **Zero Dependencies** - C# only. Doesn't use other heavy libraries
-- 🎮 **Engine doesn't matter** - You can use it everywhere. [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net), Console or custom Engines
+- 🍃 **Zero Dependencies** - C# and TypeScript only. Doesn't use other heavy libraries
+- 🎮 **Engine doesn't matter** - You can use it in any engine or project!
 - ⚡ **Good performance** - Optimized methods
 ## ❤️ Contributing
 - **⭐ Liked the project? Leave a star for [this repo](https://github.com/nicky-suss/Gamem), it motivates me to develop this project!**
