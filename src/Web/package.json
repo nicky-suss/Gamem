@@ -1,5 +1,5 @@
 {
-  "name": "gamem-web",
+  "name": "gamem-wasm",
   "version": "1.0.0",
   "description": "WebAssembly port of Gamem math, geometry, and physics library",
   "repository": {
