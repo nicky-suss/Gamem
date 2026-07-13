@@ -253,4 +253,14 @@ public:
     current = std::fmod(std::fmod(newAngle, period) + period, period);
     return current;
   }
+  static inline double PingPong(double t, double length) {
+    if(t == 0.0)
+      return 0.0;
+    return length - std::abs(std::fmod(std::abs(t), (2.0 * length) - length));
+  }
+  static inline float PingPong(float t, float length) {
+    if(t == 0.0f)
+      return 0.0f;
+    return length - std::abs(std::fmod(std::abs(t), (2.0f * length) - length));
+  }
 };

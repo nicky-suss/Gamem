@@ -177,4 +177,13 @@ export class MathGm {
         wasm._free(velocityPtr);
         return { result: updatedAngle, newVelocity: updatedVelocity };
     }
+    /**
+     * Ping-pongs the value t, causing it to bounce back and forth between 0 and length.
+     * @param t The incoming value (typically an accumulating time variable).
+     * @param length The maximum value the result can reach at its peak before bouncing back.
+     * @returns A value between 0 and length that oscillates continuously back and forth.
+     */
+    public static pingPong(t: number, length: number) {
+        return getWasm()._gamem_ping_pong(t, length);
+    }
 }

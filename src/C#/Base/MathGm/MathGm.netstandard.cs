@@ -366,5 +366,30 @@ namespace Gamem
             current = ((newAngle % period) + period) % period;
             return current;
         }
+        /// <summary>
+        /// Ping-pongs the value <paramref name="t"/>, causing it to bounce back and forth between 0 and <paramref name="length"/>.
+        /// </summary>
+        /// <param name="t">The incoming value (typically an accumulating time variable).</param>
+        /// <param name="length">The maximum value the result can reach at its peak before bouncing back.</param>
+        /// <returns>A value between 0 and <paramref name="length"/> that oscillates continuously back and forth.</returns>
+        public static double PingPong(double t, double length)
+        {
+            if (length == 0.0)
+                return 0.0;
+            return length - Math.Abs(Math.Abs(t) % (2.0 * length) - length);
+        }
+        /// <summary>
+        /// Ping-pongs the value <paramref name="t"/>, causing it to bounce back and forth between 0 and <paramref name="length"/>.
+        /// </summary>
+        /// <param name="t">The incoming value (typically an accumulating time variable).</param>
+        /// <param name="length">The maximum value the result can reach at its peak before bouncing back.</param>
+        /// <returns>A value between 0 and <paramref name="length"/> that oscillates continuously back and forth.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float PingPong(float t, float length)
+        {
+            if (length == 0.0f)
+                return 0.0f;
+            return length - Math.Abs(Math.Abs(t) % (2.0f * length) - length);
+        }
     }
 }

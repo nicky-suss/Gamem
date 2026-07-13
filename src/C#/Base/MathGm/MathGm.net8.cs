@@ -265,4 +265,18 @@ public static partial class MathGm
         current = ((newAngle % period) + period) % period;
         return current;
     }
+    /// <summary>
+    /// Ping-pongs the value <paramref name="t"/>, causing it to bounce back and forth between 0 and <paramref name="length"/>.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="t">The incoming value (typically an accumulating time variable).</param>
+    /// <param name="length">The maximum value the result can reach at its peak before bouncing back.</param>
+    /// <returns>A value between 0 and <paramref name="length"/> that oscillates continuously back and forth.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T PingPong<T>(T t, T length) where T : IFloatingPointIeee754<T>
+    {
+        if (length == T.Zero)
+            return T.Zero;
+        return length - T.Abs(T.Abs(t) % (T.CreateChecked(2) * length) - length);
+    }
 }

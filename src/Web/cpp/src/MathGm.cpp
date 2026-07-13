@@ -131,4 +131,8 @@ EMSCRIPTEN_KEEPALIVE
 float gamem_smooth_damp_angle_f(float* current, float target, float* currentVelocity, float smoothTime, float deltaTime) {
   return MathGm::SmoothDampAngle(*current, target, *currentVelocity, smoothTime, deltaTime);
 }
+EMSCRIPTEN_KEEPALIVE
+double gamem_ping_pong(double t, double length) {
+  return MathGm::PingPong(t, length);
+}
 }
