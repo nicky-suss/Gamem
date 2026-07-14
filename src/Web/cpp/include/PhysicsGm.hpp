@@ -121,4 +121,16 @@ public:
   static inline float CalculateJumpVelocity(float h, float g) {
     return std::sqrt(2.0f * std::abs(g) * h);
   }
+  static inline double GetStoppingDistance(double v, double a)
+  {
+   if (a <= 0.0)
+      return 0.0;
+   return (v * v) / (2.0 * a);
+  }
+  static inline float GetStoppingDistance(float v, float a)
+  {
+   if (a <= 0.0f)
+      return 0.0f;
+   return (v * v) / (2.0f * a);
+  }
 };

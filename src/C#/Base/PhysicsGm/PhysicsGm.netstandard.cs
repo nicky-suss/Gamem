@@ -206,5 +206,31 @@ namespace Gamem
         /// <returns>The calculated initial jump velocity required to reach the target height.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float CalculateJumpVelocity(float h, float g) => (float)Math.Sqrt(2.0f * Math.Abs(g) * h);
+        /// <summary>
+        /// Calculates the stopping distance required for an object to come to a complete stop from a given velocity under constant deceleration.
+        /// </summary>
+        /// <param name="v">The current velocity of the object.</param>
+        /// <param name="a">The constant deceleration rate (magnitude of acceleration slowing the object down).</param>
+        /// <returns>The calculated stopping distance, or zero if the deceleration is zero.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double GetStoppingDistance(double v, double a)
+        {
+            if (a <= 0.0)
+                return 0.0;
+            return (v * v) / (2.0 * a);
+        }
+        /// <summary>
+        /// Calculates the stopping distance required for an object to come to a complete stop from a given velocity under constant deceleration.
+        /// </summary>
+        /// <param name="v">The current velocity of the object.</param>
+        /// <param name="a">The constant deceleration rate (magnitude of acceleration slowing the object down).</param>
+        /// <returns>The calculated stopping distance, or zero if the deceleration is zero.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetStoppingDistance(float v, float a)
+        {
+            if (a <= 0.0f)
+                return 0.0f;
+            return (v * v) / (2.0f * a);
+        }
     }
 }

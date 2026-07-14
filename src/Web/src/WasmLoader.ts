@@ -48,6 +48,7 @@ export interface GamemWasmModule {
     _gamem_jumpcut(v: number, multiplier: number): number;
     _gamem_terminalvelocity(v: number, vlimit: number): number;
     _gamem_calculatejumpvelocity(h: number, g: number): number
+    _gamem_getstoppingdistance(v: number, a: number): number;
 
     _malloc(size: number): number;
     _free(ptr: number): number;

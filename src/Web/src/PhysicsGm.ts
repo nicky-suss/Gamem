@@ -106,4 +106,13 @@ export class PhysicsGm {
     public static calculateJumpVelocity(h: number, g: number) {
         return getWasm()._gamem_calculatejumpvelocity(h, g);
     }
+    /**
+     * Calculates the stopping distance required for an object to come to a complete stop from a given velocity under constant deceleration.
+     * @param v The current velocity of the object.
+     * @param a The constant deceleration rate (magnitude of acceleration slowing the object down).
+     * @returns The calculated stopping distance, or zero if the deceleration is zero.
+     */
+    public static getStoppingDistance(v: number, a: number) {
+        return getWasm()._gamem_getstoppingdistance(v, a);
+    }
 }

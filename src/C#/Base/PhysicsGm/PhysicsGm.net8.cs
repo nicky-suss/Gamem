@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Gamem;
 
@@ -166,4 +167,18 @@ public static partial class PhysicsGm
     /// <returns>The calculated initial jump velocity required to reach the target height.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T CalculateJumpVelocity<T>(T h, T g) where T : IFloatingPointIeee754<T> => T.Sqrt(T.CreateChecked(2) * T.Abs(g) * h);
+    /// <summary>
+    /// Calculates the stopping distance required for an object to come to a complete stop from a given velocity under constant deceleration.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="v">The current velocity of the object.</param>
+    /// <param name="a">The constant deceleration rate (magnitude of acceleration slowing the object down).</param>
+    /// <returns>The calculated stopping distance, or zero if the deceleration is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T GetStoppingDistance<T>(T v, T a) where T : IFloatingPointIeee754<T>
+    {
+        if (T.IsZero(a))
+            return T.Zero;
+        return (v * v) / (T.CreateChecked(2) * a);
+    }
 }

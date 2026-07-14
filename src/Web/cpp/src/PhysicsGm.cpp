@@ -111,4 +111,12 @@ EMSCRIPTEN_KEEPALIVE
 float gamem_calculatejumpvelocity_f(float h, float g) {
     return PhysicsGm::CalculateJumpVelocity(h, g);
 }
+EMSCRIPTEN_KEEPALIVE
+double gamem_getstoppingdistance(double v, double a) {
+    return PhysicsGm::GetStoppingDistance(v, a);
+}
+EMSCRIPTEN_KEEPALIVE
+float gamem_getstoppingdistance_f(float v, float a) {
+    return PhysicsGm::GetStoppingDistance(v, a);
+}
 }
