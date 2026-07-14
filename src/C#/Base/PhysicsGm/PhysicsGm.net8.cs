@@ -181,4 +181,14 @@ public static partial class PhysicsGm
             return T.Zero;
         return (v * v) / (T.CreateChecked(2) * a);
     }
+    /// <summary>
+    /// Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="v">The current velocity.</param>
+    /// <param name="k">The quadratic drag coefficient (typically dependent on fluid density, drag coefficient, and cross-sectional area).</param>
+    /// <param name="t">The time step (delta time) in seconds.</param>
+    /// <returns>The updated velocity after quadratic drag has been applied.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T ApplyQuadraticDrag<T>(T v, T k, T t) where T : IFloatingPointIeee754<T> => v - (v * T.Abs(v) * k * t);
 }

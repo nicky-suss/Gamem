@@ -133,4 +133,10 @@ public:
       return 0.0f;
    return (v * v) / (2.0f * a);
   }
+  static inline double ApplyQuadraticDrag(double v, double k, double t) {
+    return v - (v * std::abs(v) * k * t);
+  }
+  static inline float ApplyQuadraticDrag(float v, float k, float t) {
+    return v - (v * std::abs(v) * k * t);
+  }
 };

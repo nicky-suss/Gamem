@@ -115,4 +115,14 @@ export class PhysicsGm {
     public static getStoppingDistance(v: number, a: number) {
         return getWasm()._gamem_getstoppingdistance(v, a);
     }
+    /**
+     * Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.
+     * @param v The current velocity.
+     * @param k The quadratic drag coefficient (typically dependent on fluid density, drag coefficient, and cross-sectional area).
+     * @param t The time step (delta time) in seconds.
+     * @returns The updated velocity after quadratic drag has been applied.
+     */
+    public static applyQuadraticDrag(v: number, k: number, t: number) {
+        return getWasm()._gamem_applyquadraticdrag(v, k, t);
+    }
 }

@@ -119,4 +119,12 @@ EMSCRIPTEN_KEEPALIVE
 float gamem_getstoppingdistance_f(float v, float a) {
     return PhysicsGm::GetStoppingDistance(v, a);
 }
+EMSCRIPTEN_KEEPALIVE
+double gamem_applyquadraticdrag(double v, double k, double t) {
+    return PhysicsGm::ApplyQuadraticDrag(v, k, t);
+}
+EMSCRIPTEN_KEEPALIVE
+float gamem_applyquadraticdrag_f(float v, float k, float t) {
+    return PhysicsGm::ApplyQuadraticDrag(v, k, t);
+}
 }

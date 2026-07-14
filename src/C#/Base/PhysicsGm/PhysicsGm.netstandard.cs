@@ -232,5 +232,23 @@ namespace Gamem
                 return 0.0f;
             return (v * v) / (2.0f * a);
         }
+        /// <summary>
+        /// Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.
+        /// </summary>
+        /// <param name="v">The current velocity.</param>
+        /// <param name="k">The quadratic drag coefficient (typically dependent on fluid density, drag coefficient, and cross-sectional area).</param>
+        /// <param name="t">The time step (delta time) in seconds.</param>
+        /// <returns>The updated velocity after quadratic drag has been applied.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double ApplyQuadraticDrag(double v, double k, double t) => v - (v * Math.Abs(v) * k * t);
+        /// <summary>
+        /// Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.
+        /// </summary>
+        /// <param name="v">The current velocity.</param>
+        /// <param name="k">The quadratic drag coefficient (typically dependent on fluid density, drag coefficient, and cross-sectional area).</param>
+        /// <param name="t">The time step (delta time) in seconds.</param>
+        /// <returns>The updated velocity after quadratic drag has been applied.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float ApplyQuadraticDrag(float v, float k, float t) => v - (v * Math.Abs(v) * k * t);
     }
 }
