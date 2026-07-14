@@ -157,4 +157,13 @@ public static partial class PhysicsGm
 
         return velocity;
     }
+    /// <summary>
+    /// Calculates the initial upward velocity required to reach a specific jump height under a given gravity.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="h">The target maximum jump height.</param>
+    /// <param name="g">The gravity value. Its absolute value is used to ensure mathematical stability.</param>
+    /// <returns>The calculated initial jump velocity required to reach the target height.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T CalculateJumpVelocity<T>(T h, T g) where T : IFloatingPointIeee754<T> => T.Sqrt(T.CreateChecked(2) * T.Abs(g) * h);
 }

@@ -190,5 +190,21 @@ namespace Gamem
 
             return velocity;
         }
+        /// <summary>
+        /// Calculates the initial upward velocity required to reach a specific jump height under a given gravity.
+        /// </summary>
+        /// <param name="h">The target maximum jump height.</param>
+        /// <param name="g">The gravity value. Its absolute value is used to ensure mathematical stability.</param>
+        /// <returns>The calculated initial jump velocity required to reach the target height.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double CalculateJumpVelocity(double h, double g) => Math.Sqrt(2.0 * Math.Abs(g) * h);
+        /// <summary>
+        /// Calculates the initial upward velocity required to reach a specific jump height under a given gravity.
+        /// </summary>
+        /// <param name="h">The target maximum jump height.</param>
+        /// <param name="g">The gravity value. Its absolute value is used to ensure mathematical stability.</param>
+        /// <returns>The calculated initial jump velocity required to reach the target height.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float CalculateJumpVelocity(float h, float g) => (float)Math.Sqrt(2.0f * Math.Abs(g) * h);
     }
 }

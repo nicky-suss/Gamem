@@ -1,4 +1,5 @@
 #include "../include/PhysicsGm.hpp"
+#include <emscripten/em_macros.h>
 #include <emscripten/emscripten.h>
 
 extern "C" {
@@ -101,5 +102,13 @@ double gamem_terminalvelocity(double v, double vlimit) {
 EMSCRIPTEN_KEEPALIVE
 float gamem_terminalvelocity_f(float v, float vlimit) {
     return PhysicsGm::TerminalVelocity(v, vlimit);
+}
+EMSCRIPTEN_KEEPALIVE
+double gamem_calculatejumpvelocity(double h, double g) {
+    return PhysicsGm::CalculateJumpVelocity(h, g);
+}
+EMSCRIPTEN_KEEPALIVE
+float gamem_calculatejumpvelocity_f(float h, float g) {
+    return PhysicsGm::CalculateJumpVelocity(h, g);
 }
 }

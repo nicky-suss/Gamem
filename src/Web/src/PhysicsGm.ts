@@ -97,4 +97,13 @@ export class PhysicsGm {
     public static terminalVelocity(v: number, vlimit: number) {
         return getWasm()._gamem_terminalvelocity(v, vlimit);
     }
+    /**
+     * Calculates the initial upward velocity required to reach a specific jump height under a given gravity.
+     * @param h The target maximum jump height.
+     * @param g The gravity value. Its absolute value is used to ensure mathematical stability.
+     * @returns The calculated initial jump velocity required to reach the target height.
+     */
+    public static calculateJumpVelocity(h: number, g: number) {
+        return getWasm()._gamem_calculatejumpvelocity(h, g);
+    }
 }

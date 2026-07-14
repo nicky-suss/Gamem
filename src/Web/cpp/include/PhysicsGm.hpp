@@ -115,4 +115,10 @@ public:
   static inline double TerminalVelocity(double v, double vlimit) {
     return v < -std::fabs(vlimit) ? -std::fabs(vlimit) : v;
   }
+  static inline double CalculateJumpVelocity(double h, double g) {
+    return std::sqrt(2.0 * std::abs(g) * h);
+  }
+  static inline float CalculateJumpVelocity(float h, float g) {
+    return std::sqrt(2.0f * std::abs(g) * h);
+  }
 };
