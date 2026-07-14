@@ -378,18 +378,39 @@ namespace Gamem
                 return 0.0;
             return length - Math.Abs(Math.Abs(t) % (2.0 * length) - length);
         }
-        /// <summary>
-        /// Ping-pongs the value <paramref name="t"/>, causing it to bounce back and forth between 0 and <paramref name="length"/>.
-        /// </summary>
-        /// <param name="t">The incoming value (typically an accumulating time variable).</param>
-        /// <param name="length">The maximum value the result can reach at its peak before bouncing back.</param>
-        /// <returns>A value between 0 and <paramref name="length"/> that oscillates continuously back and forth.</returns>
+        /// <inheritdoc cref="PingPong(double, double)"/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float PingPong(float t, float length)
         {
             if (length == 0.0f)
                 return 0.0f;
             return length - Math.Abs(Math.Abs(t) % (2.0f * length) - length);
+        }
+        /// <summary>
+        /// Linearly interpolates between two angles in degrees, properly handling wrapping around 360 degrees.
+        /// </summary>
+        /// <param name="start">The starting angle in degrees.</param>
+        /// <param name="end">The target angle in degrees.</param>
+        /// <param name="t">The interpolation factor, which will be clamped between 0.0 and 1.0.</param>
+        /// <returns>The interpolated angle in degrees, adjusted to take the shortest path around the circle.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double LerpAngle(double start, double end, double t)
+        {
+            double delta = end - start;
+            double deltta = (delta % 360.0 + 360.0) % 360.0;
+            if (deltta > 180.0)
+                deltta -= 360.0;
+            return start + deltta * Math.Max(0.0, Math.Min(t, 1.0));
+        }
+        /// <inheritdoc cref="LerpAngle(double, double, double)"/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float LerpAngle(float start, float end, float t)
+        {
+            float delta = end - start;
+            float deltta = (delta % 360.0f + 360.0f) % 360.0f;
+            if (deltta > 180.0f)
+                deltta -= 360.0f;
+            return start + deltta * (float)Math.Max(0.0f, (float)Math.Min(t, 1.0f));
         }
     }
 }

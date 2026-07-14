@@ -186,4 +186,14 @@ export class MathGm {
     public static pingPong(t: number, length: number) {
         return getWasm()._gamem_ping_pong(t, length);
     }
+    /**
+     * Linearly interpolates between two angles in degrees, properly handling wrapping around 360 degrees.
+     * @param start The starting angle in degrees.
+     * @param end The target angle in degrees.
+     * @param t The interpolation factor, which will be clamped between 0.0 and 1.0.
+     * @returns The interpolated angle in degrees, adjusted to take the shortest path around the circle.
+     */
+    public static lerpAngle(start: number, end: number, t: number) {
+        return getWasm()._gamem_lerp_angle(start, end, t);
+    }
 }

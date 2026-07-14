@@ -135,4 +135,12 @@ EMSCRIPTEN_KEEPALIVE
 double gamem_ping_pong(double t, double length) {
   return MathGm::PingPong(t, length);
 }
+EMSCRIPTEN_KEEPALIVE
+double gamem_lerp_angle(double start, double end, double t) {
+  return MathGm::LerpAngle(start, end, t);
+}
+EMSCRIPTEN_KEEPALIVE
+float gamem_lerp_angle_f(float start, float end, float t) {
+  return MathGm::LerpAngle(start, end, t);
+}
 }

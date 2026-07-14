@@ -16,6 +16,7 @@ export interface GamemWasmModule {
     _gamem_smooth_damp(current: number, target: number, currentVelocity: number, smoothTime: number, maxSpeed: number, deltaTime: number): number;
     _gamem_smooth_damp_angle(current: number, target: number, currentVelocity: number, smoothTime: number, deltaTime: number): number;
     _gamem_ping_pong(t: number, length: number): number
+    _gamem_lerp_angle(start: number, end: number, t: number): number;
 
     // === GeometryGm ===
     _gamem_getdotproduct(x1: number, y1: number, x2: number, y2: number): number;

@@ -279,4 +279,21 @@ public static partial class MathGm
             return T.Zero;
         return length - T.Abs(T.Abs(t) % (T.CreateChecked(2) * length) - length);
     }
+    /// <summary>
+    /// Linearly interpolates between two angles in degrees, properly handling wrapping around 360 degrees.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="start">The starting angle in degrees.</param>
+    /// <param name="end">The target angle in degrees.</param>
+    /// <param name="t">The interpolation factor, which will be clamped between 0.0 and 1.0.</param>
+    /// <returns>The interpolated angle in degrees, adjusted to take the shortest path around the circle.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T LerpAngle<T>(T start, T end, T t) where T : IFloatingPointIeee754<T>
+    {
+        T delta = end - start;
+        T deltta = (delta % T.CreateChecked(360) + T.CreateChecked(360)) % T.CreateChecked(360);
+        if (deltta > T.CreateChecked(180))
+            deltta -= T.CreateChecked(360);
+        return start + deltta * T.Clamp(t, T.Zero, T.One);
+    }
 }

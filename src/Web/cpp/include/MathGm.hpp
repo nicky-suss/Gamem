@@ -263,4 +263,20 @@ public:
       return 0.0f;
     return length - std::abs(std::fmod(std::abs(t), (2.0f * length) - length));
   }
+  static inline double LerpAngle(double start, double end, double t)
+  {
+      double delta = end - start;
+      double deltta = std::fmod((std::fmod(delta, 360.0) + 360.0), 360.0);
+      if (deltta > 180.0)
+          deltta -= 360.0;
+      return start + deltta * std::max(0.0, std::min(t, 1.0));
+  }
+  static inline float LerpAngle(float start, float end, float t)
+  {
+      float delta = end - start;
+      float deltta = std::fmod((std::fmod(delta, 360.0f) + 360.0f), 360.0f);
+      if (deltta > 180.0f)
+          deltta -= 360.0f;
+      return start + deltta * std::max(0.0f, std::min(t, 1.0f));
+  }
 };
