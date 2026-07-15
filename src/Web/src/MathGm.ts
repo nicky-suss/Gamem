@@ -196,4 +196,13 @@ export class MathGm {
     public static lerpAngle(start: number, end: number, t: number) {
         return getWasm()._gamem_lerp_angle(start, end, t);
     }
+    /**
+     * Loops the value t so that it is never larger than length and never smaller than 0.
+     * @param t The input value to loop.
+     * @param length The length of the loop (period).
+     * @returns The looped value wrapped within the range [0, length).
+     */
+    public static repeat(t: number, length: number) {
+        return getWasm()._gamem_repeat(t, length);
+    }
 }

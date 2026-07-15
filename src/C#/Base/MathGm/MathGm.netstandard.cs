@@ -412,5 +412,31 @@ namespace Gamem
                 deltta -= 360.0f;
             return start + deltta * (float)Math.Max(0.0f, (float)Math.Min(t, 1.0f));
         }
+        /// <summary>
+        /// Loops the value <paramref name="t"/> so that it is never larger than <paramref name="length"/> and never smaller than 0.
+        /// </summary>
+        /// <param name="t">The input value to loop.</param>
+        /// <param name="length">The length of the loop (period).</param>
+        /// <returns>The looped value wrapped within the range [0, <paramref name="length"/>).</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Repeat(double t, double length)
+        {
+            if (length == 0.0)
+                return 0.0;
+            return t - Math.Floor(t / length) * length;
+        }
+        /// <summary>
+        /// Loops the value <paramref name="t"/> so that it is never larger than <paramref name="length"/> and never smaller than 0.
+        /// </summary>
+        /// <param name="t">The input value to loop.</param>
+        /// <param name="length">The length of the loop (period).</param>
+        /// <returns>The looped value wrapped within the range [0, <paramref name="length"/>).</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Repeat(float t, float length)
+        {
+            if (length == 0.0f)
+                return 0.0f;
+            return t - (float)Math.Floor(t / length) * length;
+        }
     }
 }

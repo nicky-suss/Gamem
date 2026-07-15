@@ -143,4 +143,12 @@ EMSCRIPTEN_KEEPALIVE
 float gamem_lerp_angle_f(float start, float end, float t) {
   return MathGm::LerpAngle(start, end, t);
 }
+EMSCRIPTEN_KEEPALIVE
+double gamem_repeat(double t, double length) {
+  return MathGm::Repeat(t, length);
+}
+EMSCRIPTEN_KEEPALIVE
+float gamem_repeat_f(float t, float length) {
+  return MathGm::Repeat(t, length);
+}
 }

@@ -296,4 +296,18 @@ public static partial class MathGm
             deltta -= T.CreateChecked(360);
         return start + deltta * T.Clamp(t, T.Zero, T.One);
     }
+    /// <summary>
+    /// Loops the value <paramref name="t"/> so that it is never larger than <paramref name="length"/> and never smaller than 0.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="t">The input value to loop.</param>
+    /// <param name="length">The length of the loop (period).</param>
+    /// <returns>The looped value wrapped within the range [0, <paramref name="length"/>).</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T Repeat<T>(T t, T length) where T : IFloatingPointIeee754<T>
+    {
+        if (T.IsZero(length))
+            return T.Zero;
+        return t - T.Floor(t / length) * length;
+    }
 }
