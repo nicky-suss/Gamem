@@ -7,7 +7,7 @@ namespace Gamem.Stride;
 /// <summary>
 /// Provides static mathematical methods for basic physics calculations like gravity, friction, and movement interpolation.
 /// </summary>
-public static class PhysicsGmMonoGame
+public static class PhysicsGmStride
 {
     /// <summary>
     /// Applies linear drag to a 3D velocity vector over a given time step, stopping the object completely if its speed drops below a small threshold.

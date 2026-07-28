@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 namespace Gamem.Stride;
 
 /// <summary>
-/// Provides static methods for Geometry calculations for MonoGame
+/// Provides static methods for Geometry calculations for Stride
 /// </summary>
 public static class GeometryGmStride
 {
