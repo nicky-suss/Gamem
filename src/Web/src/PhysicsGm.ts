@@ -136,6 +136,17 @@ export class PhysicsGm {
     public static calculateLaunchVelocity(target: number, start: number, g: number, t: number) {
         return getWasm()._gamem_calculatelaunchvelocity(target, start, g, t);
     }
+    /**
+     * Predicts the 2D position coordinates of a projectile at a given time under constant acceleration (gravity).
+     * @param startPosX The initial X-coordinate position.
+     * @param startPosY The initial Y-coordinate position.
+     * @param startVelocityX The initial velocity along the X-axis.
+     * @param startVelocityY The initial velocity along the Y-axis.
+     * @param gravityX The acceleration along the X-axis.
+     * @param gravityY The acceleration along the Y-axis.
+     * @param t The time elapsed since the start of the trajectory in seconds.
+     * @returns A tuple containing the calculated X and Y position coordinates at time t.
+     */
     public static predictTrajectory(startPosX: number, startPosY: number, startVelocityX: number, startVelocityY: number, gravityX: number, gravityY: number, t: number): {x: number, y: number} {
         const outXPtr = getWasm()._malloc(8);
         const outYPtr = getWasm()._malloc(8);
