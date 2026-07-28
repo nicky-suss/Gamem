@@ -139,4 +139,14 @@ public:
   static inline float ApplyQuadraticDrag(float v, float k, float t) {
     return v - (v * std::abs(v) * k * t);
   }
+  static inline double CalculateLaunchVelocity(double target, double start, double g, double t)
+  {
+    if (t <= 0.0) return 0.0;
+    return (target - start - (g * t * t) / 2.0) / t;
+  }
+  static inline float CalculateLaunchVelocity(float target, float start, float g, float t)
+  {
+    if (t <= 0.0f) return 0.0f;
+    return (target - start - (g * t * t) / 2.0f) / t;
+  }
 };

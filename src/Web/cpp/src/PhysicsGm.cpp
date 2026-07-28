@@ -127,4 +127,12 @@ EMSCRIPTEN_KEEPALIVE
 float gamem_applyquadraticdrag_f(float v, float k, float t) {
     return PhysicsGm::ApplyQuadraticDrag(v, k, t);
 }
+EMSCRIPTEN_KEEPALIVE
+double gamem_calculatelaunchvelocity(double target, double start, double g, double t) {
+    return PhysicsGm::CalculateLaunchVelocity(target, start, g, t);
+}
+EMSCRIPTEN_KEEPALIVE
+float gamem_calculatelaunchvelocity_f(float target, float start, float g, float t) {
+    return PhysicsGm::CalculateLaunchVelocity(target, start, g, t);
+}
 }

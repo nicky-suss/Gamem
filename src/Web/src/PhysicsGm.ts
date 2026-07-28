@@ -125,4 +125,15 @@ export class PhysicsGm {
     public static applyQuadraticDrag(v: number, k: number, t: number) {
         return getWasm()._gamem_applyquadraticdrag(v, k, t);
     }
+    /**
+     * Calculates the required initial velocity along a single axis to reach a target displacement in a given time under constant acceleration.
+     * @param target The target position to reach.
+     * @param start The starting position.
+     * @param g The constant acceleration along this axis (e.g., gravity).
+     * @param t The desired time to reach the target in seconds.
+     * @returns The required initial velocity, or zero if t is zero.
+     */
+    public static calculateLaunchVelocity(target: number, start: number, g: number, t: number) {
+        return getWasm()._gamem_calculatelaunchvelocity(target, start, g, t);
+    }
 }

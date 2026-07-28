@@ -191,4 +191,19 @@ public static partial class PhysicsGm
     /// <returns>The updated velocity after quadratic drag has been applied.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T ApplyQuadraticDrag<T>(T v, T k, T t) where T : IFloatingPointIeee754<T> => v - (v * T.Abs(v) * k * t);
+    /// <summary>
+    /// Calculates the required initial velocity along a single axis to reach a target displacement in a given time under constant acceleration.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="target">The target position to reach.</param>
+    /// <param name="start">The starting position.</param>
+    /// <param name="g">The constant acceleration along this axis (e.g., gravity).</param>
+    /// <param name="t">The desired time to reach the target in seconds.</param>
+    /// <returns>The required initial velocity, or zero if <paramref name="t"/> is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T CalculateLaunchVelocity<T>(T target, T start, T g, T t) where T : IFloatingPointIeee754<T>
+    {
+        if (T.IsZero(t)) return T.Zero;
+        return (target - start - (g * t * t) / T.CreateChecked(2)) / t;
+    }
 }

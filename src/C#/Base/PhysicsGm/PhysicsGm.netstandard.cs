@@ -250,5 +250,33 @@ namespace Gamem
         /// <returns>The updated velocity after quadratic drag has been applied.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float ApplyQuadraticDrag(float v, float k, float t) => v - (v * Math.Abs(v) * k * t);
+        /// <summary>
+        /// Calculates the required initial velocity along a single axis to reach a target displacement in a given time under constant acceleration.
+        /// </summary>
+        /// <param name="target">The target position to reach.</param>
+        /// <param name="start">The starting position.</param>
+        /// <param name="g">The constant acceleration along this axis (e.g., gravity).</param>
+        /// <param name="t">The desired time to reach the target in seconds.</param>
+        /// <returns>The required initial velocity, or zero if <paramref name="t"/> is zero.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double CalculateLaunchVelocity(double target, double start, double g, double t)
+        {
+            if (t <= 0.0) return 0.0;
+            return (target - start - (g * t * t) / 2.0) / t;
+        }
+        /// <summary>
+        /// Calculates the required initial velocity along a single axis to reach a target displacement in a given time under constant acceleration.
+        /// </summary>
+        /// <param name="target">The target position to reach.</param>
+        /// <param name="start">The starting position.</param>
+        /// <param name="g">The constant acceleration along this axis (e.g., gravity).</param>
+        /// <param name="t">The desired time to reach the target in seconds.</param>
+        /// <returns>The required initial velocity, or zero if <paramref name="t"/> is zero.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float CalculateLaunchVelocity(float target, float start, float g, float t)
+        {
+            if (t <= 0.0f) return 0.0f;
+            return (target - start - (g * t * t) / 2.0f) / t;
+        }
     }
 }

@@ -51,6 +51,7 @@ export interface GamemWasmModule {
     _gamem_calculatejumpvelocity(h: number, g: number): number
     _gamem_getstoppingdistance(v: number, a: number): number;
     _gamem_applyquadraticdrag(v: number, k: number, t: number): number;
+    _gamem_calculatelaunchvelocity(target: number, start: number, g: number, t: number): number;
 
     _malloc(size: number): number;
     _free(ptr: number): number;
