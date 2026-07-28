@@ -102,7 +102,8 @@ using Gamem.Stride; // If you use Stride extension
 ```
 **(TypeScript) To use Gamem methods type this:**
 ```ts
-import { MathGm, GeometryGm, PhysicsGm } from 'gamem-wasm';
+import { MathGm, GeometryGm, PhysicsGm, initializeGamem } from "gamem-wasm";
+import gamemWasmFactory from "gamem-wasm/dist/gamem_wasm.js";
 ```
 ## 🚀 Write code much faster
 

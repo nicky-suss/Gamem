@@ -17,7 +17,8 @@ npm install gamem-wasm
 **To use Gamem methods just import them:**
 
 ```ts
-import { MathGm, GeometryGm, PhysicsGm } from 'gamem-wasm';
+import { MathGm, GeometryGm, PhysicsGm, initializeGamem } from "gamem-wasm";
+import gamemWasmFactory from "gamem-wasm/dist/gamem_wasm.js";
 ```
 
 ## 🚀 Get Started
