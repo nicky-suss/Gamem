@@ -278,5 +278,34 @@ namespace Gamem
             if (t <= 0.0f) return 0.0f;
             return (target - start - (g * t * t) / 2.0f) / t;
         }
+        /// <summary>
+        /// Predicts the 2D position of a projectile at a given time under constant acceleration (gravity).
+        /// </summary>
+        /// <param name="startPos">The initial position vector.</param>
+        /// <param name="startVelocity">The initial velocity vector.</param>
+        /// <param name="gravity">The acceleration vector (such as gravity).</param>
+        /// <param name="t">The time elapsed since the start of the trajectory in seconds.</param>
+        /// <returns>The calculated <see cref="Vector2"/> position at time <paramref name="t"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 PredictTrajectory(Vector2 startPos, Vector2 startVelocity, Vector2 gravity, float t)
+        {
+            return new Vector2(startPos.X + startVelocity.X * t + 1.0f / 2.0f * gravity.X * (t * t), startPos.Y + startVelocity.Y * t + 1.0f / 2.0f * gravity.Y * (t * t));
+        }
+        /// <summary>
+        /// Predicts the 2D position coordinates of a projectile at a given time under constant acceleration (gravity).
+        /// </summary>
+        /// <param name="startPosX">The initial X-coordinate position.</param>
+        /// <param name="startPosY">The initial Y-coordinate position.</param>
+        /// <param name="startVelocityX">The initial velocity along the X-axis.</param>
+        /// <param name="startVelocityY">The initial velocity along the Y-axis.</param>
+        /// <param name="gravityX">The acceleration along the X-axis.</param>
+        /// <param name="gravityY">The acceleration along the Y-axis.</param>
+        /// <param name="t">The time elapsed since the start of the trajectory in seconds.</param>
+        /// <returns>A tuple containing the calculated X and Y position coordinates at time <paramref name="t"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static (float x, float y) PredictTrajectory(float startPosX, float startPosY, float startVelocityX, float startVelocityY, float gravityX, float gravityY, float t)
+        {
+            return PredictTrajectory(startPosX, startPosY, startVelocityX, startVelocityY, gravityX, gravityY, t);
+        }
     }
 }

@@ -136,4 +136,18 @@ export class PhysicsGm {
     public static calculateLaunchVelocity(target: number, start: number, g: number, t: number) {
         return getWasm()._gamem_calculatelaunchvelocity(target, start, g, t);
     }
+    public static predictTrajectory(startPosX: number, startPosY: number, startVelocityX: number, startVelocityY: number, gravityX: number, gravityY: number, t: number): {x: number, y: number} {
+        const outXPtr = getWasm()._malloc(8);
+        const outYPtr = getWasm()._malloc(8);
+
+        getWasm()._gamem_predicttrajectory(startPosX, startPosY, startVelocityX, startVelocityY, gravityX, gravityY, t, outXPtr, outYPtr);
+
+        const resX = getWasm().getValue(outXPtr, "double");
+        const resY = getWasm().getValue(outYPtr, "double");
+
+        getWasm()._free(outXPtr);
+        getWasm()._free(outYPtr);
+
+        return { x: resX, y: resY };
+    }
 }

@@ -135,4 +135,10 @@ EMSCRIPTEN_KEEPALIVE
 float gamem_calculatelaunchvelocity_f(float target, float start, float g, float t) {
     return PhysicsGm::CalculateLaunchVelocity(target, start, g, t);
 }
+EMSCRIPTEN_KEEPALIVE
+void gamem_predicttrajectory(float startPosX, float startPosY, float startVelocityX, float startVelocityY, float gravityX, float gravityY, float t, double* outX, double* outY) {
+    auto result = PhysicsGm::PredictTrajectory(startPosX, startPosY, startVelocityX, startVelocityY, gravityX, gravityY, t);
+    *outX = std::get<0>(result);
+    *outY = std::get<1>(result);
+}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <cmath>
+#include <tuple>
 
 class PhysicsGm {
 public:
@@ -148,5 +149,9 @@ public:
   {
     if (t <= 0.0f) return 0.0f;
     return (target - start - (g * t * t) / 2.0f) / t;
+  }
+  static inline std::tuple<float, float> PredictTrajectory(float startPosX, float startPosY, float startVelocityX, float startVelocityY, float gravityX, float gravityY, float t)
+  {
+    return std::make_tuple(startPosX + startVelocityX * t + 1.0f / 2.0f * gravityX * (t * t), startPosY + startVelocityY * t + 1.0f / 2.0f * gravityY * (t * t));
   }
 };
