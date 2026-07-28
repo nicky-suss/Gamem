@@ -37,6 +37,23 @@ async function main() {
 }
 main(); // Call main to run the code
 ```
+**How to use with vectors (I've used [ts-matrix](https://www.npmjs.com/package/ts-matrix) as example)**
+```ts
+import { MathGm, GeometryGm, PhysicsGm, initializeGamem } from "gamem-wasm";
+import gamemWasmFactory from "gamem-wasm/dist/gamem_wasm.js";
+import { Vector } from "ts-matrix";
+
+async function main() {
+    await initializeGamem(gamemWasmFactory);
+
+    const vector = new Vector([1, 2]);
+    const normal = new Vector([3, 1110]); // Just random numbers for example
+
+    console.log(GeometryGm.reflect(vector.values[0], vector.values[1], normal.values[0], normal.values[1]));
+    // { x: -13337, y: -4935058 }
+}
+main();
+```
 ## ✨ Why Gamem?
 - 🍃 **Zero Dependencies** - Pure TypeScript wrapper around compiled C++ code
 - 🎮 **Engine doesn't matter** - You can use it in any web engine or vanilla project!
