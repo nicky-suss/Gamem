@@ -191,6 +191,32 @@ namespace Gamem
             return velocity;
         }
         /// <summary>
+        /// Applies linear drag to 3D velocity components over a given time step, stopping the movement along XY if the 3D velocity magnitude drops below a small threshold.
+        /// </summary>
+        /// <param name="velocityX">The X component of the velocity.</param>
+        /// <param name="velocityY">The Y component of the velocity.</param>
+        /// <param name="velocityZ">The Z component of the velocity.</param>
+        /// <param name="drag">The drag coefficient influencing the exponential decay speed.</param>
+        /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
+        /// <returns>A tuple containing the updated X and Y velocity components, or zeros if the total 3D speed is below the threshold.</returns>
+        public static (double x, double y, double z) Drag(double velocityX, double velocityY, double velocityZ, double drag, double deltaTime)
+        {
+            return Drag(velocityX, velocityY, velocityZ, drag, deltaTime);
+        }
+        /// <summary>
+        /// Applies linear drag to 3D velocity components over a given time step, stopping the movement along XY if the 3D velocity magnitude drops below a small threshold.
+        /// </summary>
+        /// <param name="velocityX">The X component of the velocity.</param>
+        /// <param name="velocityY">The Y component of the velocity.</param>
+        /// <param name="velocityZ">The Z component of the velocity.</param>
+        /// <param name="drag">The drag coefficient influencing the exponential decay speed.</param>
+        /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
+        /// <returns>A tuple containing the updated X and Y velocity components, or zeros if the total 3D speed is below the threshold.</returns>
+        public static (float x, float y, float z) Drag(float velocityX, float velocityY, float velocityZ, float drag, float deltaTime)
+        {
+            return Drag(velocityX, velocityY, velocityZ, drag, deltaTime);
+        }
+        /// <summary>
         /// Calculates the initial upward velocity required to reach a specific jump height under a given gravity.
         /// </summary>
         /// <param name="h">The target maximum jump height.</param>

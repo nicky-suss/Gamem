@@ -146,17 +146,31 @@ public static partial class PhysicsGm
     /// Applies linear drag to a 3D velocity vector over a given time step, stopping the object completely if its speed drops below a small threshold.
     /// </summary>
     /// <param name="velocity">The current velocity vector.</param>
-    /// <param name="drag">The drag coefficient (typically negative to slow the object down, or positive depending on the expected math convention).</param>
+    /// <param name="drag">The drag coefficient influencing the exponential decay speed.</param>
     /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
     /// <returns>The updated velocity vector after drag has been applied, or <see cref="Vector3.Zero"/> if the squared velocity is below 0.0001f.</returns>
     public static Vector3 Drag(Vector3 velocity, float drag, float deltaTime)
     {
-        velocity *= MathF.Exp(drag * deltaTime);
+        velocity *= MathF.Exp(-drag * deltaTime);
 
         if (velocity.LengthSquared() < 0.0001f)
             return Vector3.Zero;
 
         return velocity;
+    }
+    /// <summary>
+    /// Applies linear drag to 3D velocity components over a given time step, stopping the movement along XY if the 3D velocity magnitude drops below a small threshold.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="velocityX">The X component of the velocity.</param>
+    /// <param name="velocityY">The Y component of the velocity.</param>
+    /// <param name="velocityZ">The Z component of the velocity.</param>
+    /// <param name="drag">The drag coefficient influencing the exponential decay speed.</param>
+    /// <param name="deltaTime">The time elapsed since the last frame in seconds.</param>
+    /// <returns>A tuple containing the updated X and Y velocity components, or zeros if the total 3D speed is below the threshold.</returns>
+    public static (T x, T y, T z) Drag<T>(T velocityX, T velocityY, T velocityZ, T drag, T deltaTime) where T : IFloatingPointIeee754<T>
+    {
+        return Drag(velocityX, velocityY, velocityZ, drag, deltaTime);
     }
     /// <summary>
     /// Calculates the initial upward velocity required to reach a specific jump height under a given gravity.
