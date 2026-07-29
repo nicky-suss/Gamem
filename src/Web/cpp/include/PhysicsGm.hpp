@@ -154,4 +154,15 @@ public:
   {
     return std::make_tuple(startPosX + startVelocityX * t + 1.0f / 2.0f * gravityX * (t * t), startPosY + startVelocityY * t + 1.0f / 2.0f * gravityY * (t * t));
   }
+  static inline std::tuple<float, float, float> Drag(float velocityX, float velocityY, float velocityZ, float drag, float deltaTime) {
+    float exp = std::exp(-drag * deltaTime);
+    velocityX *= exp;
+    velocityY *= exp;
+    velocityZ *= exp;
+
+    if (velocityX * velocityX + velocityY * velocityY + velocityZ * velocityZ < 0.0001f)
+        return {0.0f, 0.0f, 0.0f};
+
+    return std::make_tuple(velocityX, velocityY, velocityZ);
+  }
 };

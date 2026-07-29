@@ -53,6 +53,7 @@ export interface GamemWasmModule {
     _gamem_applyquadraticdrag(v: number, k: number, t: number): number;
     _gamem_calculatelaunchvelocity(target: number, start: number, g: number, t: number): number;
     _gamem_predicttrajectory(startPosX: number, startPosY: number, startVelocityX: number, startVelocityY: number, gravityX: number, gravityY: number, t: number, outXPtr: number, outYPtr: number): void;
+    _gamem_drag(velocityX: number, velocityY: number, velocityZ: number, drag: number, deltaTime: number, outVelocityX: number, outVelocityY: number, outVelocityZ: number): void;
 
     _malloc(size: number): number;
     _free(ptr: number): number;

@@ -161,4 +161,26 @@ export class PhysicsGm {
 
         return { x: resX, y: resY };
     }
+    /**
+     * Applies linear drag to 3D velocity components over a given time step, stopping the movement along XY if the 3D velocity magnitude drops below a small threshold.
+     * @param velocityX The X component of the velocity.
+     * @param velocityY The Y component of the velocity.
+     * @param velocityZ The Z component of the velocity.
+     * @param drag The drag coefficient influencing the exponential decay speed.
+     * @param deltaTime The time elapsed since the last frame in seconds.
+     * @returns A tuple containing the updated X, Y and Z velocity components, or zeros if the total 3D speed is below the threshold.
+     */
+    public static drag(velocityX: number, velocityY: number, velocityZ: number, drag: number, deltaTime: number): { outVelocityX: number, outVelocityY: number, outVelocityZ: number } {
+        const outXPtr = getWasm()._malloc(8);
+        const outYPtr = getWasm()._malloc(8);
+        const outZPtr = getWasm()._malloc(8);
+
+        getWasm()._gamem_drag(velocityX, velocityY, velocityZ, drag, deltaTime, outXPtr, outYPtr, outZPtr);
+
+        const resX = getWasm().getValue(outXPtr, "double");
+        const resY = getWasm().getValue(outYPtr, "double");
+        const resZ = getWasm().getValue(outZPtr, "double");
+
+        return { outVelocityX: resX, outVelocityY: resY, outVelocityZ: resZ };
+    }
 }

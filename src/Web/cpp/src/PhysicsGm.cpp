@@ -141,4 +141,11 @@ void gamem_predicttrajectory(float startPosX, float startPosY, float startVeloci
     *outX = std::get<0>(result);
     *outY = std::get<1>(result);
 }
+EMSCRIPTEN_KEEPALIVE
+void gamem_drag(float velocityX, float velocityY, float velocityZ, float drag, float deltaTime, double* outVelocityX, double* outVelocityY, double* outVelocityZ) {
+    auto result = PhysicsGm::Drag(velocityX, velocityY, velocityZ, drag, deltaTime);
+    *outVelocityX = std::get<0>(result);
+    *outVelocityY = std::get<1>(result);
+    *outVelocityZ = std::get<2>(result);
+}
 }
