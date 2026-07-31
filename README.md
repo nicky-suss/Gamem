@@ -1,12 +1,12 @@
 # Gamem
-![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem) ||| ![npm version](https://img.shields.io/npm/v/gamem-wasm) ![npm downloads](https://img.shields.io/npm/dt/gamem-wasm) ![Static Badge](https://img.shields.io/badge/license-MIT-green)
+![NuGet Version](https://img.shields.io/nuget/v/Gamem?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem) ||| ![NPM Version](https://img.shields.io/npm/v/gamem-wasm?logo=npm&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fgamem-wasm) ![NPM Downloads](https://img.shields.io/npm/d18m/gamem-wasm?logo=npm&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fgamem-wasm) ||| ![Static Badge](https://img.shields.io/badge/license-MIT-green)
 
 ### If you need vectors for Godot, MonoGame or Stride, use these extensions:
-- **[Gamem.Godot](https://www.nuget.org/packages/Gamem.Godot) for Godot**
-- **[Gamem.MonoGame](https://www.nuget.org/packages/Gamem.MonoGame) for MonoGame**
-- **[Gamem.Stride](https://www.nuget.org/packages/Gamem.Stride) for Stride**
+- **[Gamem.Godot](https://www.nuget.org/packages/Gamem.Godot) for Godot** ![NuGet Version](https://img.shields.io/nuget/v/Gamem.Godot?logo=nuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.Godot) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.Godot?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.Godot)
+- **[Gamem.MonoGame](https://www.nuget.org/packages/Gamem.MonoGame) for MonoGame** ![NuGet Version](https://img.shields.io/nuget/v/Gamem.MonoGame?logo=nuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.MonoGame) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.MonoGame?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.MonoGame)
+- **[Gamem.Stride](https://www.nuget.org/packages/Gamem.Stride) for Stride** ![NuGet Version](https://img.shields.io/nuget/v/Gamem.Stride?logo=nuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.MonoGame) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.Stride?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.Stride)
 
-**🎮 Gamem is a C# and TypeScript library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net) and different JS engines! 👾**
+**Gamem is a C# and TypeScript library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net) and different JS engines!**
 
 ## 🌟 Features
 - **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more.
@@ -14,7 +14,7 @@
 - **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `CheckCircleVsCircle`, `CheckAABBVsAABB` and more
 ## 📂 Project Structure
 <details>
-<summary>📂 Click to view full Project Structure</summary>
+<summary>Click to view full Project Structure</summary>
 
 ```text
 📂 Gamem
@@ -105,7 +105,7 @@ using Gamem.Stride; // If you use Stride extension
 import { MathGm, GeometryGm, PhysicsGm, initializeGamem } from "gamem-wasm";
 import gamemWasmFactory from "gamem-wasm/dist/gamem_wasm.js";
 ```
-## 🚀 Write code much faster
+## Write code much faster
 
 **Without Gamem:**
 ```csharp
@@ -118,11 +118,11 @@ float speed = Random.Shared.NextDouble() * (max - min) + min;
 float speed = MathGm.RandomRange(2.5f, 7.5f);
 ```
 ## ✨ Why Gamem?
-- 🍃 **Zero Dependencies** - C# and TypeScript only. Doesn't use other heavy libraries
-- 🎮 **Engine doesn't matter** - You can use it in any engine or project!
-- ⚡ **Good performance** - Optimized methods
+- **Zero Dependencies** - C# and TypeScript only. Doesn't use other heavy libraries
+- **Engine doesn't matter** - You can use it in any engine or project!
+- **Good performance** - Optimized methods via Aggressive Inlining
 ## ❤️ Contributing
-- **⭐ Liked the project? Leave a star for [this repo](https://github.com/nicky-suss/Gamem), it motivates me to develop this project!**
-- **🗨️ Have any ideas or found a bug? Open an issue or send Pull Request!**
-## ⚖️ License
+- **Liked the project? Leave a star for [this repo](https://github.com/nicky-suss/Gamem), it motivates me to develop this project!**
+- **Have any ideas or found a bug? Open an issue or send Pull Request!**
+## License
 **Gamem is licensed under the [MIT](https://github.com/nicky-suss/Gamem/blob/main/LICENSE) license**

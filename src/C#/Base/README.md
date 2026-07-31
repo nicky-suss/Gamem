@@ -1,11 +1,12 @@
 # Gamem
-![NuGet Version](https://img.shields.io/nuget/v/Gamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem) ![Static Badge](https://img.shields.io/badge/license-MIT-green)
+![NuGet Version](https://img.shields.io/nuget/v/Gamem?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem) ![Static Badge](https://img.shields.io/badge/license-MIT-green)
 
-### If you need vectors for Godot or MonoGame, use these extensions:
-- **[Gamem.Godot](https://www.nuget.org/packages/Gamem.Godot) for Godot**
-- **[Gamem.MonoGame](https://www.nuget.org/packages/Gamem.MonoGame) for MonoGame**
+### If you need vectors for Godot, MonoGame or Stride, use these extensions:
+- **[Gamem.Godot](https://www.nuget.org/packages/Gamem.Godot) for Godot** ![NuGet Version](https://img.shields.io/nuget/v/Gamem.Godot?logo=nuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.Godot) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.Godot?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.Godot)
+- **[Gamem.MonoGame](https://www.nuget.org/packages/Gamem.MonoGame) for MonoGame** ![NuGet Version](https://img.shields.io/nuget/v/Gamem.MonoGame?logo=nuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.MonoGame) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.MonoGame?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.MonoGame)
+- **[Gamem.Stride](https://www.nuget.org/packages/Gamem.Stride) for Stride** ![NuGet Version](https://img.shields.io/nuget/v/Gamem.Stride?logo=nuGet&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.MonoGame) ![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.Stride?logo=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FGamem.Stride)
 
-**🎮 Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org) and [MonoGame](https://monogame.net)! 👾**
+**Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net) and other engines and frameworks!**
 
 ## 🌟 Features
 - **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more.
@@ -21,7 +22,7 @@ dotnet add package Gamem
 ```csharp
 using Gamem;
 ```
-## 🚀 Write code much faster
+## Write code much faster
 
 **Without Gamem:**
 ```csharp
@@ -34,11 +35,11 @@ float speed = Random.Shared.NextDouble() * (max - min) + min;
 float speed = MathGamem.RandomRange(2.5f, 7.5f);
 ```
 ## ✨ Why Gamem?
-- 🍃 **Zero Dependencies** - C# only. Doesn't use other heavy libraries
-- 🎮 **Engine doesn't matter** - You can use it everywhere. [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net), Console or custom Engines
-- ⚡ **Good performance** - Optimized methods
+- **Zero Dependencies** - C# only. Doesn't use other heavy libraries
+- **Engine doesn't matter** - You can use it everywhere. [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net), Console or custom Engines
+- **Good performance** - Optimized methods
 ## ❤️ Contributing
-- **⭐ Liked the project? Leave a star for [this repo](https://github.com/nicky-suss/Gamem), it motivates me to develop this project!**
-- **🗨️ Have any ideas or found a bug? Open an issue or send Pull Request!**
-## ⚖️ License
+- **Liked the project? Leave a star for [this repo](https://github.com/nicky-suss/Gamem), it motivates me to develop this project!**
+- **Have any ideas or found a bug? Open an issue or send Pull Request!**
+## License
 **Gamem is licensed under the [MIT](https://github.com/nicky-suss/Gamem/blob/main/LICENSE) license**
