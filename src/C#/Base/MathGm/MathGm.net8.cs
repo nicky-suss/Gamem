@@ -27,7 +27,7 @@ public static partial class MathGm
     public static T SmoothStep<T>(T start, T end, T t) where T : IFloatingPointIeee754<T>
     {
         T c = T.Clamp(t, T.Zero, T.One);
-        T tt = c * c * (T.CreateChecked(3) - T.CreateChecked(2) * c);
+        T tt = c * c * (Cache<T>.T3 - Cache<T>.T2 * c);
         return start + (end - start) * tt;
     }
     /// <summary>
@@ -37,11 +37,11 @@ public static partial class MathGm
     /// <param name="min">The minimum bound of the range.</param>
     /// <param name="max">The maximum bound of the range.</param>
     /// <returns>A random value greater than or equal to min, and less than max.</returns>
-    /// <exception cref="ArgumentException">Thrown when min is greater than max.</exception>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T RandomRange<T>(T min, T max) where T : IFloatingPointIeee754<T>
     {
         if (min > max)
-            throw new ArgumentException($"{nameof(min)} must be <= {nameof(max)}");
+            (min, max) = (max, min);
         T randomF = T.CreateChecked(Random.Shared.NextDouble());
         return min + (randomF * (max - min));
     }
@@ -76,7 +76,7 @@ public static partial class MathGm
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static T InverseLerp<T>(T value, T start, T end) where T : IFloatingPointIeee754<T>
     {
-        if (T.Abs(end - start) <= T.CreateChecked(1e-5))
+        if (T.Abs(end - start) <= T.CreateChecked(Cache<T>.T1e5))
             return T.Zero;
         return T.Clamp((value - start) / (end - start), T.Zero, T.One);
     }
@@ -102,7 +102,7 @@ public static partial class MathGm
     /// <param name="fromMax">The upper bound of the input range.</param>
     /// <returns>The mapped value in the output range, or 0.0 if the input range size is zero.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T Map<T>(T toMin, T v, T fromMin, T toMax, T fromMax) where T : IFloatingPointIeee754<T> => T.Abs(fromMax - fromMin) <= T.CreateChecked(1e-5) ? T.Zero : toMin + (v - fromMin) * ((toMax - toMin) / (fromMax - fromMin));
+    public static T Map<T>(T toMin, T v, T fromMin, T toMax, T fromMax) where T : IFloatingPointIeee754<T> => T.Abs(fromMax - fromMin) <= Cache<T>.T1e5 ? T.Zero : toMin + (v - fromMin) * ((toMax - toMin) / (fromMax - fromMin));
     /// <summary>
     /// Remaps a value from an input range to an output range, behaving identically to Map method.
     /// </summary>
@@ -159,7 +159,7 @@ public static partial class MathGm
     /// <param name="b">The divisor (denominator).</param>
     /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T SafeDivide<T>(T a, T b) where T : IFloatingPointIeee754<T> => T.Abs(b) < T.CreateChecked(1e-5) ? T.Zero : a / b;
+    public static T SafeDivide<T>(T a, T b) where T : IFloatingPointIeee754<T> => T.Abs(b) < Cache<T>.T1e5 ? T.Zero : a / b;
     /// <summary>
     /// Divides one integer by another, returning a fallback value if the denominator is zero to prevent a division-by-zero exception.
     /// </summary>
@@ -177,7 +177,7 @@ public static partial class MathGm
     /// <param name="fallback">The value to return if <paramref name="b"/> is zero.</param>
     /// <returns>The result of <paramref name="a"/> / <paramref name="b"/>, or the fallback value if <paramref name="b"/> is 0.0.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T SafeDivide<T>(T a, T b, T fallback) where T : IFloatingPointIeee754<T> => T.Abs(b) < T.CreateChecked(1e-5) ? fallback : a / b;
+    public static T SafeDivide<T>(T a, T b, T fallback) where T : IFloatingPointIeee754<T> => T.Abs(b) < Cache<T>.T1e5 ? fallback : a / b;
     /// <summary>
     /// Compares two floating-point values and determines if they are approximately equal within a small tolerance.
     /// </summary>
@@ -185,9 +185,10 @@ public static partial class MathGm
     /// <param name="a">The first value to compare.</param>
     /// <param name="b">The second value to compare.</param>
     /// <returns><see langword="true"/> if the values are approximately equal; otherwise, <see langword="false"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool Approximately<T>(T a, T b) where T : IFloatingPointIeee754<T>
     {
-        T eps = T.CreateChecked(1e-5);
+        T eps = Cache<T>.T1e5;
         T diff = T.Abs(a - b);
         if (diff <= eps)
             return true;
@@ -206,11 +207,11 @@ public static partial class MathGm
     /// <returns>The newly smoothed value approaching the target.</returns>
     public static T SmoothDamp<T>(T current, T target, ref T currentVelocity, T smoothTime, T maxSpeed, T deltaTime) where T : IFloatingPointIeee754<T>
     {
-        smoothTime = T.Max(T.CreateChecked(0.0001), smoothTime);
+        smoothTime = T.Max(Cache<T>.T00001, smoothTime);
 
-        T omega = T.CreateChecked(2) / smoothTime;
+        T omega = Cache<T>.T2 / smoothTime;
         T x = omega * deltaTime;
-        T denominator = T.One + x + T.CreateChecked(0.48) * (x * x) + T.CreateChecked(0.235) * (x * x * x);
+        T denominator = T.One + x + Cache<T>.T048 * (x * x) + Cache<T>.T0235 * (x * x * x);
         T exp = T.One / denominator;
 
         T change = current - target;
@@ -246,16 +247,16 @@ public static partial class MathGm
     /// <returns>The newly smoothed angle in degrees, clamped between 0 and 360.</returns>
     public static T SmoothDampAngle<T>(ref T current, T target, ref T currentVelocity, T smoothTime, T deltaTime) where T : IFloatingPointIeee754<T>
     {
-        smoothTime = T.Max(T.CreateChecked(0.0001), smoothTime);
+        smoothTime = T.Max(Cache<T>.T00001, smoothTime);
 
-        T w = T.CreateChecked(2) / smoothTime;
+        T w = Cache<T>.T2 / smoothTime;
         T x = w * deltaTime;
 
-        T F = T.One / (T.One + x + T.CreateChecked(0.48) * (x * x) + T.CreateChecked(0.235) * (x * x * x));
+        T F = T.One / (T.One + x + Cache<T>.T048 * (x * x) + Cache<T>.T0235 * (x * x * x));
 
         T deltaAngle = target - current;
-        T period = T.CreateChecked(360);
-        deltaAngle = ((deltaAngle % period) + T.CreateChecked(540)) % period - T.CreateChecked(180);
+        T period = Cache<T>.T360;
+        deltaAngle = ((deltaAngle % period) + Cache<T>.T540) % period - Cache<T>.T180;
 
         T temp = (currentVelocity + w * deltaAngle) * deltaTime;
 
@@ -277,7 +278,7 @@ public static partial class MathGm
     {
         if (length == T.Zero)
             return T.Zero;
-        return length - T.Abs(T.Abs(t) % (T.CreateChecked(2) * length) - length);
+        return length - T.Abs(T.Abs(t) % (Cache<T>.T2 * length) - length);
     }
     /// <summary>
     /// Linearly interpolates between two angles in degrees, properly handling wrapping around 360 degrees.
@@ -291,9 +292,9 @@ public static partial class MathGm
     public static T LerpAngle<T>(T start, T end, T t) where T : IFloatingPointIeee754<T>
     {
         T delta = end - start;
-        T deltta = (delta % T.CreateChecked(360) + T.CreateChecked(360)) % T.CreateChecked(360);
-        if (deltta > T.CreateChecked(180))
-            deltta -= T.CreateChecked(360);
+        T deltta = (delta % Cache<T>.T360 + Cache<T>.T360) % Cache<T>.T360;
+        if (deltta > Cache<T>.T180)
+            deltta -= Cache<T>.T360;
         return start + deltta * T.Clamp(t, T.Zero, T.One);
     }
     /// <summary>

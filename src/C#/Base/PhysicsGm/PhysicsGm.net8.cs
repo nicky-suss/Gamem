@@ -180,7 +180,7 @@ public static partial class PhysicsGm
     /// <param name="g">The gravity value. Its absolute value is used to ensure mathematical stability.</param>
     /// <returns>The calculated initial jump velocity required to reach the target height.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T CalculateJumpVelocity<T>(T h, T g) where T : IFloatingPointIeee754<T> => T.Sqrt(T.CreateChecked(2) * T.Abs(g) * h);
+    public static T CalculateJumpVelocity<T>(T h, T g) where T : IFloatingPointIeee754<T> => T.Sqrt(Cache<T>.T2 * T.Abs(g) * h);
     /// <summary>
     /// Calculates the stopping distance required for an object to come to a complete stop from a given velocity under constant deceleration.
     /// </summary>
@@ -193,7 +193,7 @@ public static partial class PhysicsGm
     {
         if (T.IsZero(a))
             return T.Zero;
-        return (v * v) / (T.CreateChecked(2) * a);
+        return (v * v) / (Cache<T>.T2 * a);
     }
     /// <summary>
     /// Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.
@@ -218,7 +218,7 @@ public static partial class PhysicsGm
     public static T CalculateLaunchVelocity<T>(T target, T start, T g, T t) where T : IFloatingPointIeee754<T>
     {
         if (T.IsZero(t)) return T.Zero;
-        return (target - start - (g * t * t) / T.CreateChecked(2)) / t;
+        return (target - start - (g * t * t) / Cache<T>.T2) / t;
     }
     /// <summary>
     /// Predicts the 2D position of a projectile at a given time under constant acceleration (gravity).

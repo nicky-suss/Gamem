@@ -27,7 +27,7 @@ public static partial class GeometryGm
     public static (T x, T y) Reflect<T>(T x, T y, T normalX, T normalY) where T : IFloatingPointIeee754<T>
     {
         T dot = VectorMath.GetDotProduct(x, y, normalX, normalY);
-        T two = T.CreateChecked(2);
+        T two = Cache<T>.T2;
         return (x - two * dot * normalX, y - two * dot * normalY);
     }
     /// <summary>
@@ -57,7 +57,7 @@ public static partial class GeometryGm
     public static (T x, T y, T z) Reflect3D<T>(T x, T y, T z, T normalX, T normalY, T normalZ) where T : IFloatingPointIeee754<T>
     {
         T dot = VectorMath.GetDotProduct3D(x, y, z, normalX, normalY, normalZ);
-        T two = T.CreateChecked(2);
+        T two = Cache<T>.T2;
         return (x - two * dot * normalX, y - two * dot * normalY, z - two * dot * normalZ);
     }
     /// <summary>
@@ -79,7 +79,7 @@ public static partial class GeometryGm
     /// <param name="degrees">The angle in degrees.</param>
     /// <returns>The angle in radians.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T ToRadians<T>(T degrees) where T : IFloatingPointIeee754<T> => degrees * (T.Pi / T.CreateChecked(180));
+    public static T ToRadians<T>(T degrees) where T : IFloatingPointIeee754<T> => degrees * (T.Pi / Cache<T>.T180);
     /// <summary>
     /// Converts an angle from radians to degrees.
     /// </summary>
@@ -87,7 +87,7 @@ public static partial class GeometryGm
     /// <param name="radians">The angle in radians.</param>
     /// <returns>The angle in degrees.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T ToDegrees<T>(T radians) where T : IFloatingPointIeee754<T> => radians * (T.CreateChecked(180) / T.Pi);
+    public static T ToDegrees<T>(T radians) where T : IFloatingPointIeee754<T> => radians * (Cache<T>.T180 / T.Pi);
     /// <summary>
     /// Calculates the Euclidean distance between two points in a 2D plane.
     /// </summary>
