@@ -4,18 +4,18 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "declaration": true,
-    "outDir": "src/Web/dist",
-    "rootDir": "./src/Web/src",
+    "rootDir": "./src", 
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/Web/src/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "src/Web/dist"
+    "/dist"
   ]
 }

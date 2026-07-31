@@ -1,5 +1,6 @@
 obj/
 bin/
 dist/
+node_modules/
 gamem_wasm.js
 gamem_wasm.wasm
