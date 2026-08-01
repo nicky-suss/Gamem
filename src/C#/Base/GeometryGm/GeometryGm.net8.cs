@@ -179,6 +179,14 @@ public static partial class GeometryGm
         return MathF.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
     }
     /// <summary>
+    /// Normalizes an angle in degrees into the range [0, 360).
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="angle">The input angle in degrees to normalize.</param>
+    /// <returns>The equivalent angle wrapped within the range of 0 (inclusive) to 360 (exclusive) degrees.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T NormalizeAngle<T>(T angle) where T : IFloatingPointIeee754<T> => (angle % Cache<T>.T360 + T.CreateChecked(360)) % T.CreateChecked(360);
+    /// <summary>
     /// Provides static methods for basic 2D intersection and collision detection.
     /// </summary>
     public static class Collision

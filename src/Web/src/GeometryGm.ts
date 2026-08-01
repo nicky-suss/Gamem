@@ -234,4 +234,12 @@ export class VectorMathGm {
     public static getAngleBetween(dotProduct: number, lengthA: number, lengthB: number) {
         return getWasm()._gamem_getanglebetween(dotProduct, lengthA, lengthB);
     }
+    /**
+     * Normalizes an angle in degrees into the range [0, 360).
+     * @param angle The input angle in degrees to normalize.
+     * @returns The equivalent angle wrapped within the range of 0 (inclusive) to 360 (exclusive) degrees.
+     */
+    public static normalizeangle(angle: number) {
+        return getWasm()._gamem_normalizeangle(angle);
+    }
 }

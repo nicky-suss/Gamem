@@ -216,6 +216,18 @@ namespace Gamem
             return (float)Math.Sqrt((dx * dx) + (dy * dy) + (dz * dz));
         }
         /// <summary>
+        /// Normalizes an angle in degrees into the range [0, 360).
+        /// </summary>
+        /// <param name="angle">The input angle in degrees to normalize.</param>
+        /// <returns>The equivalent angle wrapped within the range of 0 (inclusive) to 360 (exclusive) degrees.</returns>
+        public static float NormalizeAngle(float angle) => (angle % 360.0f + 360.0f) % 360.0f;
+        /// <summary>
+        /// Normalizes an angle in degrees into the range [0, 360).
+        /// </summary>
+        /// <param name="angle">The input angle in degrees to normalize.</param>
+        /// <returns>The equivalent angle wrapped within the range of 0 (inclusive) to 360 (exclusive) degrees.</returns>
+        public static double NormalizeAngle(double angle) => (angle % 360.0 + 360.0) % 360.0;
+        /// <summary>
         /// Provides static methods for basic 2D intersection and collision detection.
         /// </summary>
         public static partial class Collision

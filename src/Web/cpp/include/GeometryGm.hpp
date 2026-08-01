@@ -181,4 +181,10 @@ public:
     A = std::clamp(A, -1.0, 1.0);
     return std::acos(A);
   }
+  static inline double NormalizeAngle(double angle) {
+    return std::fmod((std::fmod(angle, 360.0) + 360.0), 360.0);
+  }
+  static inline float NormalizeAngle(float angle) {
+    return std::fmod((std::fmod(angle, 360.0f) + 360.0f), 360.0f);
+  }
 };

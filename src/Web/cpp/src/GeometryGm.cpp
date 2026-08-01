@@ -1,4 +1,5 @@
 #include "../include/GeometryGm.hpp"
+#include <emscripten/em_macros.h>
 #include <emscripten/emscripten.h>
 
 extern "C" {
@@ -177,5 +178,13 @@ double gamem_getanglebetween(double dotProduct, double lengthA, double lengthB) 
 EMSCRIPTEN_KEEPALIVE
 float gamem_getanglebetween_f(float dotProduct, float lengthA, float lengthB) {
     return GeometryGm::GetAngleBetween(dotProduct, lengthA, lengthB);
+}
+EMSCRIPTEN_KEEPALIVE
+double gamem_normalizeangle(double angle) {
+    return GeometryGm::NormalizeAngle(angle);
+}
+EMSCRIPTEN_KEEPALIVE
+float gamem_normalizeangle_f(float angle) {
+    return GeometryGm::NormalizeAngle(angle);
 }
 }

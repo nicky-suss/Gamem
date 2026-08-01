@@ -36,6 +36,7 @@ export interface GamemWasmModule {
     _gamem_getmagnitude3d(x: number, y: number, z: number): number;
     _gamem_getcrossproduct(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, outXPtr: number, outYPtr: number, outZPtr: number): void;
     _gamem_getanglebetween(dotProduct: number, lengthA: number, lengthB: number): number;
+    _gamem_normalizeangle(angle: number): number;
 
     // === PhysicsGm ===
     _gamem_applygravity(velocity: number, gravity: number, deltaTime: number): number
