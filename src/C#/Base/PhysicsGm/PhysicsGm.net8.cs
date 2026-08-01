@@ -236,6 +236,7 @@ public static partial class PhysicsGm
     /// <summary>
     /// Predicts the 2D position coordinates of a projectile at a given time under constant acceleration (gravity).
     /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
     /// <param name="startPosX">The initial X-coordinate position.</param>
     /// <param name="startPosY">The initial Y-coordinate position.</param>
     /// <param name="startVelocityX">The initial velocity along the X-axis.</param>
@@ -244,6 +245,7 @@ public static partial class PhysicsGm
     /// <param name="gravityY">The acceleration along the Y-axis.</param>
     /// <param name="t">The time elapsed since the start of the trajectory in seconds.</param>
     /// <returns>A tuple containing the calculated X and Y position coordinates at time <paramref name="t"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static (T x, T y) PredictTrajectory<T>(T startPosX, T startPosY, T startVelocityX, T startVelocityY, T gravityX, T gravityY, T t) where T : IFloatingPointIeee754<T>
     {
         T t2 = t * t;
