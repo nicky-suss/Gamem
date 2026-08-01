@@ -49,4 +49,5 @@ internal static class Cache<T> where T : IFloatingPointIeee754<T>
     /// T.CreateChecked 3
     /// </summary>
     internal static readonly T T3 = T.CreateChecked(3);
+    internal static readonly T THalf = T.CreateChecked(0.5);
 }

@@ -244,8 +244,12 @@ public static partial class PhysicsGm
     /// <param name="gravityY">The acceleration along the Y-axis.</param>
     /// <param name="t">The time elapsed since the start of the trajectory in seconds.</param>
     /// <returns>A tuple containing the calculated X and Y position coordinates at time <paramref name="t"/>.</returns>
-    public static (float x, float y) PredictTrajectory(float startPosX, float startPosY, float startVelocityX, float startVelocityY, float gravityX, float gravityY, float t)
+    public static (T x, T y) PredictTrajectory<T>(T startPosX, T startPosY, T startVelocityX, T startVelocityY, T gravityX, T gravityY, T t) where T : IFloatingPointIeee754<T>
     {
-        return PredictTrajectory(startPosX, startPosY, startVelocityX, startVelocityY, gravityX, gravityY, t);
+        T t2 = t * t;
+        return (
+            startPosX + startVelocityX * t + Cache<T>.THalf * gravityX * t2,
+            startPosY + startVelocityY * t + Cache<T>.THalf * gravityY * t2
+        );
     }
 }

@@ -331,7 +331,11 @@ namespace Gamem
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static (float x, float y) PredictTrajectory(float startPosX, float startPosY, float startVelocityX, float startVelocityY, float gravityX, float gravityY, float t)
         {
-            return PredictTrajectory(startPosX, startPosY, startVelocityX, startVelocityY, gravityX, gravityY, t);
+            float t2 = t * t;
+            return (
+                startPosX + startVelocityX * t + 0.5f * gravityX * t2,
+                startPosY + startVelocityY * t + 0.5f * gravityY * t2
+            );
         }
     }
 }
