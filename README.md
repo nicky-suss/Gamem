@@ -32,6 +32,7 @@
 │   │   │   ├── 📂 PhysicsGm                      - Physics methods
 │   │   │   │   ├── 📄 PhysicsGm.net8.cs
 │   │   │   │   └── 📄 PhysicsGm.netstandard.cs
+│   │   │   ├── 📄 Extra.net8.cs
 │   │   │   ├── ⚙️ Gamem.csproj
 │   │   │   └── 🛠️ README.md
 │   │   ├── 📂 Godot                              - Extension for the Godot game engine
@@ -66,19 +67,23 @@
 │       │       ├── 📄 MathGm.cpp
 │       │       └── 📄 PhysicsGm.cpp
 │       ├── 📂 src                                 - Compiled WASM outputs and TypeScript wrappers
+│       │   ├── 📄 gamem_wasm.d.ts
 │       │   ├── 📄 GeometryGm.ts
+│       │   ├── 📄 index.ts
 │       │   ├── 📄 MathGm.ts
 │       │   ├── 📄 PhysicsGm.ts
-│       │   └── 📄 WasmLoader.ts                   - WASM module loader and initializer
-│       ├── 📄 3RD-PARTY-LICENSES                  - Licenses for third-party web dependencies
-│       ├── 📄 package.json                        - npm package configuration and dependencies
-│       └── 📄 README.md                           - Documentation for the Web version
+│       │   └── 📄 WasmLoader.ts
+│       ├── 🛠️ 3RD-PARTY-LICENSES
+│       ├── ⚙️ package-lock.json
+│       ├── ⚙️ package.json
+│       ├── 🛠️ README.md
+│       └── ⚙️ tsconfig.json
 ├── 🛠️ .clangd      
 ├── 🛠️ .gitignore
+├── 🛠️ CONTRIBUTING.md
 ├── ⚙️ Gamem.slnx
 ├── 🛠️ LICENSE
-├── 🛠️ README.md
-└── ⚙️ tsconfig.json
+└── 🛠️ README.md 
 ```
 
 </details>
