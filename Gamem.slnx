@@ -13,4 +13,8 @@
   <Folder Name="/src/MonoGame/">
     <Project Path="src/Csharp/MonoGame/Gamem.MonoGame.csproj" />
   </Folder>
+  <Folder Name="/Tests/" />
+  <Folder Name="/Tests/Csharp/">
+    <Project Path="Tests/Csharp/Gamem.Tests.csproj" />
+  </Folder>
 </Solution>
