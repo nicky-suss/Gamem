@@ -55,7 +55,7 @@
     npm run build
     ```
 > [!NOTE]
-> `npm run build` actually runs`build:ts`,     `build:wasm`, and`copy:types`
+> `npm run build` actually runs `build:ts`,     `build:wasm`, and `copy:types`
 
 ## Final
 
