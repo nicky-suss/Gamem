@@ -1,4 +1,5 @@
-# Gamem WASM
+![GamemBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/Assets/GamemBanner.png)
+
 [![NPM Version](https://img.shields.io/npm/v/gamem-wasm?logo=npm&labelColor=28333C&color=F0024B)](https://www.npmjs.com/package/gamem-wasm) [![NPM Downloads](https://img.shields.io/npm/d18m/gamem-wasm?logo=npm&labelColor=28333C&color=F0024B)](https://www.npmjs.com/package/gamem-wasm) ![Static Badge](https://img.shields.io/badge/license-MIT-green?labelColor=28333C&color=F0024B)
 
 **Gamem WASM is a TypeScript/JavaScript library of Physics, Math and Geometry helpers, powered by WebAssembly. It was created for you to type code in one line instead of huge formulas. It works everywhere in the web! From vanilla JS to [Phaser](https://phaser.io), [PixiJS](https://pixijs.com) and [Three.js](https://threejs.org)!**
