@@ -214,7 +214,15 @@ namespace Gamem
         /// <returns>A tuple containing the updated X and Y velocity components, or zeros if the total 3D speed is below the threshold.</returns>
         public static (float x, float y, float z) Drag(float velocityX, float velocityY, float velocityZ, float drag, float deltaTime)
         {
-            return Drag(velocityX, velocityY, velocityZ, drag, deltaTime);
+            float exp = (float)Math.Exp(-drag * deltaTime);
+            velocityX *= exp;
+            velocityY *= exp;
+            velocityZ *= exp;
+
+            if (velocityX * velocityX + velocityY * velocityY + velocityZ * velocityZ < 0.0001f)
+                return (0.0f, 0.0f, 0.0f);
+                
+            return (velocityX, velocityY, velocityZ);
         }
         /// <summary>
         /// Calculates the initial upward velocity required to reach a specific jump height under a given gravity.

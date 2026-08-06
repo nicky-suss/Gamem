@@ -170,7 +170,15 @@ public static partial class PhysicsGm
     /// <returns>A tuple containing the updated X and Y velocity components, or zeros if the total 3D speed is below the threshold.</returns>
     public static (T x, T y, T z) Drag<T>(T velocityX, T velocityY, T velocityZ, T drag, T deltaTime) where T : IFloatingPointIeee754<T>
     {
-        return Drag(velocityX, velocityY, velocityZ, drag, deltaTime);
+        T exp = T.Exp(-drag * deltaTime);
+        velocityX *= exp;
+        velocityY *= exp;
+        velocityZ *= exp;
+
+        if (velocityX * velocityX + velocityY * velocityY + velocityZ * velocityZ < Cache<T>.T1e5)
+            return (T.Zero, T.Zero, T.Zero);
+
+        return (velocityX, velocityY, velocityZ);
     }
     /// <summary>
     /// Calculates the initial upward velocity required to reach a specific jump height under a given gravity.
