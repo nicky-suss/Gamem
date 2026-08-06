@@ -1,3 +1,5 @@
+![GamemContributingBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/Assets/GamemContributingBanner.png)
+
 # Contributing to Gamem
 **Thank you for your interest in contributing to the project! I really appreciate it. In this file you can see instructions of how to run this project on your PC and submit your changes!**
 
@@ -21,12 +23,14 @@
     dotnet restore
     ```
 4. **Make your changes :p**
-5. **Build the project**
+5. **Test the project**
+    [TUTORIAL FOR TESTS](https://github.com/nicky-suss/Gamem/blob/main/Tests/Unit/Csharp/README.md)
+6. **Build the project**
     ```bash
     dotnet clean
     dotnet build
     ```
-6. (Optional) **Pack the project to .nupkg file (NuGet package)**
+7. (Optional) **Pack the project to .nupkg file (NuGet package)**
     ```bash
     dotnet pack
     ```
