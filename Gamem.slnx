@@ -15,6 +15,6 @@
   </Folder>
   <Folder Name="/Tests/" />
   <Folder Name="/Tests/Csharp/">
-    <Project Path="Tests/Csharp/Gamem.Tests.csproj" />
+    <Project Path="Tests/Unit/Csharp/Gamem.Tests.csproj" />
   </Folder>
 </Solution>
