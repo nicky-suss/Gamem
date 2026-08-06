@@ -274,7 +274,7 @@ namespace Gamem
         /// <param name="t">The time step (delta time) in seconds.</param>
         /// <returns>The updated velocity after quadratic drag has been applied.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double ApplyQuadraticDrag(double v, double k, double t) => v - (v * Math.Abs(v) * k * t);
+        public static double ApplyQuadraticDrag(double v, double k, double t) => v / (1.0 + Math.Abs(v) * k * t);
         /// <summary>
         /// Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.
         /// </summary>
@@ -283,7 +283,7 @@ namespace Gamem
         /// <param name="t">The time step (delta time) in seconds.</param>
         /// <returns>The updated velocity after quadratic drag has been applied.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float ApplyQuadraticDrag(float v, float k, float t) => v - (v * Math.Abs(v) * k * t);
+        public static float ApplyQuadraticDrag(float v, float k, float t) => v / (1.0f + Math.Abs(v) * k * t);
         /// <summary>
         /// Calculates the required initial velocity along a single axis to reach a target displacement in a given time under constant acceleration.
         /// </summary>

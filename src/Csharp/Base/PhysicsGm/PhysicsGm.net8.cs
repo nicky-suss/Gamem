@@ -212,7 +212,7 @@ public static partial class PhysicsGm
     /// <param name="t">The time step (delta time) in seconds.</param>
     /// <returns>The updated velocity after quadratic drag has been applied.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T ApplyQuadraticDrag<T>(T v, T k, T t) where T : IFloatingPointIeee754<T> => v - (v * T.Abs(v) * k * t);
+    public static T ApplyQuadraticDrag<T>(T v, T k, T t) where T : IFloatingPointIeee754<T> => v / (T.One + T.Abs(v) * k * t);
     /// <summary>
     /// Calculates the required initial velocity along a single axis to reach a target displacement in a given time under constant acceleration.
     /// </summary>

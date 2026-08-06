@@ -135,10 +135,10 @@ public:
    return (v * v) / (2.0f * std::abs(a));
   }
   static inline double ApplyQuadraticDrag(double v, double k, double t) {
-    return v - (v * std::abs(v) * k * t);
+    return v / (1.0 + std::abs(v) * k * t);
   }
   static inline float ApplyQuadraticDrag(float v, float k, float t) {
-    return v - (v * std::abs(v) * k * t);
+    return v / (1.0f + std::abs(v) * k * t);
   }
   static inline double CalculateLaunchVelocity(double target, double start, double g, double t)
   {
