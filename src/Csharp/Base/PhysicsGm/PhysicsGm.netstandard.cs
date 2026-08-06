@@ -221,7 +221,7 @@ namespace Gamem
 
             if (velocityX * velocityX + velocityY * velocityY + velocityZ * velocityZ < 0.0001f)
                 return (0.0f, 0.0f, 0.0f);
-                
+
             return (velocityX, velocityY, velocityZ);
         }
         /// <summary>
@@ -251,7 +251,7 @@ namespace Gamem
         {
             if (a <= 0.0)
                 return 0.0;
-            return (v * v) / (2.0 * a);
+            return (v * v) / (2.0 * Math.Abs(a));
         }
         /// <summary>
         /// Calculates the stopping distance required for an object to come to a complete stop from a given velocity under constant deceleration.
@@ -264,7 +264,7 @@ namespace Gamem
         {
             if (a <= 0.0f)
                 return 0.0f;
-            return (v * v) / (2.0f * a);
+            return (v * v) / (2.0f * Math.Abs(a));
         }
         /// <summary>
         /// Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.

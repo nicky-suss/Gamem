@@ -126,13 +126,13 @@ public:
   {
    if (a <= 0.0)
       return 0.0;
-   return (v * v) / (2.0 * a);
+   return (v * v) / (2.0 * std::abs(a));
   }
   static inline float GetStoppingDistance(float v, float a)
   {
    if (a <= 0.0f)
       return 0.0f;
-   return (v * v) / (2.0f * a);
+   return (v * v) / (2.0f * std::abs(a));
   }
   static inline double ApplyQuadraticDrag(double v, double k, double t) {
     return v - (v * std::abs(v) * k * t);

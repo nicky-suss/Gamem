@@ -201,7 +201,7 @@ public static partial class PhysicsGm
     {
         if (T.IsZero(a))
             return T.Zero;
-        return (v * v) / (Cache<T>.T2 * a);
+        return (v * v) / (Cache<T>.T2 * T.Abs(a));
     }
     /// <summary>
     /// Applies quadratic drag (air resistance) to a velocity value over a given time step using Euler integration.
