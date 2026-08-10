@@ -18,7 +18,7 @@
     "README.md"
   ],
   "scripts": {
-    "build:wasm": "emcc cpp/src/MathGm.cpp cpp/src/GeometryGm.cpp cpp/src/PhysicsGm.cpp -I src/Web/cpp/include -O3 -s WASM=1 -s EXPORTED_FUNCTIONS=\"['_malloc','_free']\" -s EXPORTED_RUNTIME_METHODS=\"['setValue','getValue']\" -s EXPORT_ES6=1 -s MODULARIZE=1 -o dist/gamem_wasm.js        ",
+    "build:wasm": "em++ cpp/src/MathGm.cpp cpp/src/GeometryGm.cpp cpp/src/PhysicsGm.cpp -I src/Web/cpp/include -O3 -s WASM=1 -s EXPORTED_FUNCTIONS=\"['_malloc','_free']\" -s EXPORTED_RUNTIME_METHODS=\"['setValue','getValue']\" -s EXPORT_ES6=1 -s MODULARIZE=1 -o dist/gamem_wasm.js        ",
     "build:ts": "tsc",
     "copy:types": "cpy src/gamem_wasm.d.ts dist --flat",
     "build": "npm run build:ts && npm run build:wasm && npm run copy:types"
