@@ -10,7 +10,7 @@
     <Authors>nicky_sus</Authors>
     <Description>Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas.</Description>
     <PackageReleaseNotes>
-      2.3.0 is out!
+      2.3.1 is out!
       Check the full changelog on GitHub!
       https://github.com/nicky-suss/Gamem/releases
     </PackageReleaseNotes>

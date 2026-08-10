@@ -5,12 +5,12 @@
     <RootNamespace>Gamem.Godot</RootNamespace>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Title>Gamem.Godot</Title>
     <Authors>nicky_sus</Authors>
     <Description>Gamem extension for Godot (supports vectors)</Description>
     <PackageReleaseNotes>
-      1.1.0 is out!
+      1.1.1 is out!
       Check the full changelog on GitHub!
       https://github.com/nicky-suss/Gamem/releases
     </PackageReleaseNotes>
