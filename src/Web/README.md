@@ -1,4 +1,4 @@
-![GamemBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/Assets/GamemBanner.png)
+![GamemBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/GamemBanner.png)
 
 [![NPM Version](https://img.shields.io/npm/v/gamem-wasm?logo=npm&labelColor=28333C&color=F0024B)](https://www.npmjs.com/package/gamem-wasm) [![NPM Downloads](https://img.shields.io/npm/d18m/gamem-wasm?logo=npm&labelColor=28333C&color=F0024B)](https://www.npmjs.com/package/gamem-wasm) ![Static Badge](https://img.shields.io/badge/license-MIT-green?labelColor=28333C&color=F0024B)
 

@@ -1,4 +1,4 @@
-![GamemTestsBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/Assets/GamemTestsBanner.png)
+![GamemTestsBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/GamemTestsBanner.png)
 
 ### **This folder contains tests for the methods in the Gamem library (C# and TS; TS coming soon)**
 

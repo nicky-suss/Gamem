@@ -1,4 +1,4 @@
-![GamemBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/Assets/GamemBanner.png)
+![GamemBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/GamemBanner.png)
 
 <div align="center"> 
 

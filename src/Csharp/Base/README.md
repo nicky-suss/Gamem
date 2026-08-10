@@ -1,4 +1,4 @@
-![GamemBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/Assets/GamemBanner.png)
+![GamemBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/GamemBanner.png)
 
 [![NuGet Version](https://img.shields.io/nuget/v/Gamem?logo=nuget&labelColor=28333C&color=F0024B)](https://www.nuget.org/packages/Gamem) [![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem?logo=nuget&labelColor=28333C&color=F0024B)](https://www.nuget.org/packages/Gamem) ![Static Badge](https://img.shields.io/badge/license-MIT-green?labelColor=28333C&color=F0024B)
 

@@ -1,4 +1,4 @@
-![GamemContributingBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/Assets/GamemContributingBanner.png)
+![GamemContributingBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/GamemContributingBanner.png)
 
 # Contributing to Gamem
 **Thank you for your interest in contributing to the project! I really appreciate it. In this file you can see instructions of how to run this project on your PC and submit your changes!**
