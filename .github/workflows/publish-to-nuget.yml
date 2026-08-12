@@ -5,11 +5,9 @@ permissions:
   contents: read
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 jobs:
-  publish:
+  run-button-job:
     runs-on: ubuntu-latest
 
     steps:

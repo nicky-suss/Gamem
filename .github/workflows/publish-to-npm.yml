@@ -5,11 +5,9 @@ permissions:
   contents: read
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 jobs:
-  publish:
+  run-button-job:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +21,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Setup Emscripten SDK
-        uses: emscripten-core/setup-emsdk@v14
+        uses: emscripten-core/setup-emsdk@v16
         with:
           version: latest
 
