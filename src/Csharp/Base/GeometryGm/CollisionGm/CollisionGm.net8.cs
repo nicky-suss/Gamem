@@ -9,6 +9,11 @@ namespace Gamem;
 /// </summary>
 public static partial class CollisionGm
 {
+
+    //! ====================================
+    //! THIS PART OF THE CODE SUPPORTS .NET 8, 9, 10 AND MORE
+    //! ====================================
+
     /// <summary>
     /// Checks for an intersection between two circles.
     /// </summary>

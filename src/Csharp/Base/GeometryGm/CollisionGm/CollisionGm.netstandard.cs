@@ -7,8 +7,13 @@ namespace Gamem
     /// <summary>
     /// Provides static methods for basic 2D intersection and collision detection.
     /// </summary>
-    public static partial class Collision
+    public static partial class CollisionGm
     {
+
+        //! ========================
+        //! THIS PART OF THE CODE SUPPORTS OLDER VERSIONS OF .NET
+        //! =========================
+
         /// <summary>
         /// Checks for an intersection between two circles.
         /// </summary>
