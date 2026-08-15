@@ -18,6 +18,11 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.x'
+      
+      - name: Test project
+        run: |
+          cd Tests/Unit/Csharp
+          dotnet test
 
       - name: Clean solution
         run: dotnet clean
