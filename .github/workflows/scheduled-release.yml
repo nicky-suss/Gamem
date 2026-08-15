@@ -139,3 +139,11 @@ jobs:
           name: "Gamem ${{ steps.version.outputs.version }}"
           body: ${{ steps.changelog.outputs.body }}
           files: ./artifacts/*.nupkg
+      - name: Delete CHANGELOG.md from main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git rm CHANGELOG.md
+          git commit -m "Delete CHANGELOG.md after release"
+          git push origin main
