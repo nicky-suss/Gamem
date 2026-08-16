@@ -5,8 +5,7 @@ _layout: landing
 # Gamem
 **Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net) and other engines and frameworks!**
 
-- [Getting Started](docs/getting-started.md)
-- [API Reference](api/Gamem.html)
+[Getting Started](docs/getting-started.md){.btn .btn-primary} [API Reference](api/Gamem.html){.btn-outline-secondary}
 
 ## Key features
 
@@ -39,3 +38,4 @@ Install package via NuGet CLI
 ```bash
 dotnet add package Gamem
 ```
+[Introduction](docs/introduction.md){.btn .btn-primary}

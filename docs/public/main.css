@@ -263,3 +263,40 @@ dt a:hover {
   color: #ff3370 !important;
   text-decoration: underline !important;
 }
+.btn-primary {
+  background-color: #F0024B !important;
+  border-color: #F0024B !important;
+  color: #ffffff !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover, 
+.btn-primary:focus {
+  background-color: #ff3370 !important;
+  border-color: #ff3370 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(240, 2, 75, 0.4) !important;
+}
+
+.btn-outline-secondary, 
+.btn-secondary {
+  background-color: transparent !important;
+  border: 1px solid #272d37 !important;
+  color: #adbac7 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-outline-secondary:hover, 
+.btn-secondary:hover {
+  background-color: #12161f !important;
+  border-color: #F0024B !important;
+  color: #ffffff !important;
+}
