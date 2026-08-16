@@ -215,6 +215,7 @@ namespace Gamem
         /// <param name="toX">The X-coordinate of the target position.</param>
         /// <param name="toY">The Y-coordinate of the target position.</param>
         /// <returns>The angle in radians in the range (-π, π].</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double GetAngleToTarget(double fromX, double fromY, double toX, double toY) => Math.Atan2(toY - fromY, toX - fromX);
         /// <summary>
         /// Calculates the angle in radians from a starting point to a target point in 2D space.
@@ -224,6 +225,7 @@ namespace Gamem
         /// <param name="toX">The X-coordinate of the target position.</param>
         /// <param name="toY">The Y-coordinate of the target position.</param>
         /// <returns>The angle in radians in the range (-π, π].</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float GetAngleToTarget(float fromX, float fromY, float toX, float toY) => (float)Math.Atan2(toY - fromY, toX - fromX);
         /// <summary>
         /// Calculates the angle in radians from a starting vector to a target vector in 2D space.

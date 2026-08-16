@@ -46,6 +46,7 @@ public static class CollisionGmMonoGame
     /// <param name="width">The total width of the box.</param>
     /// <param name="height">The total height of the box.</param>
     /// <returns>True if the circle intersects or touches the bounding box; otherwise, false.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool CheckCircleVsAABB(Vector2 circle, float radius, Vector2 aabb, float width, float height)
     {
         float closestX = Math.Clamp(circle.X, aabb.X, aabb.X + width);
