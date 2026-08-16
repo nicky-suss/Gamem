@@ -8,7 +8,7 @@ namespace Gamem.Godot;
 /// <summary>
 /// Provides static methods for basic 2D intersection and collision detection for Godot.
 /// </summary>
-public static class CollisionGodot
+public static class CollisionGmGodot
 {
     /// <summary>
     /// Checks for an intersection between two circles.
