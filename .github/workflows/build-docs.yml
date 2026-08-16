@@ -33,10 +33,12 @@ jobs:
       - name: Install DocFX
         run: dotnet tool install -g docfx
 
+      - name: Add .NET tools to PATH
+        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
       - name: Build DocFX
         run: |
           cd docs
-          dotnet docfx docfx.json
+          docfx docfx.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
