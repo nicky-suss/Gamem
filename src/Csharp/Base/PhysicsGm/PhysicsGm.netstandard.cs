@@ -345,5 +345,21 @@ namespace Gamem
                 startPosY + startVelocityY * t + 0.5f * gravityY * t2
             );
         }
+        /// <summary>
+        /// Calculates the centripetal acceleration of an object moving along a circular path.
+        /// </summary>
+        /// <param name="speed">The linear speed of the object.</param>
+        /// <param name="radius">The radius of the circular path.</param>
+        /// <returns>The centripetal acceleration, or zero if <paramref name="radius"/> is zero.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double CalculateCentripetalAcceleration(double speed, double radius) => MathGm.SafeDivide(speed * speed, radius);
+        /// <summary>
+        /// Calculates the centripetal acceleration of an object moving along a circular path.
+        /// </summary>
+        /// <param name="speed">The linear speed of the object.</param>
+        /// <param name="radius">The radius of the circular path.</param>
+        /// <returns>The centripetal acceleration, or zero if <paramref name="radius"/> is zero.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float CalculateCentripetalAcceleration(float speed, float radius) => MathGm.SafeDivide(speed * speed, radius);
     }
 }

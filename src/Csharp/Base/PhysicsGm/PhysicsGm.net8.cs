@@ -262,4 +262,13 @@ public static partial class PhysicsGm
             startPosY + startVelocityY * t + Cache<T>.THalf * gravityY * t2
         );
     }
+    /// <summary>
+    /// Calculates the centripetal acceleration of an object moving along a circular path.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="speed">The linear speed of the object.</param>
+    /// <param name="radius">The radius of the circular path.</param>
+    /// <returns>The centripetal acceleration, or zero if <paramref name="radius"/> is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T CalculateCentripetalAcceleration<T>(T speed, T radius) where T : IFloatingPointIeee754<T> => MathGm.SafeDivide(speed * speed, radius);
 }
