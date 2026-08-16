@@ -40,6 +40,9 @@ jobs:
           cd docs
           docfx docfx.json
 
+      - name: Copy Google Verification File
+        run: cp google223cc46a9ab379ba.html docs/_site/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
