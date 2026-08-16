@@ -1,6 +1,6 @@
-- name: Getting Started
-  href: docs/getting-started.md
 - name: Introduction
   href: docs/introduction.md
+- name: Getting Started
+  href: docs/getting-started.md
 - name: API
   href: api/
