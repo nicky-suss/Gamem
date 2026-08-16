@@ -4,6 +4,9 @@
 
 **Gamem WASM is a TypeScript/JavaScript library of Physics, Math and Geometry helpers, powered by WebAssembly. It was created for you to type code in one line instead of huge formulas. It works everywhere in the web! From vanilla JS to [Phaser](https://phaser.io), [PixiJS](https://pixijs.com) and [Three.js](https://threejs.org)!**
 
+> [!WARNING]
+> gamem-wasm is not supported now, you can use the [C# version](https://www.nuget.org/packages/Gamem) or use older versions of gamem-wasm
+
 ## Features
 - **MathGm**: `randomRange`, `smoothStep`, `lerp`, `inverseLerp`, `smoothDamp`, `smoothDampAngle` and more.
 - **PhysicsGm**: `applyGravity`, `applyFriction`, `addForce`, `addImpulse`, `clampVelocity`, `bounce` and more.
