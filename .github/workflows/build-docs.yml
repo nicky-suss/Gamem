@@ -1,4 +1,4 @@
-name: Build and Deploy Docs
+name: Build Docs
 
 on:
   push:
@@ -28,18 +28,20 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Build C# Project
-        run: dotnet build --configuration Release
+        run: dotnet build -c Release
 
       - name: Install DocFX
         run: dotnet tool install -g docfx
 
       - name: Build DocFX
-        run: docfx docfx.json
+        run: |
+          cd docs
+          dotnet docfx docfx.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: '_site'
+          path: 'docs/_site'
 
   deploy:
     environment:
