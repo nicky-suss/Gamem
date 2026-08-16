@@ -38,4 +38,3 @@ Install package via NuGet CLI
 ```bash
 dotnet add package Gamem
 ```
-[Introduction](docs/introduction.md){.btn .btn-primary}
