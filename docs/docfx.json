@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../src/Csharp/Base",
+          "files": [
+            "**/*.csproj"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**",
+          "favicon.ico",
+          "public/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "Gamem",
+      "_appTitle": "Gamem",
+      "_enableSearch": true,
+      "_appStyle": "main.css",
+      "_appFaviconPath": "favicon.ico",
+      "_appLogoPath": "images/logo.png",
+      "pdf": false
+    }
+  }
+}
