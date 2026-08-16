@@ -361,5 +361,21 @@ namespace Gamem
         /// <returns>The centripetal acceleration, or zero if <paramref name="radius"/> is zero.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float CalculateCentripetalAcceleration(float speed, float radius) => MathGm.SafeDivide(speed * speed, radius);
+        /// <summary>
+        /// Calculates the time required for a projectile to reach the apex (highest point) of its trajectory under constant gravity.
+        /// </summary>
+        /// <param name="velocityY">The initial vertical velocity vector component.</param>
+        /// <param name="gravity">The acceleration due to gravity. Its absolute value is used to prevent negative time results.</param>
+        /// <returns>The calculated time to reach the maximum height in seconds.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double CalculateTimeToApex(double velocityY, double gravity) => velocityY / Math.Abs(gravity);
+        /// <summary>
+        /// Calculates the time required for a projectile to reach the apex (highest point) of its trajectory under constant gravity.
+        /// </summary>
+        /// <param name="velocityY">The initial vertical velocity vector component.</param>
+        /// <param name="gravity">The acceleration due to gravity. Its absolute value is used to prevent negative time results.</param>
+        /// <returns>The calculated time to reach the maximum height in seconds.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float CalculateTimeToApex(float velocityY, float gravity) => velocityY / Math.Abs(gravity);
     }
 }
