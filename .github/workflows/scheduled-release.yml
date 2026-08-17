@@ -123,11 +123,12 @@ jobs:
             echo "Couldn't find CHANGELOG.md"
             exit 1
           fi
-      
+
+          EOF_MARKER=$(openssl rand -hex 8)
           {
-            echo 'body<<EOF'
+            echo "body<<$EOF_MARKER"
             cat CHANGELOG.md
-            echo 'EOF'
+            echo "$EOF_MARKER"
           } >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
