@@ -125,11 +125,10 @@ jobs:
           fi
 
           EOF_MARKER=$(openssl rand -hex 8)
-          {
-            echo "body<<$EOF_MARKER"
-            cat CHANGELOG.md
-            echo "$EOF_MARKER"
-          } >> "$GITHUB_OUTPUT"
+          echo "body<<${EOF_MARKER}" >> $GITHUB_OUTPUT
+          cat CHANGELOG.md >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "${EOF_MARKER}" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
