@@ -37,10 +37,8 @@ jobs:
               continue
             fi
 
-            if [[ "$BRANCH_DATE" <= "$TODAY" ]]; then
-              TARGET_BRANCH="$BRANCH_NAME"
-              break
-            fi
+            if [[ "$BRANCH_DATE" < "$TODAY" ]] || [[ "$BRANCH_DATE" == "$TODAY" ]]; then TARGET_BRANCH="$BRANCH_NAME"; break; fi
+
           done < <(git branch -r | grep 'origin/release/')
 
           if [ -z "$TARGET_BRANCH" ]; then
