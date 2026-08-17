@@ -207,5 +207,33 @@ namespace Gamem
 
             return new Vector2(Px / div, Py / div);
         }
+        /// <summary>
+        /// Calculates the angle in radians from a starting point to a target point in 2D space.
+        /// </summary>
+        /// <param name="fromX">The X-coordinate of the starting position.</param>
+        /// <param name="fromY">The Y-coordinate of the starting position.</param>
+        /// <param name="toX">The X-coordinate of the target position.</param>
+        /// <param name="toY">The Y-coordinate of the target position.</param>
+        /// <returns>The angle in radians in the range (-π, π].</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double GetAngleToTarget(double fromX, double fromY, double toX, double toY) => Math.Atan2(toY - fromY, toX - fromX);
+        /// <summary>
+        /// Calculates the angle in radians from a starting point to a target point in 2D space.
+        /// </summary>
+        /// <param name="fromX">The X-coordinate of the starting position.</param>
+        /// <param name="fromY">The Y-coordinate of the starting position.</param>
+        /// <param name="toX">The X-coordinate of the target position.</param>
+        /// <param name="toY">The Y-coordinate of the target position.</param>
+        /// <returns>The angle in radians in the range (-π, π].</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetAngleToTarget(float fromX, float fromY, float toX, float toY) => (float)Math.Atan2(toY - fromY, toX - fromX);
+        /// <summary>
+        /// Calculates the angle in radians from a starting vector to a target vector in 2D space.
+        /// </summary>
+        /// <param name="from">The starting position vector.</param>
+        /// <param name="to">The target position vector.</param>
+        /// <returns>The angle in radians in the range (-π, π].</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetAngleToTarget(Vector2 from, Vector2 to) => (float)Math.Atan2(to.Y - from.Y, to.X - from.X);
     }
 }

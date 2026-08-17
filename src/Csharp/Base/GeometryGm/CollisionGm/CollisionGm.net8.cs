@@ -121,4 +121,45 @@ public static partial class CollisionGm
 
         return distanceSquare <= (radius * radius);
     }
+    /// <summary>
+    /// Determines whether two 2D line segments intersect each other.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="p0X">The X-coordinate of the first point of the first segment.</param>
+    /// <param name="p0Y">The Y-coordinate of the first point of the first segment.</param>
+    /// <param name="p1X">The X-coordinate of the second point of the first segment.</param>
+    /// <param name="p1Y">The Y-coordinate of the second point of the first segment.</param>
+    /// <param name="p2X">The X-coordinate of the first point of the second segment.</param>
+    /// <param name="p2Y">The Y-coordinate of the first point of the second segment.</param>
+    /// <param name="p3X">The X-coordinate of the second point of the second segment.</param>
+    /// <param name="p3Y">The Y-coordinate of the second point of the second segment.</param>
+    /// <returns><see langword="true"/> if the two line segments intersect; otherwise, <see langword="false"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool CheckSegmentVsSegment<T>(T p0X, T p0Y, T p1X, T p1Y, T p2X, T p2Y, T p3X, T p3Y) where T : IFloatingPointIeee754<T>
+    {
+        T D = (p1X - p0X) * (p3Y - p2Y) - (p1Y - p0Y) * (p3X - p2X);
+
+        T t1 = MathGm.SafeDivide((p2X - p0X) * (p3Y - p2Y) - (p2Y - p0Y) * (p3X - p2X), D);
+        T t2 = MathGm.SafeDivide((p2X - p0X) * (p1Y - p0Y) - (p2Y - p0Y) * (p1X - p0X), D);
+
+        return (D != T.Zero) && (T.Zero <= t1 && t1 <= T.One) && (T.Zero <= t2 && t2 <= T.One);
+    }
+    /// <summary>
+    /// Determines whether two 2D line segments defined by vectors intersect each other.
+    /// </summary>
+    /// <param name="p0">The starting point of the first line segment.</param>
+    /// <param name="p1">The ending point of the first line segment.</param>
+    /// <param name="p2">The starting point of the second line segment.</param>
+    /// <param name="p3">The ending point of the second line segment.</param>
+    /// <returns><see langword="true"/> if the two line segments intersect; otherwise, <see langword="false"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool CheckSegmentVsSegment(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3)
+    {
+        float D = (p1.X - p0.X) * (p3.Y - p2.Y) - (p1.Y - p0.Y) * (p3.X - p2.X);
+
+        float t1 = MathGm.SafeDivide((p2.X - p0.X) * (p3.Y - p2.Y) - (p2.Y - p0.Y) * (p3.X - p2.X), D);
+        float t2 = MathGm.SafeDivide((p2.X - p0.X) * (p1.Y - p0.Y) - (p2.Y - p0.Y) * (p1.X - p0.X), D);
+
+        return (D != 0.0) && (0.0 <= t1 && t1 <= 1.0) && (0.0 <= t2 && t2 <= 1.0);
+    }
 }
