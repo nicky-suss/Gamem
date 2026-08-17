@@ -262,4 +262,22 @@ public static partial class PhysicsGm
             startPosY + startVelocityY * t + Cache<T>.THalf * gravityY * t2
         );
     }
+    /// <summary>
+    /// Calculates the centripetal acceleration of an object moving along a circular path.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="speed">The linear speed of the object.</param>
+    /// <param name="radius">The radius of the circular path.</param>
+    /// <returns>The centripetal acceleration, or zero if <paramref name="radius"/> is zero.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T CalculateCentripetalAcceleration<T>(T speed, T radius) where T : IFloatingPointIeee754<T> => MathGm.SafeDivide(speed * speed, radius);
+    /// <summary>
+    /// Calculates the time required for a projectile to reach the apex (highest point) of its trajectory under constant gravity.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="velocityY">The initial vertical velocity vector component.</param>
+    /// <param name="gravity">The acceleration due to gravity. Its absolute value is used to prevent negative time results.</param>
+    /// <returns>The calculated time to reach the maximum height in seconds.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T CalculateTimeToApex<T>(T velocityY, T gravity) where T : IFloatingPointIeee754<T> => velocityY / T.Abs(gravity);
 }

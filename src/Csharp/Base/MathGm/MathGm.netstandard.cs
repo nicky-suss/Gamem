@@ -438,5 +438,127 @@ namespace Gamem
                 return 0.0f;
             return t - (float)Math.Floor(t / length) * length;
         }
+        /// <summary>
+        /// Performs spherical linear interpolation (Slerp) between two 3D unit vectors represented by individual components.
+        /// </summary>
+        /// <param name="v1X">The X component of the start unit vector.</param>
+        /// <param name="v1Y">The Y component of the start unit vector.</param>
+        /// <param name="v1Z">The Z component of the start unit vector.</param>
+        /// <param name="v2X">The X component of the target unit vector.</param>
+        /// <param name="v2Y">The Y component of the target unit vector.</param>
+        /// <param name="v2Z">The Z component of the target unit vector.</param>
+        /// <param name="t">The interpolation parameter, where 0.0 returns the start vector and 1.0 returns the target vector.</param>
+        /// <returns>A tuple containing the interpolated vector's X, Y, and Z components.</returns>
+        public static (double, double, double) Slerp(double v1X, double v1Y, double v1Z, double v2X, double v2Y, double v2Z, double t)
+        {
+            double dot = v1X * v2X + v1Y * v2Y + v1Z * v2Z;
+            dot = Math.Max(-1.0, Math.Min(dot, 1.0));
+            if (dot > 1.0 - 1e-5)
+            {
+                double x = v1X + t * (v2X - v1X);
+                double y = v1Y + t * (v2Y - v1Y);
+                double z = v1Z + t * (v2Z - v1Z);
+
+                double length = Math.Sqrt(x * x + y * y + z * z);
+                if (length <= 1e-5)
+                    return (v1X, v1Y, v1Z);
+
+                return (
+                    x / length,
+                    y / length,
+                    z / length
+                );
+            }
+            double omega = Math.Acos(dot);
+            double SinOmega = Math.Sin(omega);
+
+            double factor1 = Math.Sin((1.0 - t) * omega) / SinOmega;
+            double factor2 = Math.Sin(t * omega) / SinOmega;
+            return (
+                factor1 * v1X + factor2 * v2X,
+                factor1 * v1Y + factor2 * v2Y,
+                factor1 * v1Z + factor2 * v2Z
+            );
+        }
+        /// <summary>
+        /// Performs spherical linear interpolation (Slerp) between two 3D unit vectors represented by individual components.
+        /// </summary>
+        /// <param name="v1X">The X component of the start unit vector.</param>
+        /// <param name="v1Y">The Y component of the start unit vector.</param>
+        /// <param name="v1Z">The Z component of the start unit vector.</param>
+        /// <param name="v2X">The X component of the target unit vector.</param>
+        /// <param name="v2Y">The Y component of the target unit vector.</param>
+        /// <param name="v2Z">The Z component of the target unit vector.</param>
+        /// <param name="t">The interpolation parameter, where 0.0 returns the start vector and 1.0 returns the target vector.</param>
+        /// <returns>A tuple containing the interpolated vector's X, Y, and Z components.</returns>
+        public static (float, float, float) Slerp(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float t)
+        {
+            float dot = v1X * v2X + v1Y * v2Y + v1Z * v2Z;
+            dot = (float)Math.Max(-1.0f, (float)Math.Min(dot, 1.0f));
+            if (dot > 1.0f - 1e-5)
+            {
+                float x = v1X + t * (v2X - v1X);
+                float y = v1Y + t * (v2Y - v1Y);
+                float z = v1Z + t * (v2Z - v1Z);
+
+                float length = (float)Math.Sqrt(x * x + y * y + z * z);
+                if (length <= 1e-5)
+                    return (v1X, v1Y, v1Z);
+
+                return (
+                    x / length,
+                    y / length,
+                    z / length
+                );
+            }
+            float omega = (float)Math.Acos(dot);
+            float SinOmega = (float)Math.Sin(omega);
+
+            float factor1 = (float)Math.Sin((1.0f - t) * omega) / SinOmega;
+            float factor2 = (float)Math.Sin(t * omega) / SinOmega;
+            return (
+                factor1 * v1X + factor2 * v2X,
+                factor1 * v1Y + factor2 * v2Y,
+                factor1 * v1Z + factor2 * v2Z
+            );
+        }
+        /// <summary>
+        /// Performs spherical linear interpolation (Slerp) between two 3D unit vectors.
+        /// </summary>
+        /// <param name="v1">The start unit vector.</param>
+        /// <param name="v2">The target unit vector.</param>
+        /// <param name="t">The interpolation parameter, where 0.0f returns the start vector and 1.0f returns the target vector.</param>
+        /// <returns>A <see cref="Vector3"/> representing the spherically interpolated vector.</returns>
+        public static Vector3 Slerp(Vector3 v1, Vector3 v2, float t)
+        {
+            float dot = v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
+            dot = (float)Math.Max(-1.0f, (float)Math.Min(dot, 1.0f));
+            if (dot > 1 - 1e-5)
+            {
+                float x = v1.X + t * (v2.X - v1.X);
+                float y = v1.Y + t * (v2.Y - v1.Y);
+                float z = v1.Z + t * (v2.Z - v1.Z);
+
+                float length = (float)Math.Sqrt(x * x + y * y + z * z);
+                if (length <= 1e-5)
+                    return new Vector3(v1.X, v1.Y, v1.Z);
+
+                return new Vector3(
+                    x / length,
+                    y / length,
+                    z / length
+                );
+            }
+            float omega = (float)Math.Acos(dot);
+            float SinOmega = (float)Math.Sin(omega);
+
+            float factor1 = (float)Math.Sin((1.0f - t) * omega) / SinOmega;
+            float factor2 = (float)Math.Sin(t * omega) / SinOmega;
+            return new Vector3(
+                factor1 * v1.X + factor2 * v2.X,
+                factor1 * v1.Y + factor2 * v2.Y,
+                factor1 * v1.Z + factor2 * v2.Z
+            );
+        }
     }
 }

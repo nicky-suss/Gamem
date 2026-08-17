@@ -178,4 +178,23 @@ public static partial class VectorGm
 
         return new Vector2(Px / div, Py / div);
     }
+    /// <summary>
+    /// Calculates the angle in radians from a starting point to a target point in 2D space.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="fromX">The X-coordinate of the starting position.</param>
+    /// <param name="fromY">The Y-coordinate of the starting position.</param>
+    /// <param name="toX">The X-coordinate of the target position.</param>
+    /// <param name="toY">The Y-coordinate of the target position.</param>
+    /// <returns>The angle in radians in the range (-π, π].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T GetAngleToTarget<T>(T fromX, T fromY, T toX, T toY) where T : IFloatingPointIeee754<T> => T.Atan2(toY - fromY, toX - fromX);
+    /// <summary>
+    /// Calculates the angle in radians from a starting vector to a target vector in 2D space.
+    /// </summary>
+    /// <param name="from">The starting position vector.</param>
+    /// <param name="to">The target position vector.</param>
+    /// <returns>The angle in radians in the range (-π, π].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float GetAngleToTarget(Vector2 from, Vector2 to) => float.Atan2(to.Y - from.Y, to.X - from.X);
 }

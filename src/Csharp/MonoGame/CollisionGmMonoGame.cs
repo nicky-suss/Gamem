@@ -46,6 +46,7 @@ public static class CollisionGmMonoGame
     /// <param name="width">The total width of the box.</param>
     /// <param name="height">The total height of the box.</param>
     /// <returns>True if the circle intersects or touches the bounding box; otherwise, false.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool CheckCircleVsAABB(Vector2 circle, float radius, Vector2 aabb, float width, float height)
     {
         float closestX = Math.Clamp(circle.X, aabb.X, aabb.X + width);
@@ -57,5 +58,23 @@ public static class CollisionGmMonoGame
         float distanceSquare = (deltaX * deltaX) + (deltaY * deltaY);
 
         return distanceSquare <= (radius * radius);
+    }
+    /// <summary>
+    /// Determines whether two 2D line segments defined by vectors intersect each other.
+    /// </summary>
+    /// <param name="p0">The starting point of the first line segment.</param>
+    /// <param name="p1">The ending point of the first line segment.</param>
+    /// <param name="p2">The starting point of the second line segment.</param>
+    /// <param name="p3">The ending point of the second line segment.</param>
+    /// <returns><see langword="true"/> if the two line segments intersect; otherwise, <see langword="false"/>.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool CheckSegmentVsSegment(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3)
+    {
+        float D = (p1.X - p0.X) * (p3.Y - p2.Y) - (p1.Y - p0.Y) * (p3.X - p2.X);
+
+        float t1 = MathGm.SafeDivide((p2.X - p0.X) * (p3.Y - p2.Y) - (p2.Y - p0.Y) * (p3.X - p2.X), D);
+        float t2 = MathGm.SafeDivide((p2.X - p0.X) * (p1.Y - p0.Y) - (p2.Y - p0.Y) * (p1.X - p0.X), D);
+
+        return (D != 0.0) && (0.0 <= t1 && t1 <= 1.0) && (0.0 <= t2 && t2 <= 1.0);
     }
 }
