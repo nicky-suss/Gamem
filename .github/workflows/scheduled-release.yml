@@ -123,11 +123,11 @@ jobs:
             echo "Couldn't find CHANGELOG.md"
             exit 1
           fi
-
+      
           {
             echo 'body<<EOF'
             cat CHANGELOG.md
-            echo EOF
+            echo 'EOF'
           } >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
