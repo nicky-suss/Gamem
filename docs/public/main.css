@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
+:root {
+  --bs-primary: #F0024B !important;
+  --bs-primary-rgb: 240, 2, 75 !important;
+  --bs-link-color: #F0024B !important;
+  --bs-link-hover-color: #ff3370 !important;
+  --bs-focus-ring-color: rgba(240, 2, 75, 0.25) !important;
+}
 ::selection {
   background-color: #F0024B !important;
   color: #ffffff !important;
@@ -154,13 +160,22 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
   color: #ff3370 !important;
 }
 
-.navbar-nav .nav-link {
+[data-bs-theme="dark"] .navbar-nav .nav-link {
   color: #768390 !important;
 }
 
-.navbar-nav .nav-link:hover, 
-.navbar-nav .nav-link.active {
+[data-bs-theme="dark"] .navbar-nav .nav-link:hover, 
+[data-bs-theme="dark"] .navbar-nav .nav-link.active {
   color: #ffffff !important;
+}
+
+[data-bs-theme="light"] .navbar-nav .nav-link {
+  color: #57606a !important;
+}
+
+[data-bs-theme="light"] .navbar-nav .nav-link:hover, 
+[data-bs-theme="light"] .navbar-nav .nav-link.active {
+  color: #24292f !important;
 }
 
 .breadcrumb a, .breadcrumb-item, .breadcrumb-item a {
@@ -282,8 +297,8 @@ dt a:hover {
   box-shadow: 0 0 12px rgba(240, 2, 75, 0.4) !important;
 }
 
-.btn-outline-secondary, 
-.btn-secondary {
+[data-bs-theme="dark"] .btn-outline-secondary, 
+[data-bs-theme="dark"] .btn-secondary {
   background-color: transparent !important;
   border: 1px solid #272d37 !important;
   color: #adbac7 !important;
@@ -294,9 +309,46 @@ dt a:hover {
   transition: all 0.2s ease !important;
 }
 
-.btn-outline-secondary:hover, 
-.btn-secondary:hover {
+[data-bs-theme="dark"] .btn-outline-secondary:hover, 
+[data-bs-theme="dark"] .btn-secondary:hover {
   background-color: #12161f !important;
   border-color: #F0024B !important;
   color: #ffffff !important;
+}
+
+[data-bs-theme="light"] .btn-outline-secondary, 
+[data-bs-theme="light"] .btn-secondary {
+  background-color: transparent !important;
+  border: 1px solid #d0d7de !important;
+  color: #24292f !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-bs-theme="light"] .btn-outline-secondary:hover, 
+[data-bs-theme="light"] .btn-secondary:hover {
+  background-color: #f3f4f6 !important;
+  border-color: #F0024B !important;
+  color: #24292f !important;
+}
+
+.toc a,
+.toc .nav > li > a,
+.toc li > a {
+  color: #768390 !important;
+}
+
+.toc a:active,
+.toc a.active,
+.toc li.active > a,
+.toc .active > a {
+  color: #F0024B !important;
+  font-weight: 600 !important;
+}
+
+.toc a:hover {
+  color: #f0f6fc !important;
 }
