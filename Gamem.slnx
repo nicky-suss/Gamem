@@ -7,6 +7,10 @@
   <Folder Name="/src/C#/Stride/">
     <Project Path="src/Csharp/Stride/Gamem.Stride.csproj" />
   </Folder>
+  <Folder Name="/src/Csharp/" />
+  <Folder Name="/src/Csharp/Unity/">
+    <Project Path="src/Csharp/Unity/Gamem.Unity.csproj" />
+  </Folder>
   <Folder Name="/src/Godot/">
     <Project Path="src/Csharp/Godot/Gamem.Godot.csproj" />
   </Folder>
