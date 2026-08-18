@@ -33,72 +33,121 @@
 
 ```text
 Gamem
-├── src
-│   ├── C#
-│   │   ├── Base
-│   │   │   ├── GeometryGm
-│   │   │   │   ├── GeometryGm.net8.cs
-│   │   │   │   └── GeometryGm.netstandard.cs
-│   │   │   ├── images
-│   │   │   │   └── logo.png
-│   │   │   ├── MathGm
-│   │   │   │   ├── MathGm.net8.cs
-│   │   │   │   └── MathGm.netstandard.cs
-│   │   │   ├── PhysicsGm
-│   │   │   │   ├── PhysicsGm.net8.cs
-│   │   │   │   └── PhysicsGm.netstandard.cs
-│   │   │   ├── Extra.net8.cs
-│   │   │   ├── Gamem.csproj
-│   │   │   └── README.md
-│   │   ├── Godot
-│   │   │   ├── images
-│   │   │   │   └── logo.png
-│   │   │   ├── Gamem.Godot.csproj
-│   │   │   ├── GeometryGmGodot.cs
-│   │   │   ├── PhysicsGmGodot.cs
-│   │   │   └── README.md
-│   │   ├── MonoGame
-│   │   │   ├── images
-│   │   │   │   └── logo.png
-│   │   │   ├── Gamem.MonoGame.csproj
-│   │   │   ├── GeometryGmMonoGame.cs
-│   │   │   ├── PhysicsGmMonoGame.cs
-│   │   │   └── README.md
-│   │   └── Stride
-│   │       ├── images
-│   │       │   └── logo.png
-│   │       ├── Gamem.Stride.csproj
-│   │       ├── GeometryGmStride.cs
-│   │       ├── PhysicsGmStride.cs
-│   │       └── README.md
-│   └── Web
-│       ├── cpp
-│       │   ├── include
-│       │   │   ├── GeometryGm.hpp
-│       │   │   ├── MathGm.hpp
-│       │   │   └── PhysicsGm.hpp
-│       │   └── src
-│       │       ├── GeometryGm.cpp
-│       │       ├── MathGm.cpp
-│       │       └── PhysicsGm.cpp
-│       ├── src
-│       │   ├── gamem_wasm.d.ts
-│       │   ├── GeometryGm.ts
-│       │   ├── index.ts
-│       │   ├── MathGm.ts
-│       │   ├── PhysicsGm.ts
-│       │   └── WasmLoader.ts
-│       ├── 3RD-PARTY-LICENSES
-│       ├── package-lock.json
-│       ├── package.json
-│       ├── README.md
-│       └── tsconfig.json
-├── .clangd      
-├── .gitignore
-├── CONTRIBUTING.md
-├── Gamem.slnx
-├── LICENSE
-└── README.md 
+    ├── .github
+    │   ├── Assets
+    │   │   ├── ScreenShots
+    │   │   │   ├── 01.png
+    │   │   │   ├── 02.png
+    │   │   │   └── 03.png
+    │   │   ├── GamemBanner.png
+    │   │   ├── GamemContributingBanner.png
+    │   │   └── GamemTestsBanner.png
+    │   └── workflows
+    │       ├── build-docs.yml
+    │       └── scheduled-release.yml
+    ├── docs
+    │   ├── docs
+    │   │   ├── getting-started.md
+    │   │   └── toc.yml
+    │   ├── images
+    │   │   └── logo.png
+    │   ├── public
+    │   │   └── main.css
+    │   ├── docfx.json
+    │   ├── favicon.ico
+    │   ├── index.md
+    │   ├── README.md
+    │   └── toc.yml
+    ├── src
+    │   ├── Csharp
+    │   │   ├── Base
+    │   │   │   ├── GeometryGm
+    │   │   │   │   ├── CollisionGm
+    │   │   │   │   │   ├── CollisionGm.net8.cs
+    │   │   │   │   │   └── CollisionGm.netstandard.cs
+    │   │   │   │   ├── VectorGm
+    │   │   │   │   │   ├── VectorGm.net8.cs
+    │   │   │   │   │   └── VectorGm.netstandard.cs
+    │   │   │   │   ├── GeometryGm.net8.cs
+    │   │   │   │   └── GeometryGm.netstandard.cs
+    │   │   │   ├── images
+    │   │   │   │   └── logo.png
+    │   │   │   ├── MathGm
+    │   │   │   │   ├── MathGm.net8.cs
+    │   │   │   │   └── MathGm.netstandard.cs
+    │   │   │   ├── PhysicsGm
+    │   │   │   │   ├── PhysicsGm.net8.cs
+    │   │   │   │   └── PhysicsGm.netstandard.cs
+    │   │   │   ├── Extra.net8.cs
+    │   │   │   ├── Gamem.csproj
+    │   │   │   └── README.md
+    │   │   ├── Godot
+    │   │   │   ├── images
+    │   │   │   │   └── logo.png
+    │   │   │   ├── CollisionGmGodot.cs
+    │   │   │   ├── Gamem.Godot.csproj
+    │   │   │   ├── GeometryGmGodot.cs
+    │   │   │   ├── MathGmGodot.cs
+    │   │   │   ├── PhysicsGmGodot.cs
+    │   │   │   ├── README.md
+    │   │   │   └── VectorGmGodot.cs
+    │   │   ├── MonoGame
+    │   │   │   ├── images
+    │   │   │   │   └── logo.png
+    │   │   │   ├── CollisionGmMonoGame.cs
+    │   │   │   ├── Gamem.MonoGame.csproj
+    │   │   │   ├── GeometryGmMonoGame.cs
+    │   │   │   ├── MathGmMonoGame.cs
+    │   │   │   ├── PhysicsGmMonoGame.cs
+    │   │   │   ├── README.md
+    │   │   │   └── VectorGmMonoGame.cs
+    │   │   └── Stride
+    │   │       ├── images
+    │   │       │   └── logo.png
+    │   │       ├── CollisionGmStride.cs
+    │   │       ├── Gamem.Stride.csproj
+    │   │       ├── GeometryGmStride.cs
+    │   │       ├── MathGmStride.cs
+    │   │       ├── PhysicsGmStride.cs
+    │   │       ├── README.md
+    │   │       └── VectorGmStride.cs
+    │   └── Web
+    │       ├── cpp
+    │       │   ├── include
+    │       │   │   ├── GeometryGm.hpp
+    │       │   │   ├── MathGm.hpp
+    │       │   │   └── PhysicsGm.hpp
+    │       │   └── src
+    │       │       ├── GeometryGm.cpp
+    │       │       ├── MathGm.cpp
+    │       │       └── PhysicsGm.cpp
+    │       ├── src
+    │       │   ├── gamem_wasm.d.ts
+    │       │   ├── GeometryGm.ts
+    │       │   ├── index.ts
+    │       │   ├── MathGm.ts
+    │       │   ├── PhysicsGm.ts
+    │       │   └── WasmLoader.ts
+    │       ├── 3RD-PARTY-LICENSES
+    │       ├── package-lock.json
+    │       ├── package.json
+    │       ├── README.md
+    │       └── tsconfig.json
+    ├── Tests
+    │   ├── Unit
+    │   │   └── Csharp
+    │   │       ├── Gamem.Tests.csproj
+    │   │       ├── MathGmTests.cs
+    │   │       └── PhysicsGmTests.cs
+    │   └── README.md
+    ├── .clangd
+    ├── .gitignore
+    ├── CONTRIBUTING.md
+    ├── Gamem.slnx
+    ├── google223cc46a9ab379ba.html
+    ├── LICENSE
+    └── README.md
+
 ```
 
 </details>
