@@ -30,10 +30,18 @@ if (isColliding)
 **A tutorial how to install Gamem for Unity**
 1. Install **[NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity)**
 2. Select **NuGet → Manage NuGet Packages**
+
 ![01](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/01.png)
+<br style="clear: both;" />
+
 3. Search for **Gamem** in NuGet For Unity and Install the latest version
+
 ![02](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/02.png)
-4. Type `using Gamem`and use any method!
+<br style="clear: both;" />
+
+4. Type `using Gamem` and use any method!
+
 ![03](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/03.png)
+<br style="clear: both;" />
 
 [API Reference](../api/Gamem.html){.btn .btn-primary}
