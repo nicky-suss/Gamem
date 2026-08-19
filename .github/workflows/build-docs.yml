@@ -28,7 +28,7 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Build Gamem
-        run: dotnet build src/Csharp/Base/Gamem.csproj -с Release --no-restore
+        run: dotnet build src/Csharp/Base/Gamem.csproj -c Release --no-restore
 
       - name: Install DocFX
         run: dotnet tool install -g docfx
