@@ -22,7 +22,7 @@ public static class PhysicsGmUnity
     {
         velocity *= MathF.Exp(drag * deltaTime);
 
-        if (VectorGmUnity.LengthSquared(velocity) < 0.0001f)
+        if (VectorGmUnity.MagnitudeSquared(velocity) < 0.0001f)
             return new float3(0, 0, 0);
 
         return velocity;
@@ -38,7 +38,7 @@ public static class PhysicsGmUnity
     {
         velocity *= MathF.Exp(drag * deltaTime);
 
-        if (VectorGmUnity.LengthSquared(velocity) < 0.0001f)
+        if (VectorGmUnity.MagnitudeSquared(velocity) < 0.0001f)
             return Vector3.zero;
 
         return velocity;
