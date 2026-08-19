@@ -34,7 +34,7 @@ if (isColliding)
 ![01](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/01.png)
 <br style="clear: both;" />
 
-3. Search for **Gamem** in NuGet For Unity and Install the latest version
+3. Search for **Gamem** and **Gamem.Unity** in NuGet For Unity and Install the latest version
 
 ![02](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/02.png)
 <br style="clear: both;" />
