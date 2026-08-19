@@ -7,18 +7,26 @@ namespace Gamem;
 /// <summary>
 /// Represents a 2D integer range or coordinate pair.
 /// </summary>
-/// <param name="x">The initial X-coordinate or start value.</param>
-/// <param name="y">The initial Y-coordinate or end value.</param>
-public struct RangeGm(int x, int y)
+public struct RangeGm
 {
     /// <summary>
     /// The X-coordinate or start value.
     /// </summary>
-    public int X { get; set; } = x;
+    public int X { get; set; }
     /// <summary>
-    /// 
+    /// The Y-coordinate or start value.
     /// </summary>
-    public int Y { get; set; } = y;
+    public int Y { get; set; }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RangeGm"/> struct.
+    /// </summary>
+    /// <param name="x">The initial X-coordinate or start value.</param>
+    /// <param name="y">The initial Y-coordinate or end value.</param>
+    public RangeGm(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
     /// <summary>
     /// Returns a string representation of the current range.
     /// </summary>
@@ -27,15 +35,11 @@ public struct RangeGm(int x, int y)
     /// <summary>
     /// Returns the smaller of two 32-bit signed integers.
     /// </summary>
-    /// <param name="X">The first integer to compare.</param>
-    /// <param name="Y">The second integer to compare.</param>
     /// <returns>The smaller of the two parameters.</returns>
-    public int Min(int X, int Y) => Math.Min(X, Y);
+    public int Min() => Math.Min(X, Y);
     /// <summary>
     /// Returns the larger of two 32-bit signed integers.
     /// </summary>
-    /// <param name="X">The first integer to compare.</param>
-    /// <param name="Y">The second integer to compare.</param>
     /// <returns>The larger of the two parameters.</returns>
-    public int Max(int X, int Y) => Math.Max(X, Y);
+    public int Max() => Math.Max(X, Y);
 }
