@@ -18,6 +18,16 @@ public struct RangeGm
     /// </summary>
     public int Y { get; set; }
     /// <summary>
+    /// Checks if the range is valid: X > Y returns true, if not returns false
+    /// </summary>
+    public readonly bool IsValid
+    {
+        get
+        {
+            return IsValidCheck(X, Y);
+        }
+    }
+    /// <summary>
     /// Initializes a new instance of the <see cref="RangeGm"/> struct.
     /// </summary>
     /// <param name="x">The initial X-coordinate or start value.</param>
@@ -26,6 +36,13 @@ public struct RangeGm
     {
         X = x;
         Y = y;
+    }
+    /// <summary>
+    /// IsValid check method
+    /// </summary>
+    public static bool IsValidCheck(int X, int Y)
+    {
+        return X < Y;
     }
     /// <summary>
     /// Returns a string representation of the current range.
