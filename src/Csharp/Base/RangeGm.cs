@@ -42,4 +42,9 @@ public struct RangeGm
     /// </summary>
     /// <returns>The larger of the two parameters.</returns>
     public int Max() => Math.Max(X, Y);
+    /// <summary>
+    /// Returns the length of the range.
+    /// </summary>
+    /// <returns>The range's length</returns>
+    public int Length() => Y - X;
 }
