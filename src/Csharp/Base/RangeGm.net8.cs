@@ -81,4 +81,10 @@ public struct RangeGm
     /// <param name="Other">Range to check</param>
     /// <returns>True if the range contains the range, if not false</returns>
     public bool Contains(RangeGm Other) => Other.X >= X && Other.Y <= Y;
+    /// <summary>
+    /// Checks if the range overlaps with the specified range.
+    /// </summary>
+    /// <param name="Other">Range to check</param>
+    /// <returns>True if the ranges overlap, if not false</returns>
+    public bool Overlaps(RangeGm Other) => X <= Other.Y && Other.X <= Y;
 }
