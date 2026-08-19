@@ -4,3 +4,4 @@ dist/
 node_modules/
 gamem_wasm.js
 gamem_wasm.wasm
+Gamem.Unity.csproj.user
