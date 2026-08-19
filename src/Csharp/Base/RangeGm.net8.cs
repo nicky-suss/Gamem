@@ -69,4 +69,16 @@ public struct RangeGm
     /// </summary>
     /// <returns>The range's center</returns>
     public int Center() => (X + Y) / 2;
+    /// <summary>
+    /// Checks if the range contains the specified value.
+    /// </summary>
+    /// <param name="Value">Value to check</param>
+    /// <returns>True if the range contains the value, if not false</returns>
+    public bool Contains(int Value) => Value >= X && Y <= Value;
+    /// <summary>
+    /// Checks if the range contains the specified range.
+    /// </summary>
+    /// <param name="Other">Range to check</param>
+    /// <returns>True if the range contains the range, if not false</returns>
+    public bool Contains(RangeGm Other) => Other.X >= X && Other.Y <= Y;
 }
