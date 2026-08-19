@@ -24,4 +24,18 @@ public struct RangeGm(int x, int y)
     /// </summary>
     /// <returns>A string formatted as "(X, Y)".</returns>
     public override string ToString() => $"({X}, {Y})";
+    /// <summary>
+    /// Returns the smaller of two 32-bit signed integers.
+    /// </summary>
+    /// <param name="X">The first integer to compare.</param>
+    /// <param name="Y">The second integer to compare.</param>
+    /// <returns>The smaller of the two parameters.</returns>
+    public int Min(int X, int Y) => Math.Min(X, Y);
+    /// <summary>
+    /// Returns the larger of two 32-bit signed integers.
+    /// </summary>
+    /// <param name="X">The first integer to compare.</param>
+    /// <param name="Y">The second integer to compare.</param>
+    /// <returns>The larger of the two parameters.</returns>
+    public int Max(int X, int Y) => Math.Max(X, Y);
 }
