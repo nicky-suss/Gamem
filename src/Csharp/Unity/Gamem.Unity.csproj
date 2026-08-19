@@ -26,7 +26,12 @@
     <PackageReference Include="Gamem" Version="3.1.0" />
     <None Include="README.md" Pack="true" PackagePath="/" />
     <None Include="images/logo.png" Pack="true" PackagePath="/" />
-    <None Include="LICENSE.md" Pack="true" PackagePath="$(PackageLicenseFile)"/>
-    <PackageReference Include="UnityMathematics.NoDeps" Version="1.3.2" PrivateAssets="All" />
+    <None Include="LICENSE.md" Pack="true" PackagePath="$(PackageLicenseFile)" />
+    <PackageReference Include="UnityMathematics" Version="1.3.2" PrivateAssets="All" />
   </ItemGroup>
+   <ItemGroup Label="Unity">
+    <Reference Include="UnityEngine" PrivateAssets="All">
+      <HintPath>$(UNITY_ASSEMBLY_PATH)\UnityEngine.dll</HintPath>
+    </Reference>
+   </ItemGroup>
 </Project>
