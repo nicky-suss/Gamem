@@ -87,4 +87,11 @@ public struct RangeGm
     /// <param name="Other">Range to check</param>
     /// <returns>True if the ranges overlap, if not false</returns>
     public bool Overlaps(RangeGm Other) => X <= Other.Y && Other.X <= Y;
+    /// <summary>
+    /// Returns the union of two ranges.
+    /// </summary>
+    /// <param name="range1">The first range</param>
+    /// <param name="range2">The second range</param>
+    /// <returns>The union of two ranges</returns>
+    public RangeGm Union(RangeGm range1, RangeGm range2) => new(Math.Min(range1.Min(), range2.Min()), Math.Max(range1.Max(), range2.Max()));
 }
