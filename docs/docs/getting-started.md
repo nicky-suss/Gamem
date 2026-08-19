@@ -38,10 +38,12 @@ if (isColliding)
 
 ![02](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/02.png)
 <br style="clear: both;" />
+![04](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/04.png)
+<br style="clear: both;" />
 
-4. Type `using Gamem` and use any method!
+4. Type `using Gamem;` and `using Gamem.Unity;` and use any method!
 
-![03](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/03.png)
+![05](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/ScreenShots/05.png)
 <br style="clear: both;" />
 
 [API Reference](../api/Gamem.html){.btn .btn-primary}
