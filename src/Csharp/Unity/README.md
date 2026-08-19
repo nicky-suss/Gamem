@@ -8,7 +8,7 @@ This package is not ready for production use yet. It was built to test it in Uni
 
 ## Gamem extension for Unity (supports vectors)
 
-**Extension for [Gamem](https://www.nuget.org/packages/gamem) that provides work with vectors (float2, float3) in Unity**
+**Extension for [Gamem](https://www.nuget.org/packages/gamem) that provides work with vectors (float2, float3, Vector2, Vector3, int2, int3, Vector2Int, Vector3Int) in Unity**
 
 ## Installation
 ```
