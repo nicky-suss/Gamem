@@ -47,4 +47,9 @@ public struct RangeGm
     /// </summary>
     /// <returns>The range's length</returns>
     public int Length() => Y - X;
+    /// <summary>
+    /// Returns the center of the range.
+    /// </summary>
+    /// <returns>The range's center</returns>
+    public int Center() => (X + Y) / 2;
 }
