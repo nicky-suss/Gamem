@@ -94,4 +94,17 @@ public struct RangeGm
     /// <param name="range2">The second range</param>
     /// <returns>The union of two ranges</returns>
     public RangeGm Union(RangeGm range1, RangeGm range2) => new(Math.Min(range1.Min(), range2.Min()), Math.Max(range1.Max(), range2.Max()));
+    /// <summary>
+    /// Expands the range to include the specified value.
+    /// </summary>
+    /// <param name="Value">Value to include</param>
+    /// <returns>The expanded range</returns>
+    public RangeGm Expand(int Value)
+    {
+        if (Value >= Y)
+            return new(X, Value);
+        else if (Value <= X)
+            return new(Value, Y);
+        return new RangeGm(0, 0);
+    }
 }
