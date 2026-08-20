@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 :root {
   --bs-primary: #F0024B !important;
   --bs-primary-rgb: 240, 2, 75 !important;
@@ -17,11 +17,11 @@
 }
 
 :root, [data-bs-theme="dark"], body[data-bs-theme="dark"] {
-  --bs-body-font-family: 'JetBrains Mono', monospace !important;
+  --bs-body-font-family: "Space Grotesk", sans-serif !important;
   --bs-body-bg: #0a0d12 !important;
   --bs-body-color: #adbac7 !important;
   --bs-border-color: #1e232a !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   background-color: #0a0d12 !important;
   color: #adbac7 !important;
 }
@@ -82,11 +82,11 @@
 }
 
 [data-bs-theme="light"], body[data-bs-theme="light"] {
-  --bs-body-font-family: 'JetBrains Mono', monospace !important;
+  --bs-body-font-family: "Space Grotesk", sans-serif !important;
   --bs-body-bg: #f6f8fa !important;
   --bs-body-color: #24292f !important;
   --bs-border-color: #d0d7de !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   background-color: #f6f8fa !important;
   color: #24292f !important;
 }
@@ -146,7 +146,7 @@
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   font-weight: 600 !important;
   letter-spacing: -0.02em !important;
 }
@@ -201,7 +201,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
 }
 
 .sidebar a, .nav-link {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   font-size: 0.85rem !important;
   color: #768390 !important;
   border-radius: 6px !important;
@@ -220,7 +220,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
 }
 
 .affix ul li a {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   font-size: 0.75rem !important;
   color: #6e7681 !important;
   display: block !important;
@@ -240,14 +240,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
 }
 
 pre, code, .markdown-level-1 + p + div, pre code {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   border-radius: 8px !important;
   overflow-x: auto !important;
   scrollbar-width: thin !important;
 }
 
 div.code-header {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   border-radius: 8px 8px 0 0 !important;
 }
 .navbar-brand img, 
@@ -282,7 +282,7 @@ dt a:hover {
   background-color: #F0024B !important;
   border-color: #F0024B !important;
   color: #ffffff !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   font-weight: 600 !important;
   border-radius: 6px !important;
   padding: 8px 16px !important;
@@ -302,7 +302,7 @@ dt a:hover {
   background-color: transparent !important;
   border: 1px solid #272d37 !important;
   color: #adbac7 !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   font-weight: 500 !important;
   border-radius: 6px !important;
   padding: 8px 16px !important;
@@ -321,7 +321,7 @@ dt a:hover {
   background-color: transparent !important;
   border: 1px solid #d0d7de !important;
   color: #24292f !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: "Space Grotesk", sans-serif !important;
   font-weight: 500 !important;
   border-radius: 6px !important;
   padding: 8px 16px !important;
