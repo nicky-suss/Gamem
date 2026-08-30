@@ -1,13 +1,11 @@
 ![GamemTestsBanner](https://raw.githubusercontent.com/nicky-suss/Gamem/refs/heads/main/.github/Assets/GamemTestsBanner.png)
 
-### **This folder contains tests for the methods in the Gamem library (C# and TS; TS coming soon)**
+### **This folder contains tests for the methods in the Gamem library**
 
 ## Tools
 - **Tool for tests:** Xunit
 
 ## How to run tests
-
-### C#
 
 1. Clone the repo
 ```bash
@@ -21,9 +19,6 @@ cd Gamem/Tests/Unit/Csharp
 ```bash
 dotnet test
 ```
-
-### TS
-_TS tests coming soon..._
 
 ## Rules for making tests
 
