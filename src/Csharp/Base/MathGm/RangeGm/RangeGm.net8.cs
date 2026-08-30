@@ -107,4 +107,54 @@ public struct RangeGm
             return new(Value, Y);
         return new RangeGm(0, 0);
     }
+    public static RangeGm operator +(RangeGm range, int num)
+    {
+        return new RangeGm
+        {
+            X = range.X + num,
+            Y = range.Y + num
+        };
+    }
+    public static RangeGm operator +(int num, RangeGm range) => range + num;
+    public static RangeGm operator -(RangeGm range, int num)
+    {
+        return new RangeGm
+        {
+            X = range.X - num,
+            Y = range.Y - num
+        };
+    }
+    public static RangeGm operator -(int num, RangeGm range)
+    {
+        return new RangeGm
+        {
+            X = num - range.X,
+            Y = num - range.Y
+        };
+    }
+    public static RangeGm operator *(RangeGm range, int num)
+    {
+        return new RangeGm
+        {
+            X = range.X * num,
+            Y = range.Y * num
+        };
+    }
+    public static RangeGm operator *(int num, RangeGm range) => range * num;
+    public static RangeGm operator /(RangeGm range, int num)
+    {
+        return new RangeGm
+        {
+            X = range.X / num,
+            Y = range.Y / num
+        };
+    }
+    public static RangeGm operator /(int num, RangeGm range)
+    {
+        return new RangeGm
+        {
+            X = num / range.X,
+            Y = num / range.Y
+        };
+    }
 }
