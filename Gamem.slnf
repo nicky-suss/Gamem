@@ -1,0 +1,11 @@
+{
+    "solution": {
+        "path": "Gamem.slnx",
+        "projects": [
+            "src/Csharp/Base/Gamem.csproj",
+            "src/Csharp/Godot/Gamem.Godot.csproj",
+            "src/Csharp/MonoGame/Gamem.MonoGame.csproj",
+            "src/Csharp/Stride/Gamem.Stride.csproj"
+        ]
+    }
+}

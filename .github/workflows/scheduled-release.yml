@@ -88,11 +88,8 @@ jobs:
       - name: Clean solution
         run: dotnet clean
 
-      - name: Build solution
-        run: dotnet build -c Release
-
-      - name: Pack NuGet Packages
-        run: dotnet pack -c Release --output ./artifacts
+      - name: Pack slnf
+        run: dotnet pack ci-Gamem.slnf -c Release -o ./artifacts
 
       - name: NuGet Login (OIDC)
         id: nuget-login
