@@ -81,7 +81,7 @@ public struct RangeGm
     /// Console.WriteLine(range.Contains(101)); // false
     /// </code>
     /// </example>
-    public bool Contains(int Value) => Value >= X && Y <= Value;
+    public bool Contains(int Value) => Value >= X && Value <= Y;
     /// <summary>
     /// Checks if the range contains the specified range.
     /// </summary>
