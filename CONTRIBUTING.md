@@ -26,10 +26,27 @@
 5. **Test the project**
     [TUTORIAL FOR TESTS](https://github.com/nicky-suss/Gamem/blob/main/Tests/Unit/Csharp/README.md)
 6. **Build the project**
+    **REMEMBER** if you want to build every project and Gamem.Unity too you HAVE to install Unity and make `Gamem.Unity.csproj.user` in `src/Csharp/Base/Untiy`
+    then type something like this in `Gamem.Unity.csproj.user`
+    ```xml
+    <Project>
+        <PropertyGroup>
+            <UNITY_ASSEMBLY_PATH>D:\YourPathToUnity\Version\Editor\Data\Managed</UNITY_ASSEMBLY_PATH>
+        </PropertyGroup>
+    </Project>
+    ```
+    Then you are able to type 
     ```bash
     dotnet clean
     dotnet build
     ```
+    ---
+    **OR** if you just want to build other projects and not Unity then type this
+    ```bash
+    dotnet clean
+    dotnet build Gamem.slnf
+    ```
+
 7. (Optional) **Pack the project to .nupkg file (NuGet package)**
     ```bash
     dotnet pack
