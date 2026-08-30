@@ -119,6 +119,6 @@ public struct RangeGm
             return new(X, Value);
         else if (Value <= X)
             return new(Value, Y);
-        return new RangeGm(0, 0);
+        return this;
     }
 }
