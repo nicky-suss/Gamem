@@ -52,6 +52,10 @@
     dotnet pack
     ```
 ## Contributing to TS Gamem (Web, WASM)
+
+> [!WARNING]
+> gamem-wasm has been deprecated, so don't make any changes in Web folder, feel free to copy or use this code how it's allowed in MIT license
+
 **Here are steps how to run WASM Gamem on your PC**
 ### Requirements
 - [Node.js 20 or more](https://nodejs.org/)
