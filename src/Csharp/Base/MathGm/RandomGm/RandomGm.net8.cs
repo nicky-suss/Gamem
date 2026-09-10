@@ -60,4 +60,9 @@ public static partial class RandomGm
     /// </summary>
     /// <returns>A random angle number in degrees (0.0 - 6.28)</returns>
     public static T RandomAngleRadians<T>() where T : IFloatingPointIeee754<T> => T.CreateChecked(Random.Shared.NextDouble()) * Cache<T>.T2PI;
+    /// <summary>
+    /// Generates a random sign (-1 or 1) so your number can turn into positive or negative
+    /// </summary>
+    /// <returns>A random sign (-1 or 1)</returns>
+    public static int RandomSign() => Random.Shared.Next(0, 2) * 2 - 1;
 }
