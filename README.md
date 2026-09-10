@@ -25,9 +25,12 @@
 
 <h2 align="center">Features</h2>
 
-- **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more.
-- **PhysicsGm**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more.
-- **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `CheckCircleVsCircle`, `CheckAABBVsAABB` and more
+- **RandomGm**: `RollChance`, `RandomAngleDegrees`, `RandomAngleRadians`, `RandomSign` and more
+- **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more
+- **PhysicsGm**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more
+- **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `NormalizeAngle` and more
+- **CollisionGm**: `CheckCircleVsCircle`, `CheckAABBVsAABB`, `CheckCircleVsAABB`, `CheckSegmentVsSegment`
+- **VectorGm**: `GetDotProduct`, `GetDotProduct3D`, `GetCrossProduct`, `GetAngleBetween`, `ClosestPointOnLine` and more
 <h2 align="center"> Project Structure </h2>
 
 <details>
@@ -75,6 +78,9 @@ Gamem
     │   │   │   ├── images
     │   │   │   │   └── logo.png
     │   │   │   ├── MathGm
+    │   │   │   │   ├── RandomGm
+    │   │   │   │   │   ├── RandomGm.net8.cs
+    │   │   │   │   │   └── RandomGm.netstandard.cs
     │   │   │   │   ├── MathGm.net8.cs
     │   │   │   │   └── MathGm.netstandard.cs
     │   │   │   ├── PhysicsGm

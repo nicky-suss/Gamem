@@ -3,6 +3,8 @@
 [![NuGet Version](https://img.shields.io/nuget/v/Gamem?logo=nuget&labelColor=28333C&color=F0024B)](https://www.nuget.org/packages/Gamem) [![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem?logo=nuget&labelColor=28333C&color=F0024B)](https://www.nuget.org/packages/Gamem) ![Static Badge](https://img.shields.io/badge/license-MIT-green?labelColor=28333C&color=F0024B)
 
 ### If you need vectors for Godot, MonoGame or Stride, use these extensions:
+- **[Gamem.Unity](https://www.nuget.org/packages/Gamem.Unity) for Unity (⚠️ UNITY PROJECTS ONLY)** 
+[![NuGet Version](https://img.shields.io/nuget/v/Gamem.Unity?logo=nuGet&labelColor=28333C&color=111F28)](https://www.nuget.org/packages/Gamem.Unity) [![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.Unity?logo=nuget&labelColor=28333C&color=111F28)](https://www.nuget.org/packages/Gamem.Unity)
 - **[Gamem.Godot](https://www.nuget.org/packages/Gamem.Godot) for Godot** 
 [![NuGet Version](https://img.shields.io/nuget/v/Gamem.Godot?logo=nuGet&labelColor=28333C&color=478CBF)](https://www.nuget.org/packages/Gamem.Godot) [![NuGet Downloads](https://img.shields.io/nuget/dt/Gamem.Godot?logo=nuget&labelColor=28333C&color=478CBF)](https://www.nuget.org/packages/Gamem.Godot)
 - **[Gamem.MonoGame](https://www.nuget.org/packages/Gamem.MonoGame) for MonoGame** 
@@ -13,9 +15,12 @@
 **Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net) and other engines and frameworks!**
 
 ## Features
-- **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more.
-- **PhysicsGm**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more.
-- **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `CheckCircleVsCircle`, `CheckAABBVsAABB` and more
+- **RandomGm**: `RollChance`, `RandomAngleDegrees`, `RandomAngleRadians`, `RandomSign` and more
+- **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more
+- **PhysicsGm**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more
+- **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `NormalizeAngle` and more
+- **CollisionGm**: `CheckCircleVsCircle`, `CheckAABBVsAABB`, `CheckCircleVsAABB`, `CheckSegmentVsSegment`
+- **VectorGm**: `GetDotProduct`, `GetDotProduct3D`, `GetCrossProduct`, `GetAngleBetween`, `ClosestPointOnLine` and more
 ## Installation
 **Type this command:**
 ```
