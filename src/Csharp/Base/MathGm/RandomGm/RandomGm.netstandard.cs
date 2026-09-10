@@ -89,5 +89,10 @@ namespace Gamem
         /// </summary>
         /// <returns>A random sign (-1 or 1)</returns>
         public static int RandomSign() => RandomSharedPolyfill.Shared.Next(0, 2) * 2 - 1;
+        /// <summary>
+        /// Generates random bool value (true or false)
+        /// </summary>
+        /// <returns>Randomly true or false</returns>
+        public static bool RandomBool() => RandomSharedPolyfill.Shared.Next(0, 2) == 1;
     }
 }
