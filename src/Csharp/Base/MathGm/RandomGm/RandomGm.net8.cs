@@ -7,7 +7,7 @@ namespace Gamem;
 /// <summary>
 /// Provides general-purpose static mathematical functions including interpolation and random number generation.
 /// </summary>
-public static class RandomGm
+public static partial class RandomGm
 {
     /// <summary>
     /// Generates a random floating-point value within a specified inclusive range.
@@ -45,4 +45,19 @@ public static class RandomGm
     /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool RollChance(float chance) => Random.Shared.NextSingle() * 100.0f < Math.Clamp(chance, 0.0f, 100.0f);
+    /// <summary>
+    /// Generates a random angle number in degrees (0 - 360)
+    /// </summary>
+    /// <returns>A random angle number in degrees (0 - 360)</returns>
+    public static int RandomAngleDegrees() => Random.Shared.Next(0, 361);
+    /// <summary>
+    /// Generates a random angle number in degrees (0.0 - 360.0)
+    /// </summary>
+    /// <returns>A random angle number in degrees (0.0 - 360.0)</returns>
+    public static T RandomAngleDegrees<T>() where T : IFloatingPointIeee754<T> => T.CreateChecked(Random.Shared.Next(0, 361));
+    /// <summary>
+    /// Generates a random angle number in radians (0.0 - 6.28)
+    /// </summary>
+    /// <returns>A random angle number in degrees (0.0 - 6.28)</returns>
+    public static T RandomAngleRadians<T>() where T : IFloatingPointIeee754<T> => T.CreateChecked(Random.Shared.NextDouble()) * Cache<T>.T2PI;
 }

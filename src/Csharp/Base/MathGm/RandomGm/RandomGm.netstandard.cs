@@ -8,7 +8,7 @@ namespace Gamem
     /// <summary>
     /// Provides general-purpose static mathematical functions including interpolation and random number generation.
     /// </summary>
-    public static class RandomGm
+    public static partial class RandomGm
     {
         internal static class RandomSharedPolyfill
         {
@@ -59,5 +59,30 @@ namespace Gamem
         /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool RollChance(float chance) => RandomSharedPolyfill.Shared.NextDouble() * 100.0f < Math.Max(0.0f, Math.Min(chance, 100.0f));
+        /// <summary>
+        /// Generates a random angle number in degrees (0 - 360)
+        /// </summary>
+        /// <returns>A random angle number in degrees (0 - 360)</returns>
+        public static int RandomAngleDegrees() => RandomSharedPolyfill.Shared.Next(0, 361);
+        /// <summary>
+        /// Generates a random angle number in degrees (0.0 - 360.0)
+        /// </summary>
+        /// <returns>A random angle number in degrees (0.0 - 360.0)</returns>
+        public static float RandomAngleDegreesFloat() => (float)RandomSharedPolyfill.Shared.NextDouble() * 360.0f;
+        /// <summary>
+        /// Generates a random angle number in degrees (0.0 - 360.0)
+        /// </summary>
+        /// <returns>A random angle number in degrees (0.0 - 360.0)</returns>
+        public static double RandomAngleDegreesDouble() => (double)RandomSharedPolyfill.Shared.NextDouble() * 360.0;
+        /// <summary>
+        /// Generates a random angle number in radians (0.0 - 6.28)
+        /// </summary>
+        /// <returns>A random angle number in degrees (0.0 - 6.28)</returns>
+        public static float RandomAngleRadians() => (float)RandomSharedPolyfill.Shared.NextDouble() * (2.0f * (float)Math.PI);
+        /// <summary>
+        /// Generates a random angle number in radians (0.0 - 6.28)
+        /// </summary>
+        /// <returns>A random angle number in degrees (0.0 - 6.28)</returns>
+        public static double RandomAngleRadiansDouble() => (double)RandomSharedPolyfill.Shared.NextDouble() * (2.0 * Math.PI);
     }
 }
