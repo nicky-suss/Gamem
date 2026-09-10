@@ -380,4 +380,19 @@ public static partial class MathGm
             factor1 * v1.Z + factor2 * v2.Z
         );
     }
+    /// <summary>
+    /// Calculates an Ease-Out Elastic easing value, producing an oscillating decay effect that settles at 1.0.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="t">The normalized progress time, typically clamped in the range [0.0, 1.0].</param>
+    /// <returns>The interpolated value using the Ease-Out Elastic function, clamped to 0.0 at <paramref name="t"/> ≤ 0 and 1.0 at <paramref name="t"/> ≥ 1.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T EaseOutElastic<T>(T t) where T : IFloatingPointIeee754<T>
+    {
+        if (t <= T.Zero)
+            return T.Zero;
+        else if (t >= T.One)
+            return T.One;
+        return T.Pow(Cache<T>.T2, -Cache<T>.T10 * t) * T.Sin((Cache<T>.T10 * t - Cache<T>.T075) * Cache<T>.T2PI / Cache<T>.T3) + T.One;
+    }
 }

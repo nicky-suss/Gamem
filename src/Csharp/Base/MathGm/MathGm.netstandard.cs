@@ -564,5 +564,33 @@ namespace Gamem
                 factor1 * v1.Z + factor2 * v2.Z
             );
         }
+        /// <summary>
+        /// Calculates an Ease-Out Elastic easing value, producing an oscillating decay effect that settles at 1.0.
+        /// </summary>
+        /// <param name="t">The normalized progress time, typically clamped in the range [0.0, 1.0].</param>
+        /// <returns>The interpolated value using the Ease-Out Elastic function, clamped to 0.0 at <paramref name="t"/> ≤ 0 and 1.0 at <paramref name="t"/> ≥ 1.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float EaseOutElastic(float t)
+        {
+            if (t <= 0.0f)
+                return 0.0f;
+            else if (t >= 1.0f)
+                return 1.0f;
+            return (float)Math.Pow(2.0f, -10.0f * t) * (float)Math.Sin((10.0f * t - 0.75f) * (2.0f * (float)Math.PI) / 3.0f) + 1.0f;
+        }
+        /// <summary>
+        /// Calculates an Ease-Out Elastic easing value, producing an oscillating decay effect that settles at 1.0.
+        /// </summary>
+        /// <param name="t">The normalized progress time, typically clamped in the range [0.0, 1.0].</param>
+        /// <returns>The interpolated value using the Ease-Out Elastic function, clamped to 0.0 at <paramref name="t"/> ≤ 0 and 1.0 at <paramref name="t"/> ≥ 1.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double EaseOutElastic(double t)
+        {
+            if (t <= 0.0)
+                return 0.0;
+            else if (t >= 1.0)
+                return 1.0;
+            return Math.Pow(2.0, -10.0 * t) * Math.Sin((10.0 * t - 0.75) * (2.0 * Math.PI) / 3.0) + 1.0;
+        }
     }
 }
