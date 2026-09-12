@@ -17,6 +17,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>nicky-suss.github.io/Gamem/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nicky-suss/Gamem</RepositoryUrl>
     <PackageTags>gamedev;game-development;physics;math;collision;geometry;monogame;stride;godot;unity;utilities;lightweight</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
