@@ -25,12 +25,12 @@
 
 <h2 align="center">Features</h2>
 
-- **RandomGm**: `RollChance`, `RandomAngleDegrees`, `RandomAngleRadians`, `RandomSign` and more
 - **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more
 - **PhysicsGm**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more
 - **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `NormalizeAngle` and more
 - **CollisionGm**: `CheckCircleVsCircle`, `CheckAABBVsAABB`, `CheckCircleVsAABB`, `CheckSegmentVsSegment`
 - **VectorGm**: `GetDotProduct`, `GetDotProduct3D`, `GetCrossProduct`, `GetAngleBetween`, `ClosestPointOnLine` and more
+- **RandomGm**: `RollChance`, `RandomAngleDegrees`, `RandomAngleRadians`, `RandomSign` and more
 <h2 align="center"> Project Structure </h2>
 
 <details>
