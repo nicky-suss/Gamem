@@ -15,12 +15,12 @@
 **Gamem is a C# library of Physics, Math and Geometry helpers, created for you to type code in one line instead of huge formulas. It works everywhere! From Console to [Unity](https://unity.com), [Godot](https://godotengine.org), [MonoGame](https://monogame.net) and other engines and frameworks!**
 
 ## Features
-- **RandomGm**: `RollChance`, `RandomAngleDegrees`, `RandomAngleRadians`, `RandomSign` and more
 - **MathGm**: `RandomRange`, `SmoothStep`, `Lerp`, `InverseLerp`, `SmoothDamp` and more
 - **PhysicsGm**: `ApplyGravity`, `ApplyFriction`, `AddForce`, `AddImpulse`, `ClampVelocity`, `Bounce` and more
 - **GeometryGm**: `Reflect`, `ToRadians`, `ToDegrees`, `GetDistance`, `NormalizeAngle` and more
 - **CollisionGm**: `CheckCircleVsCircle`, `CheckAABBVsAABB`, `CheckCircleVsAABB`, `CheckSegmentVsSegment`
 - **VectorGm**: `GetDotProduct`, `GetDotProduct3D`, `GetCrossProduct`, `GetAngleBetween`, `ClosestPointOnLine` and more
+- **RandomGm**: `RollChance`, `RandomAngleDegrees`, `RandomAngleRadians`, `RandomSign` and more
 ## Installation
 **Type this command:**
 ```
