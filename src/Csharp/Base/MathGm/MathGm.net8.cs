@@ -31,21 +31,6 @@ public static partial class MathGm
         return start + (end - start) * tt;
     }
     /// <summary>
-    /// Generates a random floating-point value within a specified inclusive range.
-    /// </summary>
-    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
-    /// <param name="min">The minimum bound of the range.</param>
-    /// <param name="max">The maximum bound of the range.</param>
-    /// <returns>A random value greater than or equal to min, and less than max.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static T RandomRange<T>(T min, T max) where T : IFloatingPointIeee754<T>
-    {
-        if (min > max)
-            (min, max) = (max, min);
-        T randomF = T.CreateChecked(Random.Shared.NextDouble());
-        return min + (randomF * (max - min));
-    }
-    /// <summary>
     /// Linearly interpolates between start and end values, clamping the interpolation percentage between 0.0 and 1.0.
     /// </summary>
     /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
@@ -121,6 +106,7 @@ public static partial class MathGm
     /// <param name="chance">The success probability as an integer percentage (e.g., 50 for a 50% chance).</param>
     /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [Obsolete("Use RandomGm.RollChance() instead")]
     public static bool RollChance(int chance) => Random.Shared.Next(0, 100) < Math.Clamp(chance, 0, 100);
     /// <summary>
     /// Evaluates a percentage-based chance to determine a success outcome using a double-precision floating-point value.
@@ -128,6 +114,7 @@ public static partial class MathGm
     /// <param name="chance">The success probability as a percentage (e.g., 75.5 for a 75.5% chance).</param>
     /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [Obsolete("Use RandomGm.RollChance() instead")]
     public static bool RollChance(double chance) => Random.Shared.NextDouble() * 100.0 < Math.Clamp(chance, 0.0, 100.0);
     /// <summary>
     /// Evaluates a percentage-based chance to determine a success outcome using a single-precision floating-point value.
@@ -135,6 +122,7 @@ public static partial class MathGm
     /// <param name="chance">The success probability as a percentage (e.g., 12.3f for a 12.3% chance).</param>
     /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [Obsolete("Use RandomGm.RollChance() instead")]
     public static bool RollChance(float chance) => Random.Shared.NextSingle() * 100.0f < Math.Clamp(chance, 0.0f, 100.0f);
     /// <summary>
     /// Moves a value toward a target value at a specified speed over a given time step.
@@ -391,5 +379,20 @@ public static partial class MathGm
             factor1 * v1.Y + factor2 * v2.Y,
             factor1 * v1.Z + factor2 * v2.Z
         );
+    }
+    /// <summary>
+    /// Calculates an Ease-Out Elastic easing value, producing an oscillating decay effect that settles at 1.0.
+    /// </summary>
+    /// <typeparam name="T">A floating-point type that implements <see cref="IFloatingPointIeee754{T}"/>.</typeparam>
+    /// <param name="t">The normalized progress time, typically clamped in the range [0.0, 1.0].</param>
+    /// <returns>The interpolated value using the Ease-Out Elastic function, clamped to 0.0 at <paramref name="t"/> ≤ 0 and 1.0 at <paramref name="t"/> ≥ 1.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T EaseOutElastic<T>(T t) where T : IFloatingPointIeee754<T>
+    {
+        if (t <= T.Zero)
+            return T.Zero;
+        else if (t >= T.One)
+            return T.One;
+        return T.Pow(Cache<T>.T2, -Cache<T>.T10 * t) * T.Sin((Cache<T>.T10 * t - Cache<T>.T075) * Cache<T>.T2PI / Cache<T>.T3) + T.One;
     }
 }
