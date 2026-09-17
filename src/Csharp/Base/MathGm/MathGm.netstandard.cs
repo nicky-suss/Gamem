@@ -10,16 +10,16 @@ namespace Gamem
     /// </summary>
     public static partial class MathGm
     {
-        internal static class RandomSharedPolyfill
-        {
-            private static readonly ThreadLocal<Random> _localRandom = new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
-            public static Random Shared => _localRandom.Value;
-        }
 
         //! ========================
         //! THIS PART OF THE CODE SUPPORTS OLDER VERSIONS OF .NET
         //! =========================
 
+        internal static class RandomSharedPolyfill
+        {
+            private static readonly ThreadLocal<Random> _localRandom = new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
+            public static Random Shared => _localRandom.Value;
+        }
         /// <summary>
         /// Performs a smooth cubic interpolation between two values based on a given percentage.
         /// </summary>
@@ -48,19 +48,20 @@ namespace Gamem
         /// <param name="min">The minimum bound of the range.</param>
         /// <param name="max">The maximum bound of the range.</param>
         /// <returns>A random value greater than or equal to min, and less than max.</returns>
-        /// <exception cref="ArgumentException">Thrown when min is greater than max.</exception>
+        [Obsolete("Use RandomGm.RandomRange() instead")]
         public static double RandomRange(double min, double max)
         {
             if (min > max)
-                throw new ArgumentException($"{nameof(min)} must be <= {nameof(max)}");
+                (min, max) = (max, min);
             double randomF = RandomSharedPolyfill.Shared.NextDouble();
             return min + (randomF * (max - min));
         }
         /// <inheritdoc cref="RandomRange(double, double)"/>
+        [Obsolete("Use RandomGm.RandomRange() instead")]
         public static float RandomRange(float min, float max)
         {
             if (min > max)
-                throw new ArgumentException($"{nameof(min)} must be <= {nameof(max)}");
+                (min, max) = (max, min);
             float randomF = (float)RandomSharedPolyfill.Shared.NextDouble();
             return min + (randomF * (max - min));
         }
@@ -157,6 +158,7 @@ namespace Gamem
         /// <param name="chance">The success probability as an integer percentage (e.g., 50 for a 50% chance).</param>
         /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Obsolete("Use RandomGm.RollChance() instead")]
         public static bool RollChance(int chance) => RandomSharedPolyfill.Shared.Next(0, 100) < Math.Max(0, Math.Min(chance, 100));
         /// <summary>
         /// Evaluates a percentage-based chance to determine a success outcome using a double-precision floating-point value.
@@ -164,6 +166,7 @@ namespace Gamem
         /// <param name="chance">The success probability as a percentage (e.g., 75.5 for a 75.5% chance).</param>
         /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Obsolete("Use RandomGm.RollChance() instead")]
         public static bool RollChance(double chance) => RandomSharedPolyfill.Shared.NextDouble() * 100.0 < Math.Max(0.0, Math.Min(chance, 100.0));
         /// <summary>
         /// Evaluates a percentage-based chance to determine a success outcome using a single-precision floating-point value.
@@ -171,6 +174,7 @@ namespace Gamem
         /// <param name="chance">The success probability as a percentage (e.g., 12.3f for a 12.3% chance).</param>
         /// <returns><see langword="true"/> if the random roll succeeds; otherwise, <see langword="false"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Obsolete("Use RandomGm.RollChance() instead")]
         public static bool RollChance(float chance) => RandomSharedPolyfill.Shared.NextDouble() * 100.0f < Math.Max(0.0f, Math.Min(chance, 100.0f));
         /// <summary>
         /// Moves a value toward a target value at a specified speed over a given time step.
@@ -559,6 +563,34 @@ namespace Gamem
                 factor1 * v1.Y + factor2 * v2.Y,
                 factor1 * v1.Z + factor2 * v2.Z
             );
+        }
+        /// <summary>
+        /// Calculates an Ease-Out Elastic easing value, producing an oscillating decay effect that settles at 1.0.
+        /// </summary>
+        /// <param name="t">The normalized progress time, typically clamped in the range [0.0, 1.0].</param>
+        /// <returns>The interpolated value using the Ease-Out Elastic function, clamped to 0.0 at <paramref name="t"/> ≤ 0 and 1.0 at <paramref name="t"/> ≥ 1.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float EaseOutElastic(float t)
+        {
+            if (t <= 0.0f)
+                return 0.0f;
+            else if (t >= 1.0f)
+                return 1.0f;
+            return (float)Math.Pow(2.0f, -10.0f * t) * (float)Math.Sin((10.0f * t - 0.75f) * (2.0f * (float)Math.PI) / 3.0f) + 1.0f;
+        }
+        /// <summary>
+        /// Calculates an Ease-Out Elastic easing value, producing an oscillating decay effect that settles at 1.0.
+        /// </summary>
+        /// <param name="t">The normalized progress time, typically clamped in the range [0.0, 1.0].</param>
+        /// <returns>The interpolated value using the Ease-Out Elastic function, clamped to 0.0 at <paramref name="t"/> ≤ 0 and 1.0 at <paramref name="t"/> ≥ 1.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double EaseOutElastic(double t)
+        {
+            if (t <= 0.0)
+                return 0.0;
+            else if (t >= 1.0)
+                return 1.0;
+            return Math.Pow(2.0, -10.0 * t) * Math.Sin((10.0 * t - 0.75) * (2.0 * Math.PI) / 3.0) + 1.0;
         }
     }
 }
